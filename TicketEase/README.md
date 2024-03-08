@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## setup
+
+ng add @angular/material
+npm install bootstrap-grid-only-css --save
+
+In angular.json add the below path to the "styles"
+"./node_modules/bootstrap-grid-only-css/dist/css/bootstrap-grid.min.css"

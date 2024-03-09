@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from '../../../lib/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,11 @@ import { ApiService } from '../../../lib/api.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
-  constructor(private snackBar: MatSnackBar, private api: ApiService) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private api: ApiService,
+    private router: Router
+  ) {}
   ngOnInit(): void {}
   public user = {
     userName: '',
@@ -43,10 +48,14 @@ export class LoginComponent implements OnInit {
         verticalPosition: 'top',
         horizontalPosition: 'right',
       });
+    } else {
+      this.router.navigate(['/dashboard']);
     }
 
     this.api.login(this.user).subscribe({
       next: (data) => {
+        this.router.navigate(['/dashboard']);
+
         this.snackBar.open(data.userName, '', {
           duration: 3000,
           verticalPosition: 'top',

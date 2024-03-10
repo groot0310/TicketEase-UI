@@ -49,12 +49,12 @@ export class LoginComponent implements OnInit {
         horizontalPosition: 'right',
       });
     } else {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/admin']);
     }
 
     this.api.login(this.user).subscribe({
       next: (data) => {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/admin']);
 
         this.snackBar.open(data.userName, '', {
           duration: 3000,

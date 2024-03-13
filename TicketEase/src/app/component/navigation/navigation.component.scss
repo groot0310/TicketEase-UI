@@ -4,6 +4,7 @@
 
 .sidenav {
   width: 200px;
+  border-radius: 10px;
 }
 
 .sidenav .mat-toolbar {
@@ -16,6 +17,14 @@
   z-index: 1;
 }
 
+.logo {
+  size: 25px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
 .image {
   width: 40px;
   height: 40px;
@@ -23,9 +32,16 @@
   margin-right: 20px;
 }
 
+.logo_name {
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
 .name {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 400;
   color: white;
 }
 

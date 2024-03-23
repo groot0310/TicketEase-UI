@@ -9,6 +9,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTooltipModule, TooltipPosition } from '@angular/material/tooltip';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -22,11 +28,18 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
     MatIconModule,
     AsyncPipe,
     DashboardComponent,
+    MatExpansionModule,
+    MatTooltipModule,
+    MatButtonToggleModule,
+    MatDialogModule,
   ],
 })
 export class NavigationComponent {
+  constructor(private dialog: MatDialog) {}
   private breakpointObserver = inject(BreakpointObserver);
-
+  openDialog() {
+    this.dialog.open(DialogComponent);
+  }
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(

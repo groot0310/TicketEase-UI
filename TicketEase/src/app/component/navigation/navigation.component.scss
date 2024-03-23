@@ -3,7 +3,7 @@
 }
 
 .sidenav {
-  width: 200px;
+  width: 300px;
   border-radius: 10px;
 }
 
@@ -56,3 +56,10 @@
   display: flex;
   align-items: center; 
   justify-content: flex-end; }
+
+  .menu-container{
+    width: 100%;
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+  }

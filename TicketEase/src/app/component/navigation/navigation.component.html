@@ -1,51 +1,75 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #drawer
-    class="sidenav"
-    fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
-  >
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <div class="menu-container">
+      <button mat-raised-button
+        aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+        class="example-button">
+        MENU
+      </button>
+    </div>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> ADMIN </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item (click)="openDialog()">Link 1</a>
+          <a mat-list-item (click)="openDialog()">Link 2</a>
+          <a mat-list-item (click)="openDialog()">Link 3</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> EMPLOYEE </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item (click)="openDialog()">Link 1</a>
+          <a mat-list-item (click)="openDialog()">Link 2</a>
+          <a mat-list-item (click)="openDialog()">Link 3</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> ENGINEER </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item (click)="openDialog()">Link 1</a>
+          <a mat-list-item (click)="openDialog()">Link 2</a>
+          <a mat-list-item (click)="openDialog()">Link 3</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> TICKET </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item (click)="openDialog()">Link 1</a>
+          <a mat-list-item (click)="openDialog()">Link 2</a>
+          <a mat-list-item (click)="openDialog()">Link 3</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="toolbar" color="primary">
       @if (isHandset$ | async) {
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-      >
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       }
-      <div
-        fxLayout="row"
-        fxLayoutAlign="center center"
-        style="cursor: pointer"
-        class="flex-item"
-      >
+      <div fxLayout="row" fxLayoutAlign="center center" style="cursor: pointer" class="flex-item">
         <img src="../../../assets/logo.jpg" alt="App Image" class="logo" />
         <span class="logo_name">TicketEase</span>
       </div>
-      <div
-        fxLayout="row"
-        fxLayoutAlign="end center"
-        style="cursor: pointer"
-        class="flex-item"
-      >
-        <img
-          src="../../../assets/image.png"
-          alt="Profile Image"
-          class="image"
-        />
+      <div fxLayout="row" fxLayoutAlign="end center" style="cursor: pointer" class="flex-item">
+        <img src="../../../assets/image.png" alt="Profile Image" class="image" />
         <span class="name">Your Name</span>
       </div>
     </mat-toolbar>

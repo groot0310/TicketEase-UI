@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -14,6 +14,7 @@ import { MatTooltipModule, TooltipPosition } from '@angular/material/tooltip';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -34,9 +35,16 @@ import { DialogComponent } from '../dialog/dialog.component';
     MatDialogModule,
   ],
 })
-export class NavigationComponent {
-  constructor(private dialog: MatDialog) {}
+export class NavigationComponent implements OnInit {
+  loggerName: string = '';
+  constructor(private dialog: MatDialog, private route: ActivatedRoute) {}
   private breakpointObserver = inject(BreakpointObserver);
+
+  ngOnInit(): void {
+    this.loggerName = (
+      this.route.snapshot.paramMap.get('loggerName') || ''
+    ).toUpperCase();
+  }
   openDialog() {
     this.dialog.open(DialogComponent);
   }

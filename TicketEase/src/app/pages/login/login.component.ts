@@ -24,6 +24,9 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
+  loggerName = '';
+  hasLoggedIn: boolean = false;
+
   constructor(
     private snackBar: MatSnackBar,
     private api: ApiService,
@@ -52,9 +55,8 @@ export class LoginComponent implements OnInit {
       this.api.login(this.user).subscribe({
         next: (data) => {
           console.log(data);
-
-          this.router.navigate(['/admin']);
-
+          this.hasLoggedIn = true;
+          this.router.navigate(['/admin', { loggerName: data.firstName }]);
           this.snackBar.open(data.userName, '', {
             duration: 3000,
             verticalPosition: 'top',
@@ -69,28 +71,6 @@ export class LoginComponent implements OnInit {
           });
         },
       });
-      // try {
-      //   let url = ' http://localhost:8088/ohsms/authenticate/login';
-      //   const response = await fetch(url, {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json', // Adjust content type according to your needs
-      //       // You can add more headers if required, such as authorization headers
-      //     },
-      //     body: JSON.stringify(this.user), // Convert data to JSON string
-      //   });
-
-      //   if (!response.ok) {
-      //     throw new Error('Network response was not ok');
-      //   }
-
-      //   const responseData = await response.json(); // Parse response JSON
-
-      //   console.log(responseData);
-      // } catch (error) {
-      //   console.error('Error:', error);
-      //   throw error; // Propagate error to the caller
-      // }
     }
   }
 }

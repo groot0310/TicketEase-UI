@@ -29,8 +29,8 @@ section::before {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(#000000, #000dff, #000);
-  animation: animate 5s linear infinite;
+  background: linear-gradient(#26AFB1, #009FC4, #2A8ACB);
+  animation: animate 40s linear infinite;
 }
 @keyframes animate {
   0% {
@@ -40,19 +40,19 @@ section::before {
     transform: translateY(100%);
   }
 }
-section span {
-  position: relative;
-  display: block;
-  width: calc(6.25vw - 2px);
-  height: calc(6.25vw - 2px);
-  background: #181818;
-  z-index: 2;
-  transition: 1.5s;
-}
-section span:hover {
-  background: #000dff;
-  transition: 0s;
-}
+// section span {
+//   position: relative;
+//   display: block;
+//   width: calc(6.25vw - 2px);
+//   height: calc(6.25vw - 2px);
+//   background-color: #26AFB1;
+//   z-index: 2;
+//   transition: 1.5s;
+// }
+// section span:hover {
+//   background: #ffff;
+//   transition: 0s;
+// }
 
 .full-width {
   width: 100%;
@@ -81,7 +81,7 @@ section .signin .content {
 
 section .signin .content h2 {
   font-size: 2em;
-  color: #07a4ff;
+  color: #3f51b5;
 }
 
 form {
@@ -91,3 +91,7 @@ form {
 button {
   padding: 25px;
 }
+
+// .log_logo{
+//   border: #000 solid;
+// }

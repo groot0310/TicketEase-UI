@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatTooltipModule, TooltipPosition } from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';

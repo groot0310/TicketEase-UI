@@ -274,16 +274,16 @@
                   </mat-form-field>
                   <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input [(ngModel)]="user.password" name="password" type="password" matInput
+                    <input [(ngModel)]="user.password" name="password" [type]="hide ? 'password' : 'text'" matInput
                       placeholder="Enter here" />
+                    <mat-button style="margin: 10px;" mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                      <mat-icon class="logoutIcon" svgIcon="{{ hide ? 'logout' : 'notVisibleIcon' }}"
+                        aria-hidden="false"></mat-icon>
+                    </mat-button>
                   </mat-form-field>
                   <div class="container text-center">
-                    <button type="submit" mat-raised-button color="primary">
-                      Register
-                    </button>
-                    <button style="margin-left: 20px" mat-raised-button color="primary">
-                      Reset
-                    </button>
+                    <button type="submit" mat-raised-button color="primary">Register</button>
+                    <button style="margin-left: 20px" mat-raised-button color="primary">Reset</button>
                   </div>
                 </form>
               </div>

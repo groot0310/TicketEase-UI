@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
             '/admin',
             { loggerFirst: data.firstName, loggerLast: data.lastName },
           ]);
-          this.snackBar.open(data.userName, '', {
+          this.snackBar.open(`Logged in as ${data.username}`, '', {
             duration: 3000,
             verticalPosition: 'top',
             horizontalPosition: 'right',

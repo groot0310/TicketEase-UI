@@ -12,4 +12,8 @@ export class ApiService {
   login(user: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/authenticate/login`, user);
   }
+
+  logout(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/authenticate/logout`);
+  }
 }

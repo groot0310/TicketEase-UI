@@ -72,6 +72,16 @@
       <div fxLayout="row" fxLayoutAlign="end center" style="cursor: pointer" class="flex-item">
         <img src="../../../assets/image.png" alt="Profile Image" class="image" />
         <span class="name">{{this.loggerName}}</span>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logout()">
+            <mat-icon aria-hidden="false" aria-label="logout icon" fontIcon="logout" [ariaSetSize]="50"
+              color="warn"></mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
       </div>
     </mat-toolbar>
     <app-dashboard></app-dashboard>

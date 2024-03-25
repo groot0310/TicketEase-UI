@@ -56,14 +56,17 @@ export class LoginComponent implements OnInit {
         next: (data) => {
           console.log(data);
           this.hasLoggedIn = true;
-          this.router.navigate(['/admin', { loggerName: data.firstName }]);
+          this.router.navigate([
+            '/admin',
+            { loggerFirst: data.firstName, loggerLast: data.lastName },
+          ]);
           this.snackBar.open(data.userName, '', {
             duration: 3000,
             verticalPosition: 'top',
             horizontalPosition: 'right',
           });
         },
-        error: (error) => {
+        error: () => {
           this.snackBar.open('Something went wrong...!!', '', {
             duration: 3000,
             verticalPosition: 'top',

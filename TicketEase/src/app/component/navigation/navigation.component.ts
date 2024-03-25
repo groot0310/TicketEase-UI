@@ -37,13 +37,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   loggerName: string = '';
+  loggerData: string = '';
+
   constructor(private dialog: MatDialog, private route: ActivatedRoute) {}
   private breakpointObserver = inject(BreakpointObserver);
 
   ngOnInit(): void {
-    this.loggerName = (
-      this.route.snapshot.paramMap.get('loggerName') || ''
-    ).toUpperCase();
+    this.loggerName =
+      (this.route.snapshot.paramMap.get('loggerFirst') || '').toUpperCase() +
+      ' ' +
+      (this.route.snapshot.paramMap.get('loggerLast') || '').toUpperCase();
   }
   openDialog() {
     this.dialog.open(DialogComponent);

@@ -29,17 +29,21 @@ section::before {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(#26AFB1, #009FC4, #2A8ACB);
-  animation: animate 40s linear infinite;
+  background: linear-gradient(
+    to top,
+    #fff 0%,
+    #fff 20%,
+    #009FC4 80%,
+    #009FC4 50%  );
 }
-@keyframes animate {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
+// @keyframes animate {
+//   0% {
+//     transform: translateY(-100%);
+//   }
+//   100% {
+//     transform: translateY(100%);
+//   }
+// }
 // section span {
 //   position: relative;
 //   display: block;
@@ -91,7 +95,3 @@ form {
 button {
   padding: 25px;
 }
-
-// .log_logo{
-//   border: #000 solid;
-// }

@@ -59,10 +59,23 @@ export class NavigationComponent implements OnInit {
       ' ' +
       (this.route.snapshot.paramMap.get('loggerLast') || '').toUpperCase();
   }
-  openDialog() {
-    this.dialog.open(DialogComponent);
-  }
+  openDialog(formType: string, heading: string): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: { formType, heading },
+      disableClose: true,
+    });
 
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      if (result) {
+        this.snackBar.open('Successfully added ' + result.username + '!', '', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center',
+        });
+      }
+    });
+  }
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(

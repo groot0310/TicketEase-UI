@@ -1,0 +1,42 @@
+.full-width {
+  width: 100%;
+}
+
+.form{
+  padding :20px
+}
+
+.mat-form-field {
+  margin-bottom: 20px;
+}
+
+.mat-error {
+  color: red;
+  font-size: 12px;
+}
+
+button {
+  margin: 20px;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sub-heading {
+  font-size: 18px;
+  color: #777;
+  margin-top: 10px;
+}
+
+/* Custom gradient background for the heading */
+.heading {
+  background: linear-gradient(135deg, #0058a3, #00b8e6);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+

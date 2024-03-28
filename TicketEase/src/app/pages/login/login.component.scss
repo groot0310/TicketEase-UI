@@ -29,12 +29,17 @@ section::before {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to top,
-    #fff 0%,
-    #fff 20%,
-    #009FC4 80%,
-    #009FC4 50%  );
+  background-image: url("../../../assets/bg.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  // background: linear-gradient(
+  //   to top,
+  //   #fff 0%,
+  //   #fff 20%,
+  //   #009FC4 80%,
+  //   #009FC4 50%  );
 }
 // @keyframes animate {
 //   0% {

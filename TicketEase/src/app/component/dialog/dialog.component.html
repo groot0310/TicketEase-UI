@@ -46,11 +46,13 @@
       </mat-icon>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="adminForm.invalid">
-      Submit
-    </button>
-    <button mat-raised-button color="primary" (click)="onCancel()">
-      Cancel
-    </button>
+    <div style=" text-align: center;">
+      <button mat-raised-button color="primary" type="submit" [disabled]="adminForm.invalid">
+        Submit
+      </button>
+      <button mat-raised-button color="primary" (click)="onCancel()">
+        Cancel
+      </button>
+    </div>
   </form>
 </div>

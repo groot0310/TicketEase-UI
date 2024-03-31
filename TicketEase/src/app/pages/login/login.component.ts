@@ -76,10 +76,13 @@ export class LoginComponent implements OnInit {
         next: (data) => {
           console.log(data);
           this.hasLoggedIn = true;
-          this.router.navigate([
-            '/admin',
-            { loggerFirst: data.firstName, loggerLast: data.lastName },
-          ]);
+          this.router.navigate(['/admin'], {
+            skipLocationChange: true,
+            queryParams: {
+              loggerFirst: data.firstName,
+              loggerLast: data.lastName,
+            },
+          });
           this.snackBar.open(`Logged in as ${data.username}`, '', {
             duration: 3000,
             verticalPosition: 'top',

@@ -17,6 +17,7 @@ import {
 import { MatError, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { ApiService } from '../../../lib/api.service';
 
 @Component({
   selector: 'app-dialog',
@@ -43,7 +44,8 @@ export class DialogComponent implements OnInit {
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { formType: string; heading: string },
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private api: ApiService
   ) {
     this.formType = data.formType;
     this.heading = data.heading;
@@ -61,7 +63,11 @@ export class DialogComponent implements OnInit {
     if (this.formType === 'admin') {
       if (this.adminForm.valid) {
         const formData = this.adminForm.value;
-
+        this.api.createAdmin(formData).subscribe({
+          next: (data) => {
+            console.log(data);
+          },
+        });
         console.log(formData);
         this.dialogRef.close(formData);
       }

@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ApiService } from '../../../lib/api.service';
 import { Observable } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dialog',
@@ -50,7 +51,8 @@ export class DialogComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { formType: string; heading: string },
     private fb: FormBuilder,
-    private api: ApiService
+    private api: ApiService,
+    private snackBar: MatSnackBar
   ) {
     this.formType = data.formType;
     this.heading = data.heading;
@@ -85,6 +87,19 @@ export class DialogComponent implements OnInit {
         next: (data) => {
           this.dialogRef.close(formData);
         },
+        error: (error) => {
+          let errorMessage = 'Something went wrong';
+          if (error.error && error.error.message) {
+            errorMessage = error.error.message;
+          } else if (error.error && typeof error.error === 'string') {
+            errorMessage = error.error;
+          }
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'right',
+          });
+        },
       });
     }
   }
@@ -93,7 +108,8 @@ export class DialogComponent implements OnInit {
     this.hide = !this.hide;
   }
 
-  onCancel(): void {
+  onCancel(event: Event) {
+    event.preventDefault();
     this.dialogRef.close();
   }
 }

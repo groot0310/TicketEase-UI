@@ -76,18 +76,24 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/admin'], {
             skipLocationChange: true,
             queryParams: {
-              loggerFirst: data.firstName,
-              loggerLast: data.lastName,
+              loggerFirst: data.body.firstName,
+              loggerLast: data.body.lastName,
             },
           });
-          this.snackBar.open(`Logged in as ${data.username}`, '', {
+          this.snackBar.open(`Logged in as ${data.body.username}`, '', {
             duration: 3000,
             verticalPosition: 'top',
             horizontalPosition: 'right',
           });
         },
-        error: () => {
-          this.snackBar.open('Something went wrong...!!', '', {
+        error: (error) => {
+          let errorMessage = 'Something went wrong';
+          if (error.error && error.error.message) {
+            errorMessage = error.error.message;
+          } else if (error.error && typeof error.error === 'string') {
+            errorMessage = error.error;
+          }
+          this.snackBar.open(errorMessage, '', {
             duration: 3000,
             verticalPosition: 'top',
             horizontalPosition: 'right',

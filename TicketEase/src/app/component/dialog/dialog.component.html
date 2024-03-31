@@ -2,13 +2,13 @@
   <div class="heading">
     <h1 class="mat-display-2">{{heading}}</h1>
   </div>
-  <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="Form" (ngSubmit)="onSubmit()">
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>First Name</mat-label>
       <input matInput formControlName="firstName" placeholder="Enter First Name" />
       <mat-error *ngIf="
-          adminForm.get('firstName')?.invalid &&
-          adminForm.get('firstName')?.touched
+          Form.get('firstName')?.invalid &&
+          Form.get('firstName')?.touched
         ">
         First Name is required
       </mat-error>
@@ -18,7 +18,7 @@
       <mat-label>Last Name</mat-label>
       <input matInput formControlName="lastName" placeholder="Enter Last Name" />
       <mat-error *ngIf="
-          adminForm.get('lastName')?.invalid && adminForm.get('lastName')?.touched  ">
+          Form.get('lastName')?.invalid && Form.get('lastName')?.touched  ">
         Last Name is required
       </mat-error>
     </mat-form-field>
@@ -27,7 +27,7 @@
       <mat-label>Username</mat-label>
       <input matInput formControlName="username" placeholder="Enter Username" />
       <mat-error *ngIf="
-          adminForm.get('username')?.invalid && adminForm.get('username')?.touched
+          Form.get('username')?.invalid && Form.get('username')?.touched
         ">
         Username is required
       </mat-error>
@@ -37,17 +37,17 @@
       <mat-label>Password</mat-label>
       <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Enter Password" />
       <mat-error *ngIf="
-          adminForm.get('password')?.invalid && adminForm.get('password')?.touched
+          Form.get('password')?.invalid && Form.get('password')?.touched
         ">
         Password is required and must be at least 8 characters long
       </mat-error>
-      <mat-icon matSuffix (click)="togglePasswordVisibility()">
-        {{ hide ? "visibility_off" : "visibility" }}
-      </mat-icon>
+      <mat-button style="margin: 10px;" mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+        <mat-icon class="logoutIcon" svgIcon="{{ hide ? 'logout' : 'notVisibleIcon' }}" aria-hidden="false"></mat-icon>
+      </mat-button>
     </mat-form-field>
 
     <div style=" text-align: center;">
-      <button mat-raised-button color="primary" type="submit" [disabled]="adminForm.invalid">
+      <button mat-raised-button color="primary" type="submit" [disabled]="Form.invalid">
         Submit
       </button>
       <button mat-raised-button color="primary" (click)="onCancel()">

@@ -54,11 +54,14 @@ export class NavigationComponent implements OnInit {
   private breakpointObserver = inject(BreakpointObserver);
 
   ngOnInit(): void {
-    this.loggerName =
-      (this.route.snapshot.paramMap.get('loggerFirst') || '').toUpperCase() +
-      ' ' +
-      (this.route.snapshot.paramMap.get('loggerLast') || '').toUpperCase();
+    this.route.queryParams.subscribe((params) => {
+      this.loggerName =
+        (params['loggerFirst'] || '').toUpperCase() +
+        ' ' +
+        (params['loggerLast'] || '').toUpperCase();
+    });
   }
+
   openDialog(formType: string, heading: string): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: { formType, heading },

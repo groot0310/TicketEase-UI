@@ -51,4 +51,10 @@ export class ApiService {
       withCredentials: true,
     });
   }
+
+  getEmployeeList(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/admin/employees`, {
+      withCredentials: true,
+    });
+  }
 }

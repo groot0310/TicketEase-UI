@@ -1,21 +1,53 @@
-.grid-container {
-  margin: 20px;
+.listTable {
+  margin: 30px;
 }
 
-.dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+/* Style for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
+/* Style for table header cells */
+th {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center; /* Center align text */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.dashboard-card-content {
-  text-align: center;
+/* Style for table data cells */
+td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center; /* Center align text */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for alternating row colors */
+tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+/* Style for the "No employees found" message */
+p {
+  font-style: italic;
+  color: #888;
+}
+
+.view-button {
+  margin: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.NoEmployee {
+  display: flex;
+  justify-content: center;
 }

@@ -1,26 +1,50 @@
-<div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
-    @for (card of cards | async; track card) {
-      <mat-grid-tile [colspan]="card.cols" [rowspan]="card.rows">
-        <mat-card class="dashboard-card">
-          <mat-card-header>
-            <mat-card-title>
-              {{card.title}}
-              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu" xPosition="before">
-                <button mat-menu-item>Expand</button>
-                <button mat-menu-item>Remove</button>
-              </mat-menu>
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="dashboard-card-content">
-            <div>Card Content Here</div>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    }
-  </mat-grid-list>
+<div *ngIf="employees.length > 0" class="container">
+  <div class="buttons">
+    <button (click)="viewType = 'table'" mat-raised-button class="view-button">
+      <mat-icon>view_list</mat-icon>
+    </button>
+    <button (click)="viewType = 'card'" mat-raised-button class="view-button">
+      <mat-icon>view_module</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="viewType === 'table'" class="listTable">
+    <h2>List of Employees</h2>
+    <div class="table-container">
+      <table mat-table [dataSource]="employees" class="mat-elevation-z8">
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef>First Name</th>
+          <td mat-cell *matCellDef="let employee">{{ employee.firstName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef>Last Name</th>
+          <td mat-cell *matCellDef="let employee">{{ employee.lastName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="username">
+          <th mat-header-cell *matHeaderCellDef>Username</th>
+          <td mat-cell *matCellDef="let employee">{{ employee.username }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['firstName', 'lastName', 'username']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['firstName', 'lastName', 'username']"></tr>
+      </table>
+    </div>
+
+    <div *ngIf="employees.length === 0">
+      <p>No employees found.</p>
+    </div>
+  </div>
+
+  <div *ngIf="viewType === 'card'" class="cardView">
+    <h2>Card View of Employees</h2>
+    <div class="card" *ngFor="let employee of employees">
+      <!-- Card Content -->
+    </div>
+  </div>
+</div>
+
+<div class="NoEmployee" *ngIf="employees.length === 0">
+  <p>No employees found.</p>
 </div>

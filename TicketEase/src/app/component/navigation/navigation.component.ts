@@ -43,7 +43,7 @@ export class NavigationComponent implements OnInit {
   loggerName: string = '';
   loggerData: string = '';
   hasLoggedIn: boolean = true;
-
+  employees: any[] = [];
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute,
@@ -108,6 +108,11 @@ export class NavigationComponent implements OnInit {
           horizontalPosition: 'right',
         });
       },
+    });
+  }
+  getEmployees(): void {
+    this.api.getEmployeeList().subscribe((employees: any) => {
+      this.employees = employees;
     });
   }
 }

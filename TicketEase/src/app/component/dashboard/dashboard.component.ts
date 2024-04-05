@@ -5,7 +5,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { ApiService } from '../../../lib/api.service';
 import { MatTableModule } from '@angular/material/table';
 
 @Component({
@@ -26,6 +25,5 @@ import { MatTableModule } from '@angular/material/table';
 export class DashboardComponent {
   @Input() employees: any[] = [];
 
-  constructor(private api: ApiService) {}
   viewType: 'table' | 'card' = 'table';
 }

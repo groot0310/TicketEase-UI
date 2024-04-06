@@ -20,7 +20,7 @@
           <a mat-list-item (click)="getEmployees()">List of Employees</a>
           <a mat-list-item (click)="getEngineer()">List of Engineer</a>
           <a mat-list-item (click)="getAdmin()">List of Admin</a>
-          <!-- <a mat-list-item (click)="getcomplaints()">List of Complaint</a> -->
+          <a mat-list-item (click)="getComplaints()">List of Complaint</a>
 
         </mat-nav-list>
       </mat-expansion-panel>
@@ -89,6 +89,6 @@
         </mat-menu>
       </div>
     </mat-toolbar>
-    <app-dashboard [data]="data"></app-dashboard>
+    <app-dashboard [data]="data" [complaints]="complaints"></app-dashboard>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,0 +1,29 @@
+.status-column {
+  margin: 0 10px; /* Adjust margin as needed */
+}
+
+.ticket-card {
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+/* Style for card content */
+mat-card-content {
+  padding: 12px;
+}
+
+/* Style for card header */
+mat-card-header {
+  background-color: #f5f5f5; /* Light gray background */
+  border-bottom: 1px solid #ddd; /* Gray border */
+}
+
+/* Style for card title */
+mat-card-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Style for card subtitle */
+mat-card-subtitle {
+  color: #666;
+}

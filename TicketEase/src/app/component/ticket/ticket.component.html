@@ -1,0 +1,20 @@
+<div fxLayout="row" fxLayout.xs="column">
+  <ng-container *ngFor="let status of ticketStatuses">
+    <div fxFlex="25%" class="status-column">
+      <h2>{{ status }}</h2>
+      <div class="ticket-card" *ngFor="let complaint of getComplaintsByStatus(status)">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ complaint.title }}</mat-card-title>
+            <mat-card-subtitle>Status: {{ complaint.status }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Description: {{ complaint.description }}</p>
+            <p>Raised By: {{ complaint.raisedBy.firstName }} {{ complaint.raisedBy.lastName }}</p>
+            <p>Raised On: {{ complaint.raised_On }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,6 +1,6 @@
 <div *ngIf="data.length > 0">
   <div class="buttons">
-    <button (click)="viewType = 'table'" mat-raised-button class="view-button">
+    <button (click)="viewType = 'table'; table.renderRows()" mat-raised-button class="view-button">
       <mat-icon>view_list</mat-icon>
     </button>
     <button (click)="viewType = 'card'" mat-raised-button class="view-button">
@@ -56,7 +56,6 @@
               <mat-card-subtitle>{{ data.username }}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content class="dashboard-card-content">
-              <!-- Additional employee details can be shown here -->
             </mat-card-content>
           </mat-card>
         </mat-grid-tile>
@@ -67,4 +66,8 @@
 
 <div class="data" *ngIf="data.length === 0">
   <p>No data found...</p>
+</div>
+
+<div *ngIf="complaints.length > 0">
+  <app-ticket [complaints]="complaints"></app-ticket>
 </div>

@@ -18,6 +18,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { ApiService } from '../../../lib/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TicketComponent } from '../ticket/ticket.component';
 
 @Component({
   selector: 'app-navigation',
@@ -37,6 +38,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatButtonToggleModule,
     MatDialogModule,
     MatMenuModule,
+    TicketComponent,
   ],
 })
 export class NavigationComponent implements OnInit {
@@ -129,9 +131,9 @@ export class NavigationComponent implements OnInit {
     });
   }
 
-  // getcomplaints(): void {
-  //   this.api.getComplaitnsList().subscribe((engineer: any) => {
-  //     this.complaints = engineer;
-  //   });
-  // }
+  getComplaints(): void {
+    this.api.getComplaintsList().subscribe((complaint: any) => {
+      this.complaints = complaint;
+    });
+  }
 }

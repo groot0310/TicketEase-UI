@@ -18,6 +18,10 @@
           <a mat-list-item (click)="openDialog('employee','Create New Employee')">Create Employee</a>
           <a mat-list-item (click)="openDialog('engineer','Create New Engineer')">Create Engineer</a>
           <a mat-list-item (click)="getEmployees()">List of Employees</a>
+          <a mat-list-item (click)="getEngineer()">List of Engineer</a>
+          <a mat-list-item (click)="getAdmin()">List of Admin</a>
+          <!-- <a mat-list-item (click)="getcomplaints()">List of Complaint</a> -->
+
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -85,6 +89,6 @@
         </mat-menu>
       </div>
     </mat-toolbar>
-    <app-dashboard [employees]="employees"></app-dashboard>
+    <app-dashboard [data]="data"></app-dashboard>
   </mat-sidenav-content>
 </mat-sidenav-container>

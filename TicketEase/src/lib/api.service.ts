@@ -1,11 +1,6 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpParams,
-  HttpResponse,
-} from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -54,6 +49,24 @@ export class ApiService {
 
   getEmployeeList(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/admin/employees`, {
+      withCredentials: true,
+    });
+  }
+
+  getEngineerList(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/admin/engineers`, {
+      withCredentials: true,
+    });
+  }
+
+  getAdminList(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/admin/admins`, {
+      withCredentials: true,
+    });
+  }
+
+  getComplaitnsList(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/admin/complaints`, {
       withCredentials: true,
     });
   }

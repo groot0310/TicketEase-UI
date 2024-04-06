@@ -43,7 +43,8 @@ export class NavigationComponent implements OnInit {
   loggerName: string = '';
   loggerData: string = '';
   hasLoggedIn: boolean = true;
-  employees: any[] = [];
+  data: any[] = [];
+  complaints: any[] = [];
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute,
@@ -112,7 +113,25 @@ export class NavigationComponent implements OnInit {
   }
   getEmployees(): void {
     this.api.getEmployeeList().subscribe((employees: any) => {
-      this.employees = employees;
+      this.data = employees;
     });
   }
+
+  getEngineer(): void {
+    this.api.getEngineerList().subscribe((engineer: any) => {
+      this.data = engineer;
+    });
+  }
+
+  getAdmin(): void {
+    this.api.getAdminList().subscribe((engineer: any) => {
+      this.data = engineer;
+    });
+  }
+
+  // getcomplaints(): void {
+  //   this.api.getComplaitnsList().subscribe((engineer: any) => {
+  //     this.complaints = engineer;
+  //   });
+  // }
 }

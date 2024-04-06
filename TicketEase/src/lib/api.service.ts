@@ -65,7 +65,7 @@ export class ApiService {
     });
   }
 
-  getComplaitnsList(): Observable<any[]> {
+  getComplaintsList(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/admin/complaints`, {
       withCredentials: true,
     });

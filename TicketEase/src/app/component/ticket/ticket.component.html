@@ -1,9 +1,19 @@
+<div class="filter-select-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Filter</mat-label>
+    <mat-select [(ngModel)]="selectedFilter">
+      <mat-option value="">All</mat-option>
+      <mat-option *ngFor="let option of filterOptions" [value]="option">{{ option }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
 <div fxLayout="row" fxLayout.xs="column">
   <ng-container *ngFor="let status of ticketStatuses">
     <div fxFlex="25%" class="status-column">
       <h2>{{ status }}</h2>
       <div class="ticket-card" *ngFor="let complaint of getComplaintsByStatus(status)">
-        <mat-card>
+        <mat-card *ngIf="!selectedFilter || selectedFilter === complaint.status">
           <mat-card-header>
             <mat-card-title>{{ complaint.title }}</mat-card-title>
             <mat-card-subtitle>Status: {{ complaint.status }}</mat-card-subtitle>

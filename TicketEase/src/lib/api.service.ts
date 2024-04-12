@@ -70,4 +70,10 @@ export class ApiService {
       withCredentials: true,
     });
   }
+
+  getComplaintsListWithStatus(status: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/admin/complaints/${status}`, {
+      withCredentials: true,
+    });
+  }
 }

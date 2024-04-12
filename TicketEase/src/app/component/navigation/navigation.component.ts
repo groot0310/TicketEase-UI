@@ -136,4 +136,12 @@ export class NavigationComponent implements OnInit {
       this.complaints = complaint;
     });
   }
+
+  getComplaintsWithStatus(ticketStatus: string): void {
+    this.api
+      .getComplaintsListWithStatus(ticketStatus)
+      .subscribe((complaint: any) => {
+        this.complaints = complaint;
+      });
+  }
 }

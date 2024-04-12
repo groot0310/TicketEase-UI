@@ -9,6 +9,8 @@ import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ApiService } from '../../../lib/api.service';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-ticket',
@@ -23,6 +25,8 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
     MatTableModule,
     FlexLayoutModule,
     DashboardComponent,
+    MatSelectModule,
+    FormsModule,
   ],
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.scss',
@@ -30,7 +34,13 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 export class TicketComponent {
   constructor(private api: ApiService) {}
   @Input() complaints: any[] = [];
-
+  selectedFilter: string = '';
+  filterOptions: string[] = [
+    'ASSIGNED',
+    'RESOLVED',
+    'UNASSIGNED',
+    'UNDER_PROGRESS',
+  ];
   ticketStatuses: string[] = [
     'ASSIGNED',
     'RESOLVED',

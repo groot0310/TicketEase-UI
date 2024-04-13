@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -26,6 +26,7 @@ import { TicketComponent } from '../ticket/ticket.component';
   styleUrl: './navigation.component.scss',
   standalone: true,
   imports: [
+    CommonModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -47,6 +48,8 @@ export class NavigationComponent implements OnInit {
   hasLoggedIn: boolean = true;
   data: any[] = [];
   complaints: any[] = [];
+  showTicketFirst: boolean = true;
+
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute,
@@ -63,6 +66,7 @@ export class NavigationComponent implements OnInit {
         ' ' +
         (params['loggerLast'] || '').toUpperCase();
     });
+    this.getComplaints();
   }
 
   openDialog(formType: string, heading: string): void {

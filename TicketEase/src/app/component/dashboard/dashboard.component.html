@@ -1,4 +1,4 @@
-<div *ngIf="data.length > 0">
+<div *ngIf="displayData">
   <div class="buttons">
     <button (click)="viewType = 'table'; table.renderRows()" mat-raised-button class="view-button">
       <mat-icon>view_list</mat-icon>
@@ -7,7 +7,6 @@
       <mat-icon>view_module</mat-icon>
     </button>
   </div>
-
   <div *ngIf="viewType === 'table'" class="listTable">
     <div class="listTable" *ngIf="data.length > 0">
       <h2>List of Employees</h2>
@@ -64,10 +63,10 @@
   </div>
 </div>
 
-<div class="data" *ngIf="data.length === 0">
-  <p>No data found...</p>
+<div *ngIf="displayComplaints">
+  <app-ticket [complaints]="complaints"></app-ticket>
 </div>
 
-<div *ngIf="complaints.length > 0">
-  <app-ticket [complaints]="complaints"></app-ticket>
+<div class="data" *ngIf="!displayData && !displayComplaints">
+  <p>No data found...</p>
 </div>

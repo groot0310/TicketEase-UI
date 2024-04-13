@@ -34,10 +34,22 @@ export class DashboardComponent {
   @Input() complaints: any[] = [];
 
   viewType: 'table' | 'card' = 'table';
-
+  displayData: boolean = false;
+  displayComplaints: boolean = false;
   ngOnChanges(changes: SimpleChanges) {
     if (changes['data'] && changes['data'].currentValue.length > 0) {
       this.viewType = 'table';
+      this.displayData = true;
+      this.displayComplaints = false;
+    } else if (
+      changes['complaints'] &&
+      changes['complaints'].currentValue.length > 0
+    ) {
+      this.displayData = false;
+      this.displayComplaints = true;
+    } else {
+      this.displayData = false;
+      this.displayComplaints = false;
     }
   }
 }

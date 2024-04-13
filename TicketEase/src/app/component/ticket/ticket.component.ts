@@ -11,6 +11,7 @@ import { ApiService } from '../../../lib/api.service';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-ticket',
@@ -27,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
     MatSelectModule,
     FormsModule,
+    MatListModule,
   ],
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.scss',
@@ -35,6 +37,11 @@ export class TicketComponent {
   constructor(private api: ApiService) {}
   @Input() complaints: any[] = [];
   selectedFilter: string = '';
+  selectedStatus: string = '  ';
+  statuses: string[] = ['ASSIGNED', 'RESOLVED', 'UNASSIGNED', 'UNDER_PROGRESS'];
+
+  matchingEngineers: any[] = [];
+  engineerId: string = '';
   filterOptions: string[] = [
     'ASSIGNED',
     'RESOLVED',
@@ -51,4 +58,14 @@ export class TicketComponent {
   getComplaintsByStatus(status: string): any[] {
     return this.complaints.filter((complaint) => complaint.status === status);
   }
+
+  // getEngineers() {
+  //   if (this.engineerId) {
+  //     this.api.getEngineerList().subscribe((engineers: any[]) => {
+  //       this.matchingEngineers = engineers.filter(
+  //         (engineer) => engineer.id === this.engineerId
+  //       );
+  //     });
+  //   }
+  // }
 }

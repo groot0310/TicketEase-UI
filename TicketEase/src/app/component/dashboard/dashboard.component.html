@@ -41,49 +41,50 @@
     <div class="grid-container">
       <mat-grid-list cols="4" rowHeight="450px">
         <mat-grid-tile *ngFor="let data of data" colspan="1" rowspan="1">
-          <!-- <mat-card class="dashboard-card">
-            <mat-card-header>
-              <mat-card-title>
-                {{ data.firstName }} {{ data.lastName }}
-                <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu" xPosition="before">
-                  <button mat-menu-item>Expand</button>
-                  <button mat-menu-item>Remove</button>
-                </mat-menu>
-              </mat-card-title>
-              <mat-card-subtitle>{{ data.username }}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content class="dashboard-card-content">
-            </mat-card-content>
-          </mat-card> -->
+          <ng-container *ngIf="dataType !== 'engineer'; else employeeTemplate">
+            <mat-card class="dashboard-card">
+              <mat-card-header>
+                <mat-card-title>
+                  {{ data.firstName }} {{ data.lastName }}
+                  <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu" xPosition="before">
+                    <button mat-menu-item>Expand</button>
+                    <button mat-menu-item>Remove</button>
+                  </mat-menu>
+                </mat-card-title>
+                <mat-card-subtitle>{{ data.username }}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content class="dashboard-card-content">
+              </mat-card-content>
+            </mat-card>
+          </ng-container>
+          <ng-template #employeeTemplate>
+            <div class="box1 box">
+              <div class="empcontent">
+                <div class="empimage">
+                  <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile">
+                </div>
+                <div class="text">
+                  <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
+                  <p class="job_title">Department</p>
+                  <p class="job_discription">Ticket Completed:{{ ticketAssignedCounts[data.id]['RESOLVED'] }} </p>
+                  <p class="job_discription">Ticket Pending : {{ ticketAssignedCounts[data.id]['UNDER_PROGRESS'] }}</p>
+                  <p class="job_discription">Ticket Assigned : {{ ticketAssignedCounts[data.id]['ASSIGNED'] }}</p>
+                </div>
 
-          <div class="box1 box">
-            <div class="empcontent">
-              <div class="empimage">
-                <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile Image">
-              </div>
-              
-              <div class="text">
-                <p class="name">Employee Name</p>
-                <p class="job_title">Department</p>
-                <p class="job_discription">Ticket Completed : 20</p>
-                <p class="job_discription">Ticket Pending : 5</p>
-                <p class="job_discription">Ticket Assigned : 30</p>
-              </div>
-        
-              <div class="button">
-                <div>
-                  <button class="connect" type="button">Assign Ticket</button>
+                <div class="button">
+                  <div>
+                    <button class="connect" type="button">Assign Ticket</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
+          </ng-template>
         </mat-grid-tile>
       </mat-grid-list>
-    </div> 
+    </div>
 
 
   </div>

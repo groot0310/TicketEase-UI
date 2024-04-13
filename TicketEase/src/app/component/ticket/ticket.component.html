@@ -14,10 +14,29 @@
       <h2>{{ status }}</h2>
       <div class="ticket-card" *ngFor="let complaint of getComplaintsByStatus(status)">
         <mat-card *ngIf="!selectedFilter || selectedFilter === complaint.status">
-          <mat-card-header>
-            <mat-card-title>{{ complaint.title }}</mat-card-title>
-            <mat-card-subtitle>Status: {{ complaint.status }}</mat-card-subtitle>
-          </mat-card-header>
+          <div class="card-header">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item [matMenuTriggerFor]="status">Updated Status</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+            <mat-menu #status="matMenu">
+              <button mat-menu-item [matMenuTriggerFor]="assign">Assign to</button>
+              <button mat-menu-item>Resolved</button>
+              <button mat-menu-item>Unassign</button>
+              <button mat-menu-item>Under_Progress</button>
+            </mat-menu>
+            <mat-menu #assign="matMenu">
+              <button mat-menu-item>Self</button>
+              <button mat-menu-item>Options</button>
+            </mat-menu>
+            <mat-card-header>
+              <mat-card-title>{{ complaint.title }}</mat-card-title>
+              <mat-card-subtitle>Status: {{ complaint.status }}</mat-card-subtitle>
+            </mat-card-header>
+          </div>
           <mat-card-content>
             <p>Description: {{ complaint.description }}</p>
             <p>Raised By: {{ complaint.raisedBy.firstName }} {{ complaint.raisedBy.lastName }}</p>

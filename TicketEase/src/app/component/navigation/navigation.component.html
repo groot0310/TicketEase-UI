@@ -95,9 +95,8 @@
       <app-ticket [complaints]="complaints" showTicketFirst=false></app-ticket>
     </ng-container>
     <ng-template #dashboardTemplate>
-      <app-dashboard [data]="data" [complaints]="complaints"></app-dashboard>
+      <app-dashboard [data]="data" [complaints]="complaints" [dataType]="dataType"></app-dashboard>
+
     </ng-template>
-    <!-- <app-ticket [complaints]="complaints"></app-ticket>
-    <app-dashboard [data]="data" [complaints]="complaints"></app-dashboard> -->
   </mat-sidenav-content>
 </mat-sidenav-container>

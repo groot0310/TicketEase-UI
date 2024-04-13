@@ -31,16 +31,20 @@ export class DashboardComponent {
   table!: MatTable<any>;
 
   @Input() data: any[] = [];
+  @Input() dataType: string = '';
   @Input() complaints: any[] = [];
 
   viewType: 'table' | 'card' = 'table';
   displayData: boolean = false;
   displayComplaints: boolean = false;
+  ticketAssignedCounts: { [userId: string]: { [status: string]: number } } = {};
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes['data'] && changes['data'].currentValue.length > 0) {
       this.viewType = 'table';
       this.displayData = true;
       this.displayComplaints = false;
+      this.calculateTicketCounts();
     } else if (
       changes['complaints'] &&
       changes['complaints'].currentValue.length > 0
@@ -51,5 +55,26 @@ export class DashboardComponent {
       this.displayData = false;
       this.displayComplaints = false;
     }
+  }
+  calculateTicketCounts() {
+    const ticketCounts: { [userId: string]: { [status: string]: number } } = {};
+    this.data.forEach((employee) => {
+      console.log(employee);
+
+      const userId = employee.id.toString();
+      ticketCounts[userId] = {
+        ASSIGNED: 0,
+        RESOLVED: 0,
+        UNDER_PROGRESS: 0,
+      };
+      const userComplaints = this.complaints.filter(
+        (complaint) =>
+          complaint.assignedTo && complaint.assignedTo.id.toString() === userId
+      );
+      userComplaints.forEach((complaint) => {
+        ticketCounts[userId][complaint.status] += 1;
+      });
+    });
+    this.ticketAssignedCounts = ticketCounts;
   }
 }

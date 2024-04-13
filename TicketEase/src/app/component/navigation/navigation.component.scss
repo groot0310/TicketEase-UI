@@ -1,16 +1,19 @@
 .mat-drawer-content {
-  background: #8e9eab;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+  background: #bed4f7;  
+}
+
+.toolbar {
+  background-color: #265190;
 }
 
 .sidenav-container {
   height: 100%;
+  background-color: #eaebeb;
 }
 
 .sidenav {
-  width: 300px;
+  width: 340px;
+  margin: 1%;
   border-radius: 10px;
 }
 
@@ -69,5 +72,6 @@
     display: flex;
     margin: 10px;
     padding-top: 20px;
+    padding-bottom: 10px;
     justify-content: center;
   }

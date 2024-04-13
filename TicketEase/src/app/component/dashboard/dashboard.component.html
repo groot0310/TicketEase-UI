@@ -10,7 +10,7 @@
   <div *ngIf="viewType === 'table'" class="listTable">
     <div class="listTable" *ngIf="data.length > 0">
       <h2>List of Employees</h2>
-      <table mat-table [dataSource]="data">
+      <!-- <table mat-table [dataSource]="data">
         <ng-container matColumnDef="firstName">
           <th mat-header-cell *matHeaderCellDef>First Name</th>
           <td mat-cell *matCellDef="let employee">{{ employee.firstName }}</td>
@@ -28,7 +28,65 @@
 
         <tr mat-header-row *matHeaderRowDef="['firstName', 'lastName', 'username']"></tr>
         <tr mat-row *matRowDef="let row; columns: ['firstName', 'lastName', 'username']"></tr>
-      </table>
+      </table> -->
+
+    
+        <ul class="student-list">
+          <li class="student-item cf">
+              <div class="student-details">
+                  <img class="avatar" src="https://randomuser.me/api/portraits/thumb/women/67.jpg">
+                  <h3>iboya vat</h3>
+                  <span class="email">iboya.vatexample.com</span>
+              </div>
+              <div class="joined-details">
+                     <span class="date">Joined 07/15/15</span>
+             </div>
+          </li>
+          <li class="student-item cf">
+              <div class="student-details">
+                  <img class="avatar" src="https://randomuser.me/api/portraits/thumb/men/75.jpg">
+                  <h3>aapo niskanen</h3>
+                  <span class="email">aapo.niskanenexample.com</span>
+              </div>
+              <div class="joined-details">
+                     <span class="date">Joined 06/15/12</span>
+             </div>
+          </li>
+          <li class="student-item cf">
+              <div class="student-details">
+                  <img class="avatar" src="https://randomuser.me/api/portraits/thumb/men/34.jpg">
+                  <h3>phillip cox</h3>
+                  <span class="email">phillip.coxexample.com</span>
+              </div>
+              <div class="joined-details">
+                     <span class="date">Joined 09/11/14</span>
+             </div>
+          </li>
+          <li class="student-item cf">
+              <div class="student-details">
+                  <img class="avatar" src="https://randomuser.me/api/portraits/thumb/women/38.jpg">
+                  <h3>zilda moreira</h3>
+                  <span class="email">zilda.moreiraexample.com</span>
+              </div>
+              <div class="joined-details">
+                     <span class="date">Joined 07/15/15</span>
+             </div>
+          </li>
+          <li class="student-item cf">
+              <div class="student-details">
+                  <img class="avatar" src="https://randomuser.me/api/portraits/thumb/women/23.jpg">
+                  <h3>lilou le gall</h3>
+                  <span class="email">lilou.le gallexample.com</span>
+              </div>
+              <div class="joined-details">
+                     <span class="date">Joined 06/16/13</span>
+             </div>
+          </li>
+        </ul>
+        <!-- dynamically add pagination links here -->
+  
+    
+
     </div>
 
     <div *ngIf="data.length === 0">

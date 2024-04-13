@@ -1,14 +1,18 @@
 .status-column {
-  margin: 0 10px; /* Adjust margin as needed */
+  margin: 2px 25px 25px 25px; /* Adjust margin as needed */
+  text-align: center;
+  border: 2px solid rgb(255, 255, 255) ;
 }
 
 .ticket-card {
   margin-bottom: 10px; /* Adjust margin as needed */
+  background-color: rgb(13, 195, 201);
 }
 
 /* Style for card content */
 mat-card-content {
   padding: 12px;
+  background-color: #eaebeb;
 }
 
 /* Style for card header */

@@ -37,10 +37,11 @@
   </div>
   <div *ngIf="viewType === 'card'" class="cardView">
     <h2>Card View of Employees</h2>
+    <!-- card ui -->
     <div class="grid-container">
-      <mat-grid-list cols="3" rowHeight="200px">
+      <mat-grid-list cols="4" rowHeight="450px">
         <mat-grid-tile *ngFor="let data of data" colspan="1" rowspan="1">
-          <mat-card class="dashboard-card">
+          <!-- <mat-card class="dashboard-card">
             <mat-card-header>
               <mat-card-title>
                 {{ data.firstName }} {{ data.lastName }}
@@ -56,10 +57,35 @@
             </mat-card-header>
             <mat-card-content class="dashboard-card-content">
             </mat-card-content>
-          </mat-card>
+          </mat-card> -->
+
+          <div class="box1 box">
+            <div class="empcontent">
+              <div class="empimage">
+                <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile Image">
+              </div>
+              
+              <div class="text">
+                <p class="name">Employee Name</p>
+                <p class="job_title">Department</p>
+                <p class="job_discription">Ticket Completed : 20</p>
+                <p class="job_discription">Ticket Pending : 5</p>
+                <p class="job_discription">Ticket Assigned : 30</p>
+              </div>
+        
+              <div class="button">
+                <div>
+                  <button class="connect" type="button">Assign Ticket</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </mat-grid-tile>
       </mat-grid-list>
-    </div>
+    </div> 
+
+
   </div>
 </div>
 

@@ -9,7 +9,7 @@
   </div>
   <div *ngIf="viewType === 'table'" class="listTable">
     <div class="listTable" *ngIf="data.length > 0">
-      <h2>List of Employees</h2>
+      <h2>List of {{dataType}}</h2>
       <table mat-table [dataSource]="data">
         <ng-container matColumnDef="firstName">
           <th mat-header-cell *matHeaderCellDef>First Name</th>
@@ -36,12 +36,11 @@
     </div>
   </div>
   <div *ngIf="viewType === 'card'" class="cardView">
-    <h2>Card View of Employees</h2>
-    <!-- card ui -->
+    <h2>Card View of {{dataType}}</h2>
     <div class="grid-container">
       <mat-grid-list cols="4" rowHeight="450px">
         <mat-grid-tile *ngFor="let data of data" colspan="1" rowspan="1">
-          <ng-container *ngIf="dataType !== 'engineer'; else employeeTemplate">
+          <ng-container *ngIf="dataType !== 'engineer' && dataType!=='employee'; else engineerTemplate">
             <mat-card class="dashboard-card">
               <mat-card-header>
                 <mat-card-title>
@@ -60,6 +59,31 @@
               </mat-card-content>
             </mat-card>
           </ng-container>
+          <ng-template #engineerTemplate>
+            <div class="box1 box" *ngIf="dataType === 'engineer';else employeeTemplate">
+              <div class="empcontent">
+                <div class="empimage">
+                  <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile">
+                </div>
+                <div class="text">
+                  <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
+                  <p class="job_title">Department</p>
+                  <p class="job_discription">Ticket Completed:{{ engineerTicketAssignedCounts[data.id]['RESOLVED'] }}
+                  </p>
+                  <p class="job_discription">Ticket Pending : {{ engineerTicketAssignedCounts[data.id]['UNDER_PROGRESS']
+                    }}</p>
+                  <p class="job_discription">Ticket Assigned : {{ engineerTicketAssignedCounts[data.id]['ASSIGNED'] }}
+                  </p>
+                </div>
+
+                <div class="button">
+                  <div>
+                    <button class="connect" type="button">Assign Ticket</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
           <ng-template #employeeTemplate>
             <div class="box1 box">
               <div class="empcontent">
@@ -69,15 +93,13 @@
                 <div class="text">
                   <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
                   <p class="job_title">Department</p>
-                  <p class="job_discription">Ticket Completed:{{ ticketAssignedCounts[data.id]['RESOLVED'] }} </p>
-                  <p class="job_discription">Ticket Pending : {{ ticketAssignedCounts[data.id]['UNDER_PROGRESS'] }}</p>
-                  <p class="job_discription">Ticket Assigned : {{ ticketAssignedCounts[data.id]['ASSIGNED'] }}</p>
-                </div>
-
-                <div class="button">
-                  <div>
-                    <button class="connect" type="button">Assign Ticket</button>
-                  </div>
+                  <p class="job_discription">Ticket Raised:{{ employeeTicketAssignedCounts[data.id]['RAISED'] }}
+                  </p>
+                  <p class="job_discription">Ticket In-Progress : {{
+                    employeeTicketAssignedCounts[data.id]['UNDER_PROGRESS']
+                    }}</p>
+                  <p class="job_discription">Ticket Resolved : {{ employeeTicketAssignedCounts[data.id]['RESOLVED'] }}
+                  </p>
                 </div>
               </div>
             </div>

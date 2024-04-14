@@ -37,7 +37,12 @@ export class DashboardComponent {
   viewType: 'table' | 'card' = 'table';
   displayData: boolean = false;
   displayComplaints: boolean = false;
-  ticketAssignedCounts: { [userId: string]: { [status: string]: number } } = {};
+  employeeTicketAssignedCounts: {
+    [userId: string]: { [status: string]: number };
+  } = {};
+  engineerTicketAssignedCounts: {
+    [userId: string]: { [status: string]: number };
+  } = {};
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['data'] && changes['data'].currentValue.length > 0) {
@@ -57,24 +62,43 @@ export class DashboardComponent {
     }
   }
   calculateTicketCounts() {
-    const ticketCounts: { [userId: string]: { [status: string]: number } } = {};
+    const engineerTicketCounts: {
+      [userId: string]: { [status: string]: number };
+    } = {};
+    const employeeTicketCounts: {
+      [userId: string]: { [status: string]: number };
+    } = {};
     this.data.forEach((employee) => {
-      console.log(employee);
+      console.log(this.complaints);
 
       const userId = employee.id.toString();
-      ticketCounts[userId] = {
+      engineerTicketCounts[userId] = {
         ASSIGNED: 0,
         RESOLVED: 0,
         UNDER_PROGRESS: 0,
       };
-      const userComplaints = this.complaints.filter(
+      employeeTicketCounts[userId] = {
+        RAISED: 0,
+        RESOLVED: 0,
+        UNDER_PROGRESS: 0,
+      };
+      const engineerComplaints = this.complaints.filter(
         (complaint) =>
           complaint.assignedTo && complaint.assignedTo.id.toString() === userId
       );
-      userComplaints.forEach((complaint) => {
-        ticketCounts[userId][complaint.status] += 1;
+      const employeeComplaints = this.complaints.filter(
+        (complaint) =>
+          complaint.raisedBy && complaint.raisedBy.id.toString() === userId
+      );
+      engineerComplaints.forEach((complaint) => {
+        engineerTicketCounts[userId][complaint.status] += 1;
       });
+      employeeComplaints.forEach((complaint) => {
+        employeeTicketCounts[userId][complaint.status] += 1;
+      });
+      employeeTicketCounts[userId]['RAISED'] = employeeComplaints.length;
     });
-    this.ticketAssignedCounts = ticketCounts;
+    this.engineerTicketAssignedCounts = engineerTicketCounts;
+    this.employeeTicketAssignedCounts = employeeTicketCounts;
   }
 }

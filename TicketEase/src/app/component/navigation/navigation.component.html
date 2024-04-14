@@ -3,25 +3,20 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <div class="menu-container">
       <button mat-raised-button
-        aria-label="Button that displays a tooltip that hides when scrolled out of the container"
-        class="example-button" style="background-color: #265190; color: aliceblue;">
+        aria-label="Button that displays a tooltip that hides when scrolled out of the container" class="example-button"
+        style="background-color: #265190; color: aliceblue;">
         ADMIN SECTION
       </button>
     </div>
     <mat-accordion>
-      <mat-expansion-panel>
+      <mat-expansion-panel style="margin:10px">
         <mat-expansion-panel-header>
           <mat-panel-title> ADMIN </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item (click)="openDialog('admin','Add New Admin')">Add new admin</a>
-          <a mat-list-item (click)="getAdmin();showTicketFirst = false">List of Admin</a>
-          <a mat-list-item (click)="openDialog('engineer','Create New Engineer')">Create Engineer</a>
-          <a mat-list-item (click)="getEngineer();showTicketFirst = false">List of Engineer</a>
-          <a mat-list-item (click)="getComplaints();showTicketFirst = false">List of Complaint</a>
-          <a mat-list-item (click)="getComplaintsWithStatus('UNASSIGNED');showTicketFirst = false">List of complaints by
-            status</a>
-
+          <a id="a" mat-list-item (click)="openDialog('admin','Add New Admin')">Add new
+            admin</a>
+          <a id="a" mat-list-item (click)="getAdmin();showTicketFirst = false">List of Admin</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -32,11 +27,8 @@
           <mat-panel-title> EMPLOYEE </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item (click)="openDialog('employee','Create New Employee')">Create Employee</a>
-          <a mat-list-item (click)="getEmployees();showTicketFirst = false">List of Employees</a>
-          <!-- <a mat-list-item (click)="openDialog()">Add new Employee</a>
-          <a mat-list-item (click)="openDialog()">Remove Employee</a>
-          <a mat-list-item (click)="openDialog()">List of Employee</a> -->
+          <a id="a" mat-list-item (click)="openDialog('employee','Create New Employee')">Create Employee</a>
+          <a id="a" mat-list-item (click)="getEmployees();showTicketFirst = false">List of Employees</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -47,9 +39,8 @@
           <mat-panel-title> ENGINEER </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <!-- <a mat-list-item (click)="openDialog()">Add New engineer</a>
-          <a mat-list-item (click)="openDialog()">Remove engineer</a>
-          <a mat-list-item (click)="openDialog()">List of engineers</a> -->
+          <a id="a" mat-list-item (click)="openDialog('engineer','Create New Engineer')">Create Engineer</a>
+          <a id="a" mat-list-item (click)="getEngineer();showTicketFirst = false">List of Engineer</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -60,10 +51,10 @@
           <mat-panel-title> TICKET </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <!-- <a mat-list-item (click)="openDialog()">Complaint list</a>
-          <a mat-list-item (click)="openDialog()">Complaint status</a>
-          <a mat-list-item (click)="openDialog()">Assigned complaint</a>
-          <a mat-list-item (click)="openDialog()">Unassigned complaint</a> -->
+          <a id="a" mat-list-item (click)="getComplaints();showTicketFirst = false">List of Complaint</a>
+          <a id="a" mat-list-item (click)="getComplaintsWithStatus('UNASSIGNED');showTicketFirst = false">List of
+            complaints by
+            status</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>

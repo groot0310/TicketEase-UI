@@ -81,8 +81,6 @@
     </div>
   </div>
 
-
-
   <div *ngIf="viewType === 'card'" class="cardView">
     <div class="grid-container">
       <mat-grid-list cols="4" rowHeight="450px">
@@ -150,10 +148,10 @@
     </div>
   </div>
 </div>
+
 <div *ngIf="displayComplaints">
   <app-ticket [complaints]="complaints"></app-ticket>
 </div>
-
 
 <div class="data" *ngIf="!displayData && !displayComplaints">
   <p>No data found...</p>

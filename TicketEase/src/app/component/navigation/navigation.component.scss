@@ -1,10 +1,14 @@
 .mat-drawer-content {
-  background: #bed4f7;  
+  background: #bed4f7;
 }
 
 .toolbar {
   background-color: #265190;
 }
+.mat-expansion-panel{
+  margin:10px
+}
+
 
 .sidenav-container {
   height: 100%;
@@ -12,9 +16,11 @@
 }
 
 .sidenav {
-  width: 340px;
+  width: 300px;
   margin: 1%;
   border-radius: 10px;
+  background: linear-gradient(to bottom, #aac5ed, #052550); /* Gradient from light to dark blue */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .sidenav .mat-toolbar {
@@ -64,7 +70,7 @@
 .flex-item {
   flex: 1 0 auto;
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: flex-end; }
 
   .menu-container{
@@ -75,3 +81,25 @@
     padding-bottom: 10px;
     justify-content: center;
   }
+
+  #a {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #ffffff; /* White background */
+    display: block;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  #a:hover {
+    background-color: #5767f3; /* Light gray background on hover */
+    color: #a10e0e; /* Black text color on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+  }
+
+  #a + #a {
+    margin-top: 10px; /* Add spacing between list items */
+  }
+
+

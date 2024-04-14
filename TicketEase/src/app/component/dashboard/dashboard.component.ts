@@ -35,6 +35,22 @@ export class DashboardComponent {
   @Input() complaints: any[] = [];
 
   viewType: 'table' | 'card' = 'table';
+  engineerTableHeaders = [
+    'Name',
+    'Username',
+    'Ticket Resolved',
+    'Ticket In-Progress',
+    'Ticket Assigned',
+  ];
+  employeeTableHeaders = [
+    'Name',
+    'Username',
+    'Ticket Raised',
+    'Ticket In-Progress',
+    'Ticket Resolved',
+  ];
+  adminTableHeaders = ['Name', 'Username'];
+
   displayData: boolean = false;
   displayComplaints: boolean = false;
   employeeTicketAssignedCounts: {
@@ -68,10 +84,8 @@ export class DashboardComponent {
     const employeeTicketCounts: {
       [userId: string]: { [status: string]: number };
     } = {};
-    this.data.forEach((employee) => {
-      console.log(this.complaints);
-
-      const userId = employee.id.toString();
+    this.data.forEach((data) => {
+      const userId = data.id.toString();
       engineerTicketCounts[userId] = {
         ASSIGNED: 0,
         RESOLVED: 0,
@@ -101,55 +115,4 @@ export class DashboardComponent {
     this.engineerTicketAssignedCounts = engineerTicketCounts;
     this.employeeTicketAssignedCounts = employeeTicketCounts;
   }
-
-  tableHeaders = [
-    'Name',
-    'Department',
-    'Ticket Resolved',
-    'Ticket In-Progress',
-    'Ticket Pending',
-  ];
-
-  employees = [
-    {
-      photo: '../../../assets/',
-      name: 'iboya vat',
-      department: 'Sales',
-      ticketsResolved: 10,
-      ticketsInProgress: 5,
-      ticketsPending: 3,
-    },
-    {
-      photo: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
-      name: 'aapo niskanen',
-      department: 'Marketing',
-      ticketsResolved: 15,
-      ticketsInProgress: 3,
-      ticketsPending: 7,
-    },
-    {
-      photo: 'https://randomuser.me/api/portraits/thumb/men/34.jpg',
-      name: 'phillip cox',
-      department: 'Customer Support',
-      ticketsResolved: 12,
-      ticketsInProgress: 8,
-      ticketsPending: 5,
-    },
-    {
-      photo: 'https://randomuser.me/api/portraits/thumb/women/67.jpg',
-      name: 'iboya vat',
-      department: 'Sales',
-      ticketsResolved: 10,
-      ticketsInProgress: 5,
-      ticketsPending: 3,
-    },
-    {
-      photo: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
-      name: 'aapo niskanen',
-      department: 'Marketing',
-      ticketsResolved: 15,
-      ticketsInProgress: 3,
-      ticketsPending: 7,
-    },
-  ];
 }

@@ -80,80 +80,80 @@
       </div>
     </div>
   </div>
-  <div *ngIf="data.length === 0">
-    <p>No employees found.</p>
-  </div>
-</div>
 
-<div *ngIf="viewType === 'card'" class="cardView">
-  <div class="grid-container">
-    <mat-grid-list cols="4" rowHeight="450px">
-      <mat-grid-tile *ngFor="let data of data" colspan="1" rowspan="1">
-        <ng-container *ngIf="dataType !=='engineer' && dataType!=='employee' ; else engineerTemplate">
-          <div class="box1 box">
-            <div class="empcontent">
-              <div class="empimage">
-                <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile">
-              </div>
-              <div class="text">
-                <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-        <ng-template #engineerTemplate>
-          <div class="box1 box" *ngIf="dataType === 'engineer';else employeeTemplate">
-            <div class="empcontent">
-              <div class="empimage">
-                <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile">
-              </div>
-              <div class="text">
-                <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
-                <p class="job_title">Department</p>
-                <p class="job_discription">Ticket Completed:{{ engineerTicketAssignedCounts[data.id]['RESOLVED'] }}
-                </p>
-                <p class="job_discription">Ticket In-Progress : {{
-                  engineerTicketAssignedCounts[data.id]['UNDER_PROGRESS']
-                  }}</p>
-                <p class="job_discription">Ticket Assigned : {{ engineerTicketAssignedCounts[data.id]['ASSIGNED'] }}
-                </p>
-              </div>
 
-              <div class="button">
-                <div>
-                  <button class="connect" type="button">Assign Ticket</button>
+
+  <div *ngIf="viewType === 'card'" class="cardView">
+    <div class="grid-container">
+      <mat-grid-list cols="4" rowHeight="450px">
+        <mat-grid-tile *ngFor="let data of data" colspan="1" rowspan="1">
+          <ng-container *ngIf="dataType !=='engineer' && dataType!=='employee' ; else engineerTemplate">
+            <div class="box1 box">
+              <div class="empcontent">
+                <div class="empimage">
+                  <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile">
+                </div>
+                <div class="text">
+                  <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
                 </div>
               </div>
             </div>
-          </div>
-        </ng-template>
-        <ng-template #employeeTemplate>
-          <div class="box1 box">
-            <div class="empcontent">
-              <div class="empimage">
-                <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile">
-              </div>
-              <div class="text">
-                <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
-                <p class="job_title">Department</p>
-                <p class="job_discription">Ticket Raised:{{ employeeTicketAssignedCounts[data.id]['RAISED'] }}
-                </p>
-                <p class="job_discription">Ticket In-Progress: {{
-                  employeeTicketAssignedCounts[data.id]['UNDER_PROGRESS']
-                  }}</p>
-                <p class="job_discription">Ticket Resolved : {{ employeeTicketAssignedCounts[data.id]['RESOLVED'] }}
-                </p>
+          </ng-container>
+          <ng-template #engineerTemplate>
+            <div class="box1 box" *ngIf="dataType === 'engineer';else employeeTemplate">
+              <div class="empcontent">
+                <div class="empimage">
+                  <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile">
+                </div>
+                <div class="text">
+                  <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
+                  <p class="job_title">Department</p>
+                  <p class="job_discription">Ticket Completed:{{ engineerTicketAssignedCounts[data.id]['RESOLVED'] }}
+                  </p>
+                  <p class="job_discription">Ticket In-Progress : {{
+                    engineerTicketAssignedCounts[data.id]['UNDER_PROGRESS']
+                    }}</p>
+                  <p class="job_discription">Ticket Assigned : {{ engineerTicketAssignedCounts[data.id]['ASSIGNED'] }}
+                  </p>
+                </div>
+
+                <div class="button">
+                  <div>
+                    <button class="connect" type="button">Assign Ticket</button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </ng-template>
-      </mat-grid-tile>
-    </mat-grid-list>
+          </ng-template>
+          <ng-template #employeeTemplate>
+            <div class="box1 box">
+              <div class="empcontent">
+                <div class="empimage">
+                  <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile">
+                </div>
+                <div class="text">
+                  <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
+                  <p class="job_title">Department</p>
+                  <p class="job_discription">Ticket Raised:{{ employeeTicketAssignedCounts[data.id]['RAISED'] }}
+                  </p>
+                  <p class="job_discription">Ticket In-Progress: {{
+                    employeeTicketAssignedCounts[data.id]['UNDER_PROGRESS']
+                    }}</p>
+                  <p class="job_discription">Ticket Resolved : {{ employeeTicketAssignedCounts[data.id]['RESOLVED'] }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
   </div>
 </div>
 <div *ngIf="displayComplaints">
   <app-ticket [complaints]="complaints"></app-ticket>
 </div>
+
 
 <div class="data" *ngIf="!displayData && !displayComplaints">
   <p>No data found...</p>

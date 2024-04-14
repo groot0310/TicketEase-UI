@@ -90,12 +90,10 @@
     display: block;
     transition: all 0.3s ease;
     text-align: center;
-  }
+    align-content: center;  }
 
   #a:hover {
-    background-color: #5767f3; /* Light gray background on hover */
-    color: #a10e0e; /* Black text color on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1); /* Increased shadow on hover */
   }
 
   #a + #a {

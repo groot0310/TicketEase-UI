@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
@@ -12,7 +12,8 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
-
+import { MatDialog } from '@angular/material/dialog';
+import { AssignDialogComponent } from '../dialog/assign-dialog/assign-dialog.component';
 @Component({
   selector: 'app-ticket',
   standalone: true,
@@ -29,18 +30,19 @@ import { MatListModule } from '@angular/material/list';
     MatSelectModule,
     FormsModule,
     MatListModule,
+    AssignDialogComponent,
   ],
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.scss',
 })
 export class TicketComponent {
-  constructor(private api: ApiService) {}
   @Input() complaints: any[] = [];
+  @Input() engineers: any[] = [];
+
+  matchingEngineers: any[] = [];
   selectedFilter: string = '';
   selectedStatus: string = '  ';
   statuses: string[] = ['ASSIGNED', 'RESOLVED', 'UNASSIGNED', 'UNDER_PROGRESS'];
-
-  matchingEngineers: any[] = [];
   engineerId: string = '';
   filterOptions: string[] = [
     'ASSIGNED',
@@ -54,18 +56,29 @@ export class TicketComponent {
     'UNASSIGNED',
     'UNDER_PROGRESS',
   ];
+  constructor(private api: ApiService, private dialog: MatDialog) {
+    this.getEngineers();
+  }
 
   getComplaintsByStatus(status: string): any[] {
     return this.complaints.filter((complaint) => complaint.status === status);
   }
 
-  // getEngineers() {
-  //   if (this.engineerId) {
-  //     this.api.getEngineerList().subscribe((engineers: any[]) => {
-  //       this.matchingEngineers = engineers.filter(
-  //         (engineer) => engineer.id === this.engineerId
-  //       );
-  //     });
-  //   }
-  // }
+  getEngineers() {
+    this.api.getEngineerList().subscribe((engineers: any[]) => {
+      this.matchingEngineers = engineers;
+    });
+  }
+
+  openEngineerSuggestionDialog(): void {
+    const dialogRef = this.dialog.open(AssignDialogComponent, {
+      width: '500px',
+      data: {
+        engineers: this.matchingEngineers,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('++++++++++++++++++++++`', result);
+    });
+  }
 }

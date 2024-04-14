@@ -1,0 +1,20 @@
+<div class="custom-dialog">
+  <div class="dialog-header">
+    <h2>Select Engineer</h2>
+  </div>
+  <div class="dialog-content">
+    <div class="search-field">
+      <input type="text" placeholder="Search engineers" [(ngModel)]="searchTerm" (input)="searchEngineers()">
+    </div>
+    <ul class="engineer-list">
+      <li *ngFor="let engineer of suggestedEngineers" (click)="selectEngineer(engineer)">
+
+        <div class="engineer-info">
+          <div class="avatar"></div>
+          <div class="name">{{ engineer.firstName }} {{ engineer.lastName }}</div>
+          <div class="username">Username: {{ engineer.username }}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

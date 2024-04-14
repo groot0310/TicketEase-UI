@@ -1,16 +1,69 @@
 <div *ngIf="displayData">
   <div class="buttons">
-    <button (click)="viewType = 'table'; table.renderRows()" mat-raised-button class="view-button">
-      <mat-icon>view_list</mat-icon>
-    </button>
-    <button (click)="viewType = 'card'" mat-raised-button class="view-button">
-      <mat-icon>view_module</mat-icon>
-    </button>
+    <h2 class="emptitle">LIST OF EMPLOYEES</h2>
+    <div>
+      <button (click)="viewType = 'table'; table.renderRows()" mat-raised-button class="view-button">
+        <mat-icon>view_list</mat-icon>
+      </button>
+      <button (click)="viewType = 'card'" mat-raised-button class="view-button">
+        <mat-icon>view_module</mat-icon>
+      </button>
+    </div>
   </div>
+
   <div *ngIf="viewType === 'table'" class="listTable">
     <div class="listTable" *ngIf="data.length > 0">
-      <h2>List of Employees</h2>
-      <!-- <table mat-table [dataSource]="data">
+
+      <div class="great-container">
+        <!-- employee list -->
+        <div class="employees-list">
+          <table class="employees-table">
+            <thead>
+              <tr>
+                <th class="employee-photo"></th>
+                <th *ngFor="let header of tableHeaders">{{ header }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let employee of data">
+                <td class="employee-photo"><img [src]="employee.photo" alt="Employee Photo"></td>
+                <td>{{ employee.firstName }}</td>
+                <td>{{ employee.department }}</td>
+                <td>{{ employee.ticketsResolved }}</td>
+                <td>{{ employee.ticketsInProgress }}</td>
+                <td>{{ employee.ticketsPending }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+
+
+
+      <!-- <ul class="student-list">
+        <li *ngFor="let employee of data1" class="student-item cf">
+          <div class="student-details">
+            <img class="avatar" [src]="employee.avatar">
+            <h3>{{ employee.name }}</h3>
+            <span class="email">{{ employee.email }}</span>
+          </div>
+          <div class="joined-details">
+            <span class="date">Joined {{ employee.joinDate }}</span>
+          </div>
+        </li>
+      </ul> -->
+
+    </div>
+  </div>
+
+
+  <!-- <div *ngIf="viewType === 'table'" class="listTable">
+    <div class="listTable" *ngIf="data.length > 0">
+      <h2>List of {{dataType}}</h2>
+      <table mat-table [dataSource]="data">
         <ng-container matColumnDef="firstName">
           <th mat-header-cell *matHeaderCellDef>First Name</th>
           <td mat-cell *matCellDef="let employee">{{ employee.firstName }}</td>
@@ -28,120 +81,85 @@
 
         <tr mat-header-row *matHeaderRowDef="['firstName', 'lastName', 'username']"></tr>
         <tr mat-row *matRowDef="let row; columns: ['firstName', 'lastName', 'username']"></tr>
-      </table> -->
-
-    
-        <ul class="student-list">
-          <li class="student-item cf">
-              <div class="student-details">
-                  <img class="avatar" src="https://randomuser.me/api/portraits/thumb/women/67.jpg">
-                  <h3>iboya vat</h3>
-                  <span class="email">iboya.vatexample.com</span>
-              </div>
-              <div class="joined-details">
-                     <span class="date">Joined 07/15/15</span>
-             </div>
-          </li>
-          <li class="student-item cf">
-              <div class="student-details">
-                  <img class="avatar" src="https://randomuser.me/api/portraits/thumb/men/75.jpg">
-                  <h3>aapo niskanen</h3>
-                  <span class="email">aapo.niskanenexample.com</span>
-              </div>
-              <div class="joined-details">
-                     <span class="date">Joined 06/15/12</span>
-             </div>
-          </li>
-          <li class="student-item cf">
-              <div class="student-details">
-                  <img class="avatar" src="https://randomuser.me/api/portraits/thumb/men/34.jpg">
-                  <h3>phillip cox</h3>
-                  <span class="email">phillip.coxexample.com</span>
-              </div>
-              <div class="joined-details">
-                     <span class="date">Joined 09/11/14</span>
-             </div>
-          </li>
-          <li class="student-item cf">
-              <div class="student-details">
-                  <img class="avatar" src="https://randomuser.me/api/portraits/thumb/women/38.jpg">
-                  <h3>zilda moreira</h3>
-                  <span class="email">zilda.moreiraexample.com</span>
-              </div>
-              <div class="joined-details">
-                     <span class="date">Joined 07/15/15</span>
-             </div>
-          </li>
-          <li class="student-item cf">
-              <div class="student-details">
-                  <img class="avatar" src="https://randomuser.me/api/portraits/thumb/women/23.jpg">
-                  <h3>lilou le gall</h3>
-                  <span class="email">lilou.le gallexample.com</span>
-              </div>
-              <div class="joined-details">
-                     <span class="date">Joined 06/16/13</span>
-             </div>
-          </li>
-        </ul>
-        <!-- dynamically add pagination links here -->
-  
-    
-
+      </table>
     </div>
 
     <div *ngIf="data.length === 0">
       <p>No employees found.</p>
     </div>
-  </div>
+  </div> -->
   <div *ngIf="viewType === 'card'" class="cardView">
-    <h2>Card View of Employees</h2>
-    <!-- card ui -->
+    <h2>Card View of {{dataType}}</h2>
     <div class="grid-container">
       <mat-grid-list cols="4" rowHeight="450px">
         <mat-grid-tile *ngFor="let data of data" colspan="1" rowspan="1">
-          <!-- <mat-card class="dashboard-card">
-            <mat-card-header>
-              <mat-card-title>
-                {{ data.firstName }} {{ data.lastName }}
-                <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu" xPosition="before">
-                  <button mat-menu-item>Expand</button>
-                  <button mat-menu-item>Remove</button>
-                </mat-menu>
-              </mat-card-title>
-              <mat-card-subtitle>{{ data.username }}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content class="dashboard-card-content">
-            </mat-card-content>
-          </mat-card> -->
+          <ng-container *ngIf="dataType !== 'engineer' && dataType!=='employee'; else engineerTemplate">
+            <mat-card class="dashboard-card">
+              <mat-card-header>
+                <mat-card-title>
+                  {{ data.firstName }} {{ data.lastName }}
+                  <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu" xPosition="before">
+                    <button mat-menu-item>Expand</button>
+                    <button mat-menu-item>Remove</button>
+                  </mat-menu>
+                </mat-card-title>
+                <mat-card-subtitle>{{ data.username }}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content class="dashboard-card-content">
+              </mat-card-content>
+            </mat-card>
+          </ng-container>
+          <ng-template #engineerTemplate>
+            <div class="box1 box" *ngIf="dataType === 'engineer';else employeeTemplate">
+              <div class="empcontent">
+                <div class="empimage">
+                  <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile">
+                </div>
+                <div class="text">
+                  <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
+                  <p class="job_title">Department</p>
+                  <p class="job_discription">Ticket Completed:{{ engineerTicketAssignedCounts[data.id]['RESOLVED'] }}
+                  </p>
+                  <p class="job_discription">Ticket Pending : {{ engineerTicketAssignedCounts[data.id]['UNDER_PROGRESS']
+                    }}</p>
+                  <p class="job_discription">Ticket Assigned : {{ engineerTicketAssignedCounts[data.id]['ASSIGNED'] }}
+                  </p>
+                </div>
 
-          <div class="box1 box">
-            <div class="empcontent">
-              <div class="empimage">
-                <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile Image">
-              </div>
-              
-              <div class="text">
-                <p class="name">Employee Name</p>
-                <p class="job_title">Department</p>
-                <p class="job_discription">Ticket Completed : 20</p>
-                <p class="job_discription">Ticket Pending : 5</p>
-                <p class="job_discription">Ticket Assigned : 30</p>
-              </div>
-        
-              <div class="button">
-                <div>
-                  <button class="connect" type="button">Assign Ticket</button>
+                <div class="button">
+                  <div>
+                    <button class="connect" type="button">Assign Ticket</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
+          </ng-template>
+          <ng-template #employeeTemplate>
+            <div class="box1 box">
+              <div class="empcontent">
+                <div class="empimage">
+                  <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile">
+                </div>
+                <div class="text">
+                  <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
+                  <p class="job_title">Department</p>
+                  <p class="job_discription">Ticket Raised:{{ employeeTicketAssignedCounts[data.id]['RAISED'] }}
+                  </p>
+                  <p class="job_discription">Ticket In-Progress : {{
+                    employeeTicketAssignedCounts[data.id]['UNDER_PROGRESS']
+                    }}</p>
+                  <p class="job_discription">Ticket Resolved : {{ employeeTicketAssignedCounts[data.id]['RESOLVED'] }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ng-template>
         </mat-grid-tile>
       </mat-grid-list>
-    </div> 
+    </div>
 
 
   </div>

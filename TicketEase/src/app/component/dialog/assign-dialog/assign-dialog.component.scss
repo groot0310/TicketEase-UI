@@ -1,0 +1,73 @@
+.custom-dialog {
+  width:100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dialog-header {
+  background-color: #f0f0f0;
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+  border-radius: 8px 8px 0 0;
+}
+
+.dialog-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.dialog-content {
+  padding: 16px;
+}
+
+.search-field {
+  margin-bottom: 16px;
+}
+
+.search-field input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.engineer-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.engineer-list li {
+  cursor: pointer;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+  transition: background-color 0.3s;
+}
+
+.engineer-list li:hover {
+  background-color: #767575;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.engineer-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.name {
+  font-weight: bold;
+  align-content: center;}
+
+.username {
+  color: #666;
+  align-content: center;
+}

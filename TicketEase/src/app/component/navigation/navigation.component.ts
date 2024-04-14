@@ -47,6 +47,7 @@ export class NavigationComponent implements OnInit {
   loggerData: string = '';
   hasLoggedIn: boolean = true;
   data: any[] = [];
+  dataType: string = '';
   complaints: any[] = [];
   showTicketFirst: boolean = true;
 
@@ -120,18 +121,21 @@ export class NavigationComponent implements OnInit {
   getEmployees(): void {
     this.api.getEmployeeList().subscribe((employees: any) => {
       this.data = employees;
+      this.dataType = 'employee';
     });
   }
 
   getEngineer(): void {
     this.api.getEngineerList().subscribe((engineer: any) => {
       this.data = engineer;
+      this.dataType = 'engineer';
     });
   }
 
   getAdmin(): void {
-    this.api.getAdminList().subscribe((engineer: any) => {
-      this.data = engineer;
+    this.api.getAdminList().subscribe((admin: any) => {
+      this.data = admin;
+      this.dataType = 'admin';
     });
   }
 

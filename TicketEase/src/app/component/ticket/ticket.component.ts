@@ -48,7 +48,7 @@ export class TicketComponent {
     'ASSIGNED',
     'RESOLVED',
     'UNASSIGNED',
-    'UNDER_PROGRESS',
+    'UNDER PROGRESS',
   ];
   ticketStatuses: string[] = [
     'ASSIGNED',

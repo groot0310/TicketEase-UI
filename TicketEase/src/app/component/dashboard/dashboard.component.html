@@ -1,13 +1,66 @@
 <div *ngIf="displayData">
   <div class="buttons">
-    <button (click)="viewType = 'table'; table.renderRows()" mat-raised-button class="view-button">
-      <mat-icon>view_list</mat-icon>
-    </button>
-    <button (click)="viewType = 'card'" mat-raised-button class="view-button">
-      <mat-icon>view_module</mat-icon>
-    </button>
+    <h2 class="emptitle">LIST OF EMPLOYEES</h2>
+    <div>
+      <button (click)="viewType = 'table'; table.renderRows()" mat-raised-button class="view-button">
+        <mat-icon>view_list</mat-icon>
+      </button>
+      <button (click)="viewType = 'card'" mat-raised-button class="view-button">
+        <mat-icon>view_module</mat-icon>
+      </button>
+    </div>
   </div>
+
   <div *ngIf="viewType === 'table'" class="listTable">
+    <div class="listTable" *ngIf="data.length > 0">
+
+      <div class="great-container">
+        <!-- employee list -->
+        <div class="employees-list">
+          <table class="employees-table">
+            <thead>
+              <tr>
+                <th class="employee-photo"></th>
+                <th *ngFor="let header of tableHeaders">{{ header }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let employee of data">
+                <td class="employee-photo"><img [src]="employee.photo" alt="Employee Photo"></td>
+                <td>{{ employee.firstName }}</td>
+                <td>{{ employee.department }}</td>
+                <td>{{ employee.ticketsResolved }}</td>
+                <td>{{ employee.ticketsInProgress }}</td>
+                <td>{{ employee.ticketsPending }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+
+
+
+      <!-- <ul class="student-list">
+        <li *ngFor="let employee of data1" class="student-item cf">
+          <div class="student-details">
+            <img class="avatar" [src]="employee.avatar">
+            <h3>{{ employee.name }}</h3>
+            <span class="email">{{ employee.email }}</span>
+          </div>
+          <div class="joined-details">
+            <span class="date">Joined {{ employee.joinDate }}</span>
+          </div>
+        </li>
+      </ul> -->
+
+    </div>
+  </div>
+
+
+  <!-- <div *ngIf="viewType === 'table'" class="listTable">
     <div class="listTable" *ngIf="data.length > 0">
       <h2>List of {{dataType}}</h2>
       <table mat-table [dataSource]="data">
@@ -34,7 +87,7 @@
     <div *ngIf="data.length === 0">
       <p>No employees found.</p>
     </div>
-  </div>
+  </div> -->
   <div *ngIf="viewType === 'card'" class="cardView">
     <h2>Card View of {{dataType}}</h2>
     <div class="grid-container">

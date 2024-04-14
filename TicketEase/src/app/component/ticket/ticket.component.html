@@ -11,7 +11,7 @@
 <div fxLayout="row" fxLayout.xs="column">
   <ng-container *ngFor="let status of ticketStatuses">
     <div fxFlex="25%" class="status-column">
-      <h2>{{ status }}</h2>
+      <h3>{{ status }}</h3>
       <div class="ticket-card" *ngFor="let complaint of getComplaintsByStatus(status)">
         <mat-card *ngIf="!selectedFilter || selectedFilter === complaint.status">
           <div class="card-header">

@@ -76,4 +76,10 @@ export class ApiService {
       withCredentials: true,
     });
   }
+
+  assignComplaint(compId: string, engId: string): Observable<any> {
+    const url = `${this.baseUrl}/admin/complaints/assign-complaint`;
+    const params = new HttpParams().set('compId', compId).set('engId', engId);
+    return this.http.put(url, {}, { params, withCredentials: true });
+  }
 }

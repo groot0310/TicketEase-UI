@@ -10,7 +10,7 @@
       <li *ngFor="let engineer of suggestedEngineers" (click)="selectEngineer(engineer)">
 
         <div class="engineer-info">
-          <div class="avatar"></div>
+          <div class="id">{{engineer.id}}</div>
           <div class="name">{{ engineer.firstName }} {{ engineer.lastName }}</div>
           <div class="username">Username: {{ engineer.username }}</div>
         </div>

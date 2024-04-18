@@ -37,6 +37,7 @@ export class DashboardComponent {
   viewType: 'table' | 'card' = 'table';
   engineerTableHeaders = [
     'Name',
+    'ID',
     'Username',
     'Ticket Resolved',
     'Ticket In-Progress',
@@ -44,12 +45,13 @@ export class DashboardComponent {
   ];
   employeeTableHeaders = [
     'Name',
+    'ID',
     'Username',
     'Ticket Raised',
     'Ticket In-Progress',
     'Ticket Resolved',
   ];
-  adminTableHeaders = ['Name', 'Username'];
+  adminTableHeaders = ['Name', 'ID', 'Username'];
 
   displayData: boolean = false;
   displayComplaints: boolean = false;

@@ -27,6 +27,7 @@
                 <tr *ngFor="let engineer of data">
                   <td class="employee-photo"><img [src]="engineer.photo" alt="engineer "></td>
                   <td>{{ engineer.firstName }} {{ engineer.lastName }}</td>
+                  <td>{{engineer.id}} </td>
                   <td>{{ engineer.username }}</td>
                   <td>{{ engineerTicketAssignedCounts[engineer.id]['RESOLVED'] }}</td>
                   <td>{{ engineerTicketAssignedCounts[engineer.id]['UNDER_PROGRESS'] }}</td>
@@ -49,6 +50,7 @@
                 <tr *ngFor="let employee of data">
                   <td class="employee-photo"><img [src]="employee.photo" alt="Employee "></td>
                   <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+                  <td>{{employee.id}} </td>
                   <td>{{ employee.username }}</td>
                   <td>{{ employeeTicketAssignedCounts[employee.id]['RAISED'] }}</td>
                   <td>{{ employeeTicketAssignedCounts[employee.id]['UNDER_PROGRESS'] }}</td>
@@ -71,6 +73,7 @@
                 <tr *ngFor="let admin of data">
                   <td class="employee-photo"><img [src]="admin.photo" alt="admin "></td>
                   <td>{{ admin.firstName }} {{ admin.lastName }}</td>
+                  <td>{{admin.id}} </td>
                   <td>{{ admin.username }}</td>
                 </tr>
               </tbody>

@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 import { MatDialog } from '@angular/material/dialog';
 import { AssignDialogComponent } from '../dialog/assign-dialog/assign-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-ticket',
   standalone: true,
@@ -56,7 +57,11 @@ export class TicketComponent {
     'UNASSIGNED',
     'UNDER_PROGRESS',
   ];
-  constructor(private api: ApiService, private dialog: MatDialog) {
+  constructor(
+    private api: ApiService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {
     this.getEngineers();
   }
 
@@ -70,7 +75,7 @@ export class TicketComponent {
     });
   }
 
-  openEngineerSuggestionDialog(): void {
+  openEngineerSuggestionDialog(complaint: any): void {
     const dialogRef = this.dialog.open(AssignDialogComponent, {
       width: '500px',
       data: {
@@ -78,7 +83,28 @@ export class TicketComponent {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('++++++++++++++++++++++`', result);
+      const compId = complaint.id;
+      const engineerId = result.id;
+      this.assignComplaint(compId, engineerId);
+    });
+  }
+
+  assignComplaint(complaint: any, status: string) {
+    this.api.assignComplaint(complaint, status).subscribe({
+      next: (data) => {
+        this.snackBar.open(`Complaint Assigned Successfully to ${data}`, '', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+        });
+      },
+      error: () => {
+        this.snackBar.open('Something went wrong...!!', '', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+        });
+      },
     });
   }
 }

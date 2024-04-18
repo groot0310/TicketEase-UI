@@ -3,11 +3,6 @@
   text-align: center;
 }
 
-.ticket-card {
-  margin-bottom: 10px; /* Adjust margin as needed */
-  background-color: rgb(13, 195, 201);
-}
-
 /* Style for card content */
 mat-card-content {
   padding: 12px;
@@ -35,4 +30,64 @@ mat-card-subtitle {
   margin: 10px;
   display: flex;
   justify-content: flex-end;
+}
+
+
+/* Container Styles */
+.ticket-container {
+  margin-bottom: 16px; /* Spacing between tickets */
+}
+
+/* Card Styles */
+.ticket-card {
+  border: 1px solid #d4d4d4; /* Light border for visual separation */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for raised effect */
+  padding: 16px; /* Padding within the card */
+  background-color: #ffffff; /* White background */
+  margin-bottom: 10px; /* Adjust margin as needed */
+  }
+
+/* Header Styles */
+.header-section {
+  background-color: #f2f2f2; /* Light gray background for header */
+  padding: 8px; /* Padding for separation */
+  border-bottom: 1px solid #d4d4d4; /* Light border at the bottom */
+  display: flex; /* Flexbox for layout */
+  align-items: center; /* Center elements vertically */
+  justify-content: space-between; /* Space between elements */
+}
+
+/* Title and Subtitle Styles */
+.card-title {
+  font-weight: bold; /* Bold font weight for emphasis */
+  margin-right: 16px; /* Space between title and subtitle */
+}
+
+.card-subtitle {
+  font-style: italic; /* Italicize the subtitle */
+}
+
+/* Action Button Styles */
+.action-button {
+  margin-left: auto; /* Align button to the right */
+  background-color: transparent; /* Transparent background */
+  border-radius: 4px; /* Rounded corners */
+  padding: 8px; /* Padding around the button */
+  color: #666666; /* Dark gray color */
+}
+
+.action-button:hover {
+  background-color: #e0e0e0; /* Light gray background on hover */
+}
+
+/* Content Section Styles */
+.content-section {
+  margin-bottom: 8px; /* Spacing between sections */
+}
+
+.card-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

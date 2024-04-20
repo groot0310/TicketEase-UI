@@ -52,9 +52,7 @@
         </mat-expansion-panel-header>
         <mat-nav-list>
           <a id="a" mat-list-item (click)="getComplaints();showTicketFirst = false">List of Complaint</a>
-          <a id="a" mat-list-item (click)="getComplaintsWithStatus('UNASSIGNED');showTicketFirst = false">List of
-            complaints by
-            status</a>
+          <a id="a" mat-list-item (click)="getUnassignedComplaints()">Assign Complaints</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>

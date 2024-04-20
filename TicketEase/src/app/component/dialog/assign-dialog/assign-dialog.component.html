@@ -1,20 +1,80 @@
 <div class="custom-dialog">
   <div class="dialog-header">
-    <h2>Select Engineer</h2>
+    <h2>Select {{from === 'navigation' ? 'Complaint & Engineer': 'Engineer'}}</h2>
   </div>
   <div class="dialog-content">
-    <div class="search-field">
-      <input type="text" placeholder="Search engineers" [(ngModel)]="searchTerm" (input)="searchEngineers()">
-    </div>
-    <ul class="engineer-list">
-      <li *ngFor="let engineer of suggestedEngineers" (click)="selectEngineer(engineer)">
-
-        <div class="engineer-info">
-          <div class="id">{{engineer.id}}</div>
-          <div class="name">{{ engineer.firstName }} {{ engineer.lastName }}</div>
-          <div class="username">Username: {{ engineer.username }}</div>
+    <div *ngIf="from === 'navigation'">
+      <div class="row">
+        <div class="column">
+          <div class="search-field">
+            <input type="text" placeholder="Search engineers" [(ngModel)]="searchTermEngineer"
+              (input)="searchEngineers()">
+          </div>
+          <ul class="engineer-list">
+            <mat-radio-button *ngFor="let engineer of suggestedEngineers" class="example-radio-button" color="primary"
+              [value]="engineer" (click)="selectEngineer(engineer.id)" name="engineerGroup">
+              <div class="engineer-info">
+                <div class="id">ID: {{ engineer.id }} </div><br>
+                <div class="name">Name: {{ engineer.firstName }} {{ engineer.lastName }} </div><br>
+                <div class="username">Username: {{ engineer.username }} </div>
+              </div>
+            </mat-radio-button>
+          </ul>
         </div>
-      </li>
-    </ul>
+
+        <div class="column">
+          <div class="search-field">
+            <input type="text" placeholder="Search complaints" [(ngModel)]="searchTermComplaint"
+              (input)="searchComplaints()">
+          </div>
+          <ul class="engineer-list">
+            <mat-radio-button *ngFor="let complaint of suggestedComplaints" class="radio-button" color="primary"
+              [value]="complaint" (click)="selectComplaint(complaint.id)" name="complaintGroup">
+              <div class="engineer-info">
+                <div class="id">ID: {{ complaint.id }} </div><br>
+                <div class="name">{{ complaint.title }}</div><br>
+                <div class="username">Username: {{complaint.raisedBy.username }}
+                </div>
+              </div>
+            </mat-radio-button>
+          </ul>
+        </div>
+      </div>
+      <div style=" text-align: center;">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!selectedEngineer || !selectedComplaint"
+          (click)="this.onSubmit('navigation')">
+          Assign
+        </button>
+        <button mat-raised-button color="primary" (click)="this.close()">
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="from === 'ticket'">
+      <div class="search-field">
+        <input type="text" placeholder="Search engineers" [(ngModel)]="searchTermEngineer" (input)="searchEngineers()">
+      </div>
+      <ul class="engineer-list">
+        <mat-radio-button *ngFor="let engineer of suggestedEngineers" class="example-radio-button" color="primary"
+          [value]="engineer" (click)="selectEngineer(engineer.id)">
+          <div class="engineer-info">
+            <div class="id">ID: {{ engineer.id }} </div><br>
+            <div class="name">Name: {{ engineer.firstName }} {{ engineer.lastName }} </div><br>
+            <div class="username">Username: {{ engineer.username }} </div>
+          </div>
+        </mat-radio-button>
+      </ul>
+      <div style=" text-align: center;">
+        <button mat-raised-button color="primary" type="submit" (click)="this.onSubmit('ticket')">
+          Assign
+        </button>
+        <button mat-raised-button color="primary" (click)="this.close()">
+          Cancel
+        </button>
+      </div>
+    </div>
+
+
   </div>
 </div>

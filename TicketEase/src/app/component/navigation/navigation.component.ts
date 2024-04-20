@@ -1,23 +1,24 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { DashboardComponent } from '../dashboard/dashboard.component';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
-import { ApiService } from '../../../lib/api.service';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+import { ApiService } from '../../../lib/api.service';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+import { AssignDialogComponent } from '../dialog/assign-dialog/assign-dialog.component';
+import { DialogComponent } from '../dialog/dialog.component';
 import { TicketComponent } from '../ticket/ticket.component';
 
 @Component({
@@ -49,7 +50,10 @@ export class NavigationComponent implements OnInit {
   data: any[] = [];
   dataType: string = '';
   complaints: any[] = [];
+  dialogComplaints: any[] = [];
+
   showTicketFirst: boolean = true;
+  matchingEngineers: any[] = [];
 
   constructor(
     private dialog: MatDialog,
@@ -109,8 +113,8 @@ export class NavigationComponent implements OnInit {
           horizontalPosition: 'right',
         });
       },
-      error: () => {
-        this.snackBar.open('Something went wrong...!!', '', {
+      error: (error) => {
+        this.snackBar.open(error.error.message, '', {
           duration: 3000,
           verticalPosition: 'top',
           horizontalPosition: 'right',
@@ -145,11 +149,32 @@ export class NavigationComponent implements OnInit {
     });
   }
 
-  getComplaintsWithStatus(ticketStatus: string): void {
-    this.api
-      .getComplaintsListWithStatus(ticketStatus)
-      .subscribe((complaint: any) => {
-        this.complaints = complaint;
-      });
+  getUnassignedComplaints(): void {
+    this.api.getEngineerList().subscribe((engineers: any[]) => {
+      this.matchingEngineers = engineers;
+    });
+    this.api.getUnassignedComplaints().subscribe({
+      next: (complaint) => {
+        this.dialogComplaints = complaint;
+        this.openEngineerSuggestionDialog(complaint);
+      },
+      error: (error) => {
+        this.snackBar.open(error.error.message, '', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+        });
+      },
+    });
+  }
+  openEngineerSuggestionDialog(complaint: any): void {
+    this.dialog.open(AssignDialogComponent, {
+      data: {
+        from: 'navigation',
+        complaints: this.dialogComplaints,
+        engineers: this.matchingEngineers,
+      },
+      disableClose: true,
+    });
   }
 }

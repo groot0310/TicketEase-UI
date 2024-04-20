@@ -1,5 +1,5 @@
 .custom-dialog {
-  width:100%;
+  width: 100%;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -36,38 +36,58 @@
 .engineer-list {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
-.engineer-list li {
-  cursor: pointer;
-  padding: 8px;
-  border-bottom: 1px solid #ccc;
+.example-radio-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
   transition: background-color 0.3s;
 }
 
-.engineer-list li:hover {
-  background-color: #767575;
+.example-radio-button:hover {
+  background-color: #f0f0f0;
 }
 
-.avatar {
-  width: 40px;
-  height: 40px;
-  background-color: #ccc;
-  border-radius: 50%;
-  margin-right: 16px;
+.example-radio-button.mat-radio-checked .engineer-info {
+  background-color: #d1e8e2;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .engineer-info {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+
 }
 
-.name {
-  font-weight: bold;
-  align-content: center;}
+.engineer-info > div {
+  margin-right: 15px;
+  font-size: 14px;
+}
 
-.username {
-  color: #666;
-  align-content: center;
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.column {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.column:last-child {
+  margin-right: 0;
+}
+
+.engineer-item.selected {
+  background-color: #062327;
 }

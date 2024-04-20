@@ -71,8 +71,8 @@ export class ApiService {
     });
   }
 
-  getComplaintsListWithStatus(status: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/admin/complaints/${status}`, {
+  getUnassignedComplaints(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/admin/complaints/unassigned`, {
       withCredentials: true,
     });
   }

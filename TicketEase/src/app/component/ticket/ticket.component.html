@@ -12,8 +12,8 @@
   <ng-container *ngFor="let status of ticketStatuses">
     <div fxFlex="25%" class="status-column">
       <h3>{{ status }}</h3>
-      <div class="ticket-card" *ngFor="let complaint of getComplaintsByStatus(status)">
-        <mat-card *ngIf="!selectedFilter || selectedFilter === complaint.status">
+      <div *ngFor="let complaint of getComplaintsByStatus(status)">
+        <mat-card class="ticket-card" *ngIf="!selectedFilter || selectedFilter === complaint.status">
           <div class="card-header">
             <button mat-icon-button [matMenuTriggerFor]="assign" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>

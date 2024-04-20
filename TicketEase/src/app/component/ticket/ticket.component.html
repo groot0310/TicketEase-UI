@@ -19,7 +19,7 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #assign="matMenu">
-              <button mat-menu-item>Remove</button>
+              <button mat-menu-item (click)="deleteComplaint(complaint.id)">Remove</button>
               <button mat-menu-item (click)="openEngineerSuggestionDialog(complaint)">Assign To</button>
             </mat-menu>
             <mat-card-header>

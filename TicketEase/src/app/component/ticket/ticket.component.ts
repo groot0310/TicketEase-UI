@@ -107,4 +107,22 @@ export class TicketComponent {
       },
     });
   }
+  deleteComplaint(complaintId: string) {
+    this.api.deleteComplaint(complaintId).subscribe({
+      next: (data) => {
+        this.snackBar.open(`Complaint Deleted Successfully`, '', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+        });
+      },
+      error: () => {
+        this.snackBar.open('Something went wrong...!!', '', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+        });
+      },
+    });
+  }
 }

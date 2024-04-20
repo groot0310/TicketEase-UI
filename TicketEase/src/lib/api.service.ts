@@ -82,4 +82,11 @@ export class ApiService {
     const params = new HttpParams().set('compId', compId).set('engId', engId);
     return this.http.put(url, {}, { params, withCredentials: true });
   }
+
+  deleteComplaint(compId: string): Observable<any> {
+    return this.http.delete(
+      `${this.baseUrl}/admin/complaints/${compId}/delete`,
+      { withCredentials: true }
+    );
+  }
 }

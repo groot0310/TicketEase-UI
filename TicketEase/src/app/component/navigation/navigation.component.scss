@@ -18,8 +18,10 @@
 .sidenav {
   width: 300px;
   margin: 1%;
+  margin-top: 6%;
+  margin-bottom: 2%;
   border-radius: 10px;
-  background: linear-gradient(to bottom, #aac5ed, #052550); /* Gradient from light to dark blue */
+  background-color: #eaebeb; /* Gradient from light to dark blue */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -73,13 +75,9 @@
   align-items: center;
   justify-content: flex-end; }
 
-  .menu-container{
+  .menu-container {
     text-align: center;
-    display: flex;
-    margin: 10px;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    justify-content: center;
+    margin: 20px 0; /* Add some margin for spacing */
   }
 
   #a {

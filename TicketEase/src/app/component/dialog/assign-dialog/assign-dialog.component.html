@@ -32,8 +32,8 @@
             <mat-radio-button *ngFor="let complaint of suggestedComplaints" class="radio-button" color="primary"
               [value]="complaint" (click)="selectComplaint(complaint.id)" name="complaintGroup">
               <div class="engineer-info">
-                <div class="id">ID: {{ complaint.id }} </div><br>
-                <div class="name">{{ complaint.title }}</div><br>
+                <div class="id">ID: {{ complaint.id }} </div>
+                <div style="white-space: wrap;" class="name">{{ complaint.title }}</div>
                 <div class="username">Username: {{complaint.raisedBy.username }}
                 </div>
               </div>
@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      <div style=" text-align: center;">
+      <div style=" text-align: center; padding-top: 10px;">
         <button mat-raised-button color="primary" type="submit" [disabled]="!selectedEngineer || !selectedComplaint"
           (click)="this.onSubmit('navigation')">
           Assign
@@ -69,7 +69,7 @@
       </ul>
       
 
-      <div style=" text-align: center;">
+      <div style=" text-align: center; padding-top: 10px;">
         <button mat-raised-button color="primary" type="submit" (click)="this.onSubmit('ticket')">
           Assign
         </button>&nbsp;

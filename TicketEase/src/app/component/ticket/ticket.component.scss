@@ -1,35 +1,49 @@
 .status-column {
-  margin: 2px 25px 25px 25px; /* Adjust margin as needed */
+  margin: 0 10px 15px 10px; /* Adjust margin as needed */
   text-align: center;
+  background-color: #f7f5f9;
+  border-radius: 10px;
+}
+
+.bg-container {
+  margin: 0 2% ;
 }
 
 /* Style for card content */
 mat-card-content {
-  padding: 12px;
-  background-color: #eaebeb;
+  padding: 0px;
+  // background-color: #eaebeb;
+  text-align: justify;
 }
 
 /* Style for card header */
 mat-card-header {
-  background-color: #f5f5f5; /* Light gray background */
-  border-bottom: 1px solid #ddd; /* Gray border */
+  width: 100%;
+  text-align: left;
+  background-color: #ffff;
+  border-radius: 10px;
 }
 
 /* Style for card title */
-mat-card-title {
-  font-weight: bold;
-  font-size: 18px;
-}
+// mat-card-title {
+//   font-weight: 300;
+//   font-size: 16px;
+//   text-align: justify;
+// }
 
 /* Style for card subtitle */
-mat-card-subtitle {
-  color: #666;
-}
+// mat-card-subtitle {
+//   color: #666;
+// }
 
 .filter-select-container {
-  margin: 10px;
+  padding-right: 80px;
+  padding-bottom: 0px;
   display: flex;
   justify-content: flex-end;
+  font-family: 'Charlie', sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
 
@@ -40,12 +54,9 @@ mat-card-subtitle {
 
 /* Card Styles */
 .ticket-card {
-  border: 1px solid #d4d4d4; /* Light border for visual separation */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for raised effect */
-  padding: 16px; /* Padding within the card */
-  background-color: #ffffff; /* White background */
-  margin-bottom: 10px; /* Adjust margin as needed */
+  margin: 5px;
+  background-color: #fefeff; /* White background */
+  margin-bottom: 12px; /* Adjust margin as needed */
   }
 
 /* Header Styles */
@@ -62,10 +73,6 @@ mat-card-subtitle {
 .card-title {
   font-weight: bold; /* Bold font weight for emphasis */
   margin-right: 16px; /* Space between title and subtitle */
-}
-
-.card-subtitle {
-  font-style: italic; /* Italicize the subtitle */
 }
 
 /* Action Button Styles */
@@ -86,8 +93,97 @@ mat-card-subtitle {
   margin-bottom: 8px; /* Spacing between sections */
 }
 
-.card-header{
+/////////
+
+// .card-header{
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+// }
+
+.card-header {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #f0f0f0; /* Pale gray background */
+  border-radius: 8px 8px 0 0; /* Rounded corners */
 }
+
+.card-header button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.card-header button:hover {
+  background-color: #e0e0e0; /* Light gray background on hover */
+  border-radius: 50%; /* Rounded button */
+}
+
+.mat-card-header {
+  margin-left: 16px; /* Spacing between button and card header content */
+}
+
+.mat-card-title {
+  font-family: 'Charlie Sans', sans-serif; /* Use Charlie Sans font */
+  font-size: 18px;
+  font-weight: bold;
+  color: #333; /* Dark gray text color */
+}
+
+.mat-card-subtitle {
+  font-family: 'Charlie Sans', sans-serif; /* Use Charlie Sans font */
+  font-size: 14px;
+  color: #666; /* Medium gray text color */
+}
+
+
+///////////
+
+// .complaint-container {
+//   padding: 20px;
+//   border-radius: 20px;
+//   border: 1px solid #ccc;
+//   background-color: #a8c8e9;
+// }
+
+// .ticket-card {
+//   margin-bottom: 20px;
+//   border-radius: 10px;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+// }
+
+// .card-header {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   padding: 10px;
+//   border-bottom: 1px solid #eee;
+// }
+
+// .card-header button {
+//   background-color: transparent;
+//   border: none;
+//   cursor: pointer;
+// }
+
+// .mat-card-title {
+//   font-size: 16px;
+//   font-weight: bold;
+// }
+
+// .mat-card-subtitle {
+//   font-size: 14px;
+//   color: #666;
+// }
+
+// .mat-card-content {
+//   padding: 10px;
+// }
+
+// .mat-card-content p {
+//   margin: 5px 0;
+// }
+

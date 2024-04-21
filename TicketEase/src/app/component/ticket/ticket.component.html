@@ -8,12 +8,13 @@
   </mat-form-field>
 </div>
 
-<div fxLayout="row" fxLayout.xs="column">
+<div fxLayout="row" fxLayout.xs="column" class="bg-container">
   <ng-container *ngFor="let status of ticketStatuses">
-    <div fxFlex="25%" class="status-column">
+    <div fxFlex="60%" class="status-column">
       <h3>{{ status }}</h3>
       <div *ngFor="let complaint of getComplaintsByStatus(status)">
         <mat-card class="ticket-card" *ngIf="!selectedFilter || selectedFilter === complaint.status">
+          
           <div class="card-header">
             <button mat-icon-button [matMenuTriggerFor]="assign" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
@@ -27,13 +28,14 @@
               <mat-card-subtitle>Status: {{ complaint.status }}</mat-card-subtitle>
             </mat-card-header>
           </div>
-          <mat-card-content>
+          
+          <!-- <mat-card-content>
             <p>Description: {{ complaint.description }}</p>
             <p>Raised By: {{ complaint.raisedBy.firstName }} {{ complaint.raisedBy.lastName }}</p>
             <p>Raised On: {{ complaint.raised_On }}</p>
             <p *ngIf="complaint.assignedTo !== null">Assigned to:{{complaint.assignedTo.firstName}}
               {{complaint.assignedTo.lastName}}</p>
-          </mat-card-content>
+          </mat-card-content> -->
         </mat-card>
       </div>
     </div>

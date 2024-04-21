@@ -45,16 +45,16 @@ export class TicketComponent {
   statuses: string[] = ['ASSIGNED', 'RESOLVED', 'UNASSIGNED', 'UNDER_PROGRESS'];
   engineerId: string = '';
   filterOptions: string[] = [
-    'ASSIGNED',
-    'RESOLVED',
     'UNASSIGNED',
     'UNDER_PROGRESS',
+    'ASSIGNED',
+    'RESOLVED',
   ];
   ticketStatuses: string[] = [
-    'ASSIGNED',
-    'RESOLVED',
     'UNASSIGNED',
     'UNDER_PROGRESS',
+    'ASSIGNED',
+    'RESOLVED',    
   ];
   constructor(
     private api: ApiService,

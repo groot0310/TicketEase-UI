@@ -1,16 +1,27 @@
 <div *ngIf="displayData">
-  <div class="buttons">
+  <div class="emp-list-container">
     <h2 class="emptitle">LIST OF {{viewType === 'table' ? dataType.toUpperCase() : 'CARDS'}}</h2>
-    <div>
+    <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+    <!-- <div>
       <button (click)="viewType = 'table'; " mat-raised-button class="view-button">
         <mat-icon>view_list</mat-icon>
       </button>
       <button (click)="viewType = 'card'" mat-raised-button class="view-button">
         <mat-icon>view_module</mat-icon>
       </button>
-    </div>
+    </div> -->
+
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="toggle-group">
+      <mat-button-toggle  value="bold">
+        <mat-icon>format_list_bulleted</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="underline">
+        <mat-icon>view_module</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
   </div>
 
+  <!-- LIST TABLE VIEW -->
   <div *ngIf="viewType === 'table'" class="listTable">
     <div class="listTable" *ngIf="data.length > 0">
       <div class="great-container">
@@ -49,8 +60,8 @@
               <tbody>
                 <tr *ngFor="let employee of data">
                   <td class="employee-photo"><img [src]="employee.photo" alt="Employee "></td>
-                  <td>{{ employee.firstName }} {{ employee.lastName }}</td>
                   <td>{{employee.id}} </td>
+                  <td>{{ employee.firstName }} {{ employee.lastName }}</td>
                   <td>{{ employee.username }}</td>
                   <td>{{ employeeTicketAssignedCounts[employee.id]['RAISED'] }}</td>
                   <td>{{ employeeTicketAssignedCounts[employee.id]['UNDER_PROGRESS'] }}</td>
@@ -84,6 +95,7 @@
     </div>
   </div>
 
+  <!-- CARD VIEW -->
   <div *ngIf="viewType === 'card'" class="cardView">
     <div class="grid-container">
       <mat-grid-list cols="5" rowHeight="350px">

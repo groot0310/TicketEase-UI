@@ -1,18 +1,37 @@
 .listTable {
-  margin: 30px;
-}
-
-.student-list {
-  padding: 25px 25px 25px 25px;
-  background-color: #fff;
-  font-family: Helvetica, sans-serif;
-  color: #222;
-  border-radius: 10px;
+  margin: 0 25px 20px 25px;
 }
 
 h2 {
   text-align: center;
 }
+
+.toggle-group {
+  display: flex;
+  justify-content: center;
+}
+
+/* Style for individual button toggles */
+mat-button-toggle {
+  background-color: #f0f0f0; /* Light gray background */
+  color: #333; /* Dark text color */
+  border: none; /* Remove default button border */
+  border-radius: 4px; /* Add some border radius */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+}
+
+/* Hover effect */
+mat-button-toggle:hover {
+  background-color: #ddd; /* Light gray background on hover */
+  color: #555; /* Darker text color on hover */
+}
+
+/* Selected button */
+mat-button-toggle.mat-button-toggle-checked {
+  background-color: #275090; /* Blue background for selected button */
+  color: #fff; /* White text color for selected button */
+}
+
 
 /* Style for the table */
 table {
@@ -60,11 +79,22 @@ p {
 .emptitle {
   font-weight: bold;
   font-size: 25px;
+  margin: 0 25% 0 25%;
+  width: fit-content;
+  background-color: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
 }
 
-.buttons {
+.emp-list-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .NoEmployee {
@@ -216,15 +246,7 @@ table {
   color: #fff;
 }
 
-
-
 /* List: end */
-
-
-
-
-
-
 
 /* Content-1:Start */
 .box {
@@ -321,22 +343,6 @@ button.message:hover {
   margin-top: 20px;
 }
 
-// .employees-table {
-//   width: 100%;
-//   border-collapse: collapse;
-// }
-
-// .employees-table th,
-// .employees-table td {
-//   padding: 10px;
-//   text-align: center;
-//   border: 1px solid #ddd;
-// }
-
-// .employees-table th {
-//   background-color: #f2f2f2;
-// }
-
 .employee-photo {
   width: 100px;
 }
@@ -356,15 +362,17 @@ button.message:hover {
   /* Light gray border */
   color: #333333;
   /* Dark gray text color */
+  border-radius: 5px;
 }
 
 .employees-table th {
-  background-color: #85C1E9;
+  background-color: #f0f0f0;
+  border-radius: 10px;
   /* Slightly darker blue header background */
 }
 
 .employees-table tr:nth-child(even) {
-  background-color: #D6EAF8;
+  background-color: #f7f5f9;
   /* Alternate row background color same as table background */
 }
 

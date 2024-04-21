@@ -86,7 +86,7 @@
 
   <div *ngIf="viewType === 'card'" class="cardView">
     <div class="grid-container">
-      <mat-grid-list cols="4" rowHeight="450px">
+      <mat-grid-list cols="5" rowHeight="350px">
         <mat-grid-tile *ngFor="let data of data" colspan="1" rowspan="1">
           <ng-container *ngIf="dataType !=='engineer' && dataType!=='employee' ; else engineerTemplate">
             <div class="box1 box">

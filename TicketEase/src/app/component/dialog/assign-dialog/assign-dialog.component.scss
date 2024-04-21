@@ -6,15 +6,16 @@
 }
 
 .dialog-header {
-  background-color: #f0f0f0;
+  background-color: #3f68b1;
   padding: 16px;
   border-bottom: 1px solid #ccc;
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px;
 }
 
 .dialog-header h2 {
   margin: 0;
   font-size: 20px;
+  color: aliceblue;
 }
 
 .dialog-content {
@@ -33,45 +34,53 @@
   box-sizing: border-box;
 }
 
+// 
 .engineer-list {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  display: flex;
+  flex-wrap: wrap; /* Allow the items to wrap to the next line */
+  max-height: 300px; /* Set a fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .example-radio-button {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
+  width: calc(50% - 10px); /* Set width for each column with margin */
+  margin: 5px; /* Add margin between items */
+  border: 1px solid #CCCCCC; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
   padding: 10px;
-  margin: 5px 0;
-  border-radius: 5px;
-  transition: background-color 0.3s;
 }
 
-.example-radio-button:hover {
-  background-color: #f0f0f0;
-}
-
-.example-radio-button.mat-radio-checked .engineer-info {
-  background-color: #d1e8e2;
-  border-radius: 5px;
+.radio-button {
+  width: calc(50% - 10px); /* Set width for each column with margin */
+  margin: 5px; /* Add margin between items */
+  border: 1px solid #CCCCCC; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
   padding: 10px;
 }
 
 .engineer-info {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
+  text-align: left;
 }
 
-.engineer-info > div {
-  margin-right: 15px;
-  font-size: 14px;
+
+.id, .name, .username {
+  margin-bottom: 5px;
 }
+
+.id {
+  color: #3498db; /* Blue color for ID */
+}
+
+.name {
+  font-weight: bold; /* Make the name bold */
+}
+
+.username {
+  color: #666666; /* Gray color for username */
+}
+
 
 .row {
   display: flex;
@@ -91,3 +100,6 @@
 .engineer-item.selected {
   background-color: #062327;
 }
+
+
+/////////

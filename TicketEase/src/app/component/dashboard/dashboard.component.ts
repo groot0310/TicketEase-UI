@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { TicketComponent } from '../ticket/ticket.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,6 +25,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CommonModule,
     MatTableModule,
     TicketComponent,
+    MatButtonToggleModule,
   ],
 })
 export class DashboardComponent {
@@ -36,16 +38,16 @@ export class DashboardComponent {
 
   viewType: 'table' | 'card' = 'table';
   engineerTableHeaders = [
-    'Name',
     'ID',
+    'Name',
     'Username',
     'Ticket Resolved',
     'Ticket In-Progress',
     'Ticket Assigned',
   ];
   employeeTableHeaders = [
-    'Name',
     'ID',
+    'Name',
     'Username',
     'Ticket Raised',
     'Ticket In-Progress',

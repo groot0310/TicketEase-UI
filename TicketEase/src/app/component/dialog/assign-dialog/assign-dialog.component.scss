@@ -6,16 +6,15 @@
 }
 
 .dialog-header {
-  background-color: #3f68b1;
+  background-color: #f0f0f0;
   padding: 16px;
   border-bottom: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0;
 }
 
 .dialog-header h2 {
   margin: 0;
   font-size: 20px;
-  color: aliceblue;
 }
 
 .dialog-content {

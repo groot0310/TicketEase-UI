@@ -15,6 +15,12 @@ import { MatTableModule } from '@angular/material/table';
 import { ApiService } from '../../../lib/api.service';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { AssignDialogComponent } from '../dialog/assign-dialog/assign-dialog.component';
+import {
+  MatBottomSheet,
+  MatBottomSheetModule,
+} from '@angular/material/bottom-sheet';
+import { BottomSheetComponent } from '../../bottom-sheet/bottom-sheet.component';
+
 @Component({
   selector: 'app-ticket',
   standalone: true,
@@ -32,6 +38,7 @@ import { AssignDialogComponent } from '../dialog/assign-dialog/assign-dialog.com
     FormsModule,
     MatListModule,
     AssignDialogComponent,
+    MatBottomSheetModule,
   ],
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.scss',
@@ -52,14 +59,15 @@ export class TicketComponent {
   ];
   ticketStatuses: string[] = [
     'UNASSIGNED',
-    'UNDER_PROGRESS',
     'ASSIGNED',
-    'RESOLVED',    
+    'UNDER_PROGRESS',
+    'RESOLVED',
   ];
   constructor(
     private api: ApiService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private _bottomSheet: MatBottomSheet
   ) {
     this.getEngineers();
   }
@@ -102,5 +110,9 @@ export class TicketComponent {
         });
       },
     });
+  }
+
+  openTicketDetails(complaint: any) {
+    this._bottomSheet.open(BottomSheetComponent);
   }
 }

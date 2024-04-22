@@ -1,0 +1,34 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Defines the layout as a 2-column grid */
+  gap: 10px; /* Adds space between the grid cells */
+  padding: 10px; /* Adds padding around the grid container */
+}
+
+/* Style the individual grid cells */
+.grid-item {
+  border: 1px solid #ccc; /* Adds a border around each cell */
+  padding: 10px; /* Adds padding inside each cell */
+  text-align: left; /* Aligns the text to the left in each cell */
+}
+
+/* Style the buttons */
+.button-container {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+/* Style each button */
+.button-container button {
+  background-color: #007bff; /* Blue background color */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Padding around the button */
+  border: none; /* Removes the border */
+  border-radius: 5px; /* Rounds the corners of the button */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Button hover effect */
+.button-container button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}

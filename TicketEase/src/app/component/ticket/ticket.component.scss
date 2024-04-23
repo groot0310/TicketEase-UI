@@ -22,19 +22,14 @@ mat-card-header {
   text-align: left;
   background-color: #ffff;
   border-radius: 10px;
+  cursor: pointer; /* Change cursor to pointer */
+  transition: background-color 0.3s; /* Adding transition for smooth hover effect */
 }
 
-/* Style for card title */
-// mat-card-title {
-//   font-weight: 300;
-//   font-size: 16px;
-//   text-align: justify;
-// }
+mat-card-header:hover {
+  background-color: #e2e9ee89; /* Change background color on hover */
+}
 
-/* Style for card subtitle */
-// mat-card-subtitle {
-//   color: #666;
-// }
 
 .filter-select-container {
   padding-right: 80px;
@@ -75,7 +70,6 @@ mat-card-header {
   margin-right: 16px; /* Space between title and subtitle */
 }
 
-/* Action Button Styles */
 .action-button {
   margin-left: auto; /* Align button to the right */
   background-color: transparent; /* Transparent background */
@@ -86,6 +80,8 @@ mat-card-header {
 
 .action-button:hover {
   background-color: #e0e0e0; /* Light gray background on hover */
+  transition: transform .2s; /* Animation */
+  transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
 /* Content Section Styles */

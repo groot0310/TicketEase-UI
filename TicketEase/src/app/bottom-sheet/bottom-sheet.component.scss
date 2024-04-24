@@ -1,34 +1,58 @@
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Defines the layout as a 2-column grid */
-  gap: 10px; /* Adds space between the grid cells */
-  padding: 10px; /* Adds padding around the grid container */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
-/* Style the individual grid cells */
-.grid-item {
-  border: 1px solid #ccc; /* Adds a border around each cell */
-  padding: 10px; /* Adds padding inside each cell */
-  text-align: left; /* Aligns the text to the left in each cell */
+.grid-item-ticket, .grid-item-emp {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Style the buttons */
+.grid-item-ticket h2, .grid-item-emp h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ccc;
+  color: #333;
+}
+
+.grid-item-ticket ul, .grid-item-emp ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.grid-item-ticket ul li, .grid-item-emp ul li {
+  margin-bottom: 15px;
+}
+
+.label {
+  font-weight: bold;
+  color: #555;
+}
+
 .button-container {
-  display: flex;
-  gap: 10px; /* Space between buttons */
+  margin-top: 20px;
 }
 
-/* Style each button */
 .button-container button {
-  background-color: #007bff; /* Blue background color */
-  color: white; /* White text color */
-  padding: 10px 20px; /* Padding around the button */
-  border: none; /* Removes the border */
-  border-radius: 5px; /* Rounds the corners of the button */
-  cursor: pointer; /* Pointer cursor on hover */
+  padding: 12px 24px;
+  background-color: #265190;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Button hover effect */
+.button-container button:last-child {
+  margin-left: 10px;
+}
+
 .button-container button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }

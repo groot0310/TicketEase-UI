@@ -113,6 +113,8 @@ export class TicketComponent {
   }
 
   openTicketDetails(complaint: any) {
-    this._bottomSheet.open(BottomSheetComponent);
+    this._bottomSheet.open(BottomSheetComponent, {
+      data: complaint,
+    });
   }
 }

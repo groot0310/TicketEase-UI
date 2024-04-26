@@ -2,25 +2,36 @@
   <div class="grid-item-ticket">
     <h2><mat-icon>receipt</mat-icon> Ticket Details</h2>
     <ul>
-      <li><span class="label">Title:</span> Title</li>
-      <li><span class="label">Description:</span> This is the description text for the item.</li>
-      <li><span class="label">Raised By:</span> John Doe</li>
-      <li><span class="label">Assigned to:</span> Jane Smith</li>
-      <li><span class="label">Status:</span> In Progress</li>
-      <li><span class="label">ID:</span> #123456</li>
-      <li><span class="label">Date & Time:</span> January 1, 2024 10:00 AM</li>
+      <li><span class="label">Title:</span> {{data.title}}</li>
+      <li><span class="label">Description:</span> {{data.description}}</li>
+      <li><span class="label">Raised By:</span> {{data.raisedBy.firstName}} {{data.raisedBy.lastName}}</li>
+      <li><span class="label">Assigned to:</span> {{ data.assignedTo ? data.raisedBy.firstName+"
+        "+data.raisedBy.lastName:
+        'Not Assigned' }}</li>
+      <li><span class="label">Status:</span> {{data.status}}</li>
+      <li><span class="label">ID:</span> {{data.id}}</li>
+      <li><span class="label">Raised On:</span> {{data.raised_On}}</li>
+      <li><span class="label">Last updated On:</span> {{data.last_Updated_On}}</li>
     </ul>
   </div>
   <div class="grid-item-emp">
-    <h2><mat-icon>engineering</mat-icon> Engineer Details</h2>
-    <ul>
-      <li><span class="label">ID:</span> 001</li>
-      <li><span class="label">Name:</span> John Doe</li>
-      <li><span class="label">Username:</span> johndoe</li>
+    <h2><mat-icon>engineering</mat-icon> Assigned Engineer Details</h2>
+    <ul *ngIf="data.assignedTo; else noAssignment">
+      <li><span class="label">ID:</span> {{ data.assignedTo.id }}</li>
+      <li><span class="label">Name:</span> {{ data.assignedTo.firstName }} {{ data.assignedTo.lastName }}</li>
+      <li><span class="label">Username:</span> {{ data.assignedTo.username }}</li>
     </ul>
+    <ng-template #noAssignment>
+      <ul>
+        <li><span class="label">Engineer:</span> Not assigned</li>
+      </ul>
+    </ng-template>
+
     <div class="button-container">
-      <button>Assign To</button>
-      <button>Remove</button>
+      <button (click)=" assignTo()">{{ data.assignedTo ? 'Update Assign' : 'Assign To'
+        }}</button>
+      <button *ngIf="data.assignedTo" (click)="deleteComplaint(data.id)">Remove Ticket</button>
     </div>
   </div>
+
 </div>

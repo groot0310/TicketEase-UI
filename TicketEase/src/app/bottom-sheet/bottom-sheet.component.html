@@ -27,7 +27,7 @@
       </ul>
     </ng-template>
 
-    <div class="button-container">
+    <div *ngIf="data.status==='RESOLVED'" class="button-container">
       <button (click)=" assignTo()">{{ data.assignedTo ? 'Update Assign' : 'Assign To'
         }}</button>
       <button *ngIf="data.assignedTo" (click)="deleteComplaint(data.id)">Remove Ticket</button>

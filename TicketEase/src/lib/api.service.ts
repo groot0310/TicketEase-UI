@@ -92,4 +92,10 @@ export class ApiService {
   }
 
   // EMPLOYEE+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  raisedComplaint(data: any): Observable<HttpResponse<any>> {
+    return this.http.post(`${this.baseUrl}/employee/complaint`, data, {
+      observe: 'response',
+      withCredentials: true,
+    });
+  }
 }

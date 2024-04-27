@@ -46,16 +46,19 @@ export class DialogComponent implements OnInit {
   hide: boolean = true;
   formType!: string;
   heading: string = '';
+  role: string = '';
   constructor(
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { formType: string; heading: string },
+    @Inject(MAT_DIALOG_DATA)
+    public data: { formType: string; heading: string; role: string },
     private fb: FormBuilder,
     private api: ApiService,
     private snackBar: MatSnackBar
   ) {
     this.formType = data.formType;
     this.heading = data.heading;
+    this.role = data.role;
   }
   ngOnInit(): void {
     this.Form = this.fb.group({
@@ -64,24 +67,34 @@ export class DialogComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
+    this.Form = this.fb.group({
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+    });
   }
 
   onSubmit(): void {
     if (this.Form.valid) {
       const formData = this.Form.value;
+      console.log(formData);
+
       let apiCall: Observable<any>;
-      switch (this.formType) {
-        case 'admin':
-          apiCall = this.api.createAdmin(formData);
-          break;
-        case 'employee':
-          apiCall = this.api.createEmployee(formData);
-          break;
-        case 'engineer':
-          apiCall = this.api.createEngineer(formData);
-          break;
-        default:
-          return;
+      if (this.role === 'ADMIN') {
+        switch (this.formType) {
+          case 'admin':
+            apiCall = this.api.createAdmin(formData);
+            break;
+          case 'employee':
+            apiCall = this.api.createEmployee(formData);
+            break;
+          case 'engineer':
+            apiCall = this.api.createEngineer(formData);
+            break;
+          default:
+            return;
+        }
+      } else {
+        apiCall = this.api.raisedComplaint(formData);
       }
       apiCall.subscribe({
         next: (data) => {

@@ -73,13 +73,13 @@
       <mat-accordion>
         <mat-expansion-panel style="margin:10px">
           <mat-expansion-panel-header>
-            <mat-panel-title> ADMIN </mat-panel-title>
+            <mat-panel-title> EMPLOYEE </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-nav-list>
             <a id="a" mat-list-item (click)="getComplaints('complaint');showDefaultDashboard = false">List of raised
               Complaint</a>
-
-            <a id="a" mat-list-item (click)="raiseComplaint();showDefaultDashboard = false">Raise a complaint</a>
+            <a id="a" mat-list-item
+              (click)="openDialog('employee','Raise New Ticket');showDefaultDashboard = false">Raise a complaint</a>
           </mat-nav-list>
         </mat-expansion-panel>
       </mat-accordion>

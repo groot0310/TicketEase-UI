@@ -78,19 +78,24 @@ export class NavigationComponent implements OnInit {
 
   openDialog(formType: string, heading: string): void {
     const dialogRef = this.dialog.open(DialogComponent, {
-      data: { formType, heading },
+      data: { formType, heading, role: this.role },
       disableClose: true,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
-      if (result) {
+      if (this.role === 'ADMIN' && result) {
         this.snackBar.open('Successfully added ' + result.username + '!', '', {
           duration: 3000,
           verticalPosition: 'top',
           horizontalPosition: 'center',
         });
-      }
+      } else
+        this.snackBar.open('Successfully raised Complaint' + '!', '', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center',
+        });
     });
   }
   isHandset$: Observable<boolean> = this.breakpointObserver
@@ -103,7 +108,6 @@ export class NavigationComponent implements OnInit {
   logout() {
     this.api.logout().subscribe({
       next: (data) => {
-        console.log(data);
         this.hasLoggedIn = false;
         this.router.navigate([
           '/login',

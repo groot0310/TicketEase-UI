@@ -3,48 +3,67 @@
     <h1 class="mat-display-2">{{heading}}</h1>
   </div>
   <form [formGroup]="Form" (ngSubmit)="onSubmit()">
-    <mat-form-field class="full-width" appearance="outline">
-      <mat-label>First Name</mat-label>
-      <input matInput formControlName="firstName" placeholder="Enter First Name" />
-      <mat-error *ngIf="
-          Form.get('firstName')?.invalid &&
-          Form.get('firstName')?.touched
-        ">
-        First Name is required
-      </mat-error>
-    </mat-form-field>
+    <div *ngIf="role==='ADMIN';else employeeTemplate">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" placeholder="Enter First Name" />
+        <mat-error *ngIf="
+        Form.get('firstName')?.invalid &&
+        Form.get('firstName')?.touched
+      ">
+          First Name is required
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Last Name</mat-label>
-      <input matInput formControlName="lastName" placeholder="Enter Last Name" />
-      <mat-error *ngIf="
-          Form.get('lastName')?.invalid && Form.get('lastName')?.touched  ">
-        Last Name is required
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" placeholder="Enter Last Name" />
+        <mat-error *ngIf="
+        Form.get('lastName')?.invalid && Form.get('lastName')?.touched  ">
+          Last Name is required
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Username</mat-label>
-      <input matInput formControlName="username" placeholder="Enter Username" />
-      <mat-error *ngIf="
-          Form.get('username')?.invalid && Form.get('username')?.touched
-        ">
-        Username is required
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" placeholder="Enter Username" />
+        <mat-error *ngIf="
+        Form.get('username')?.invalid && Form.get('username')?.touched
+      ">
+          Username is required
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Password</mat-label>
-      <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Enter Password" />
-      <mat-error *ngIf="
-          Form.get('password')?.invalid && Form.get('password')?.touched
-        ">
-        Password is required and must be at least 8 characters long
-      </mat-error>
-      <mat-button style="margin: 10px;" mat-icon-button matSuffix (click)="togglePasswordVisibility()">
-        <mat-icon class="logoutIcon" svgIcon="{{ hide ? 'logout' : 'notVisibleIcon' }}" aria-hidden="false"></mat-icon>
-      </mat-button>
-    </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Enter Password" />
+        <mat-error *ngIf="
+        Form.get('password')?.invalid && Form.get('password')?.touched
+      ">
+          Password is required and must be at least 8 characters long
+        </mat-error>
+        <mat-button style="margin: 10px;" mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+          <mat-icon class="logoutIcon" svgIcon="{{ hide ? 'logout' : 'notVisibleIcon' }}"
+            aria-hidden="false"></mat-icon>
+        </mat-button>
+      </mat-form-field>
+    </div>
+    <ng-template #employeeTemplate>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" placeholder="Enter Complaint Title" />
+        <mat-error *ngIf="Form.get('title')?.invalid &&Form.get('title')?.touched">Title is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" placeholder="Enter Last Name" />
+        <mat-error *ngIf="
+        Form.get('description')?.invalid && Form.get('description')?.touched  ">
+          Description is required
+        </mat-error>
+      </mat-form-field>
+    </ng-template>
 
     <div style=" text-align: center;">
       <button mat-raised-button color="primary" type="submit" [disabled]="Form.invalid">

@@ -1,0 +1,70 @@
+<div class="listTable" *ngIf="data.length > 0">
+  <div class="great-container">
+    <ng-container *ngIf="dataType === 'engineer'; else employeeListTemplate">
+      <div class="employees-list">
+        <table class="employees-table">
+          <thead>
+            <tr>
+              <th class="employee-photo"></th>
+              <th *ngFor="let header of engineerTableHeaders">{{ header }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let engineer of data">
+              <td class="employee-photo"><img [src]="engineer.photo" alt="engineer "></td>
+              <td>{{ engineer.firstName }} {{ engineer.lastName }}</td>
+              <td>{{engineer.id}} </td>
+              <td>{{ engineer.username }}</td>
+              <td>{{ engineerTicketAssignedCounts[engineer.id]['RESOLVED'] }}</td>
+              <td>{{ engineerTicketAssignedCounts[engineer.id]['UNDER_PROGRESS'] }}</td>
+              <td>{{ engineerTicketAssignedCounts[engineer.id]['ASSIGNED'] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+    <ng-template #employeeListTemplate>
+      <div class="employees-list" *ngIf="dataType === 'employee';else adminListTemplate">
+        <table class=" employees-table">
+          <thead>
+            <tr>
+              <th class="employee-photo"></th>
+              <th *ngFor="let header of employeeTableHeaders">{{ header }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of data">
+              <td class="employee-photo"><img [src]="employee.photo" alt="Employee "></td>
+              <td>{{employee.id}} </td>
+              <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+              <td>{{ employee.username }}</td>
+              <td>{{ employeeTicketAssignedCounts[employee.id]['RAISED'] }}</td>
+              <td>{{ employeeTicketAssignedCounts[employee.id]['UNDER_PROGRESS'] }}</td>
+              <td>{{ employeeTicketAssignedCounts[employee.id]['RESOLVED'] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-template>
+    <ng-template #adminListTemplate>
+      <div class="employees-list">
+        <table class=" employees-table">
+          <thead>
+            <tr>
+              <th class="employee-photo"></th>
+              <th *ngFor="let header of adminTableHeaders">{{ header }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let admin of data">
+              <td class="employee-photo"><img [src]="admin.photo" alt="admin "></td>
+              <td>{{ admin.firstName }} {{ admin.lastName }}</td>
+              <td>{{admin.id}} </td>
+              <td>{{ admin.username }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-template>
+  </div>
+</div>

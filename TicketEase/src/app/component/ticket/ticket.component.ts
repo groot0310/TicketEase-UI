@@ -19,7 +19,7 @@ import {
   MatBottomSheet,
   MatBottomSheetModule,
 } from '@angular/material/bottom-sheet';
-import { BottomSheetComponent } from '../../bottom-sheet/bottom-sheet.component';
+import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
 
 @Component({
   selector: 'app-ticket',

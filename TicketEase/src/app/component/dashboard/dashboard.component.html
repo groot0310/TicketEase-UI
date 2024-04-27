@@ -13,145 +13,17 @@
 
   <!-- LIST TABLE VIEW -->
   <div *ngIf="viewType === 'table'" class="listTable">
-    <div class="listTable" *ngIf="data.length > 0">
-      <div class="great-container">
-        <ng-container *ngIf="dataType === 'engineer'; else employeeListTemplate">
-          <div class="employees-list">
-            <table class="employees-table">
-              <thead>
-                <tr>
-                  <th class="employee-photo"></th>
-                  <th *ngFor="let header of engineerTableHeaders">{{ header }}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let engineer of data">
-                  <td class="employee-photo"><img [src]="engineer.photo" alt="engineer "></td>
-                  <td>{{ engineer.firstName }} {{ engineer.lastName }}</td>
-                  <td>{{engineer.id}} </td>
-                  <td>{{ engineer.username }}</td>
-                  <td>{{ engineerTicketAssignedCounts[engineer.id]['RESOLVED'] }}</td>
-                  <td>{{ engineerTicketAssignedCounts[engineer.id]['UNDER_PROGRESS'] }}</td>
-                  <td>{{ engineerTicketAssignedCounts[engineer.id]['ASSIGNED'] }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </ng-container>
-        <ng-template #employeeListTemplate>
-          <div class="employees-list" *ngIf="dataType === 'employee';else adminListTemplate">
-            <table class=" employees-table">
-              <thead>
-                <tr>
-                  <th class="employee-photo"></th>
-                  <th *ngFor="let header of employeeTableHeaders">{{ header }}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let employee of data">
-                  <td class="employee-photo"><img [src]="employee.photo" alt="Employee "></td>
-                  <td>{{employee.id}} </td>
-                  <td>{{ employee.firstName }} {{ employee.lastName }}</td>
-                  <td>{{ employee.username }}</td>
-                  <td>{{ employeeTicketAssignedCounts[employee.id]['RAISED'] }}</td>
-                  <td>{{ employeeTicketAssignedCounts[employee.id]['UNDER_PROGRESS'] }}</td>
-                  <td>{{ employeeTicketAssignedCounts[employee.id]['RESOLVED'] }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </ng-template>
-        <ng-template #adminListTemplate>
-          <div class="employees-list">
-            <table class=" employees-table">
-              <thead>
-                <tr>
-                  <th class="employee-photo"></th>
-                  <th *ngFor="let header of adminTableHeaders">{{ header }}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let admin of data">
-                  <td class="employee-photo"><img [src]="admin.photo" alt="admin "></td>
-                  <td>{{ admin.firstName }} {{ admin.lastName }}</td>
-                  <td>{{admin.id}} </td>
-                  <td>{{ admin.username }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </ng-template>
-      </div>
-    </div>
+    <app-list [data]="data" [dataType]="dataType" [employeeTicketAssignedCounts]="employeeTicketAssignedCounts"
+      [engineerTicketAssignedCounts]="engineerTicketAssignedCounts"></app-list>
   </div>
+
 
   <!-- CARD VIEW -->
   <div *ngIf="viewType === 'card'" class="cardView">
-    <div class="grid-container">
-      <mat-grid-list cols="5" rowHeight="350px">
-        <mat-grid-tile *ngFor="let data of data" colspan="1" rowspan="1">
-          <ng-container *ngIf="dataType !=='engineer' && dataType!=='employee' ; else engineerTemplate">
-            <div class="box1 box">
-              <div class="empcontent">
-                <div class="empimage">
-                  <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile">
-                </div>
-                <div class="text">
-                  <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
-                </div>
-              </div>
-            </div>
-          </ng-container>
-          <ng-template #engineerTemplate>
-            <div class="box1 box" *ngIf="dataType === 'engineer';else employeeTemplate">
-              <div class="empcontent">
-                <div class="empimage">
-                  <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile">
-                </div>
-                <div class="text">
-                  <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
-                  <p class="job_title">Department</p>
-                  <p class="job_discription">Ticket Completed:{{ engineerTicketAssignedCounts[data.id]['RESOLVED'] }}
-                  </p>
-                  <p class="job_discription">Ticket In-Progress : {{
-                    engineerTicketAssignedCounts[data.id]['UNDER_PROGRESS']
-                    }}</p>
-                  <p class="job_discription">Ticket Assigned : {{ engineerTicketAssignedCounts[data.id]['ASSIGNED'] }}
-                  </p>
-                </div>
-
-                <div class="button">
-                  <div>
-                    <button class="connect" type="button">Assign Ticket</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ng-template>
-          <ng-template #employeeTemplate>
-            <div class="box1 box">
-              <div class="empcontent">
-                <div class="empimage">
-                  <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile">
-                </div>
-                <div class="text">
-                  <p class="name"> {{ data.firstName }} {{ data.lastName }}</p>
-                  <p class="job_title">Department</p>
-                  <p class="job_discription">Ticket Raised:{{ employeeTicketAssignedCounts[data.id]['RAISED'] }}
-                  </p>
-                  <p class="job_discription">Ticket In-Progress: {{
-                    employeeTicketAssignedCounts[data.id]['UNDER_PROGRESS']
-                    }}</p>
-                  <p class="job_discription">Ticket Resolved : {{ employeeTicketAssignedCounts[data.id]['RESOLVED'] }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </ng-template>
-        </mat-grid-tile>
-      </mat-grid-list>
-    </div>
+    <app-card [data]="data" [dataType]="dataType" [employeeTicketAssignedCounts]="employeeTicketAssignedCounts"
+      [engineerTicketAssignedCounts]="engineerTicketAssignedCounts"></app-card>
   </div>
+
 </div>
 
 <div *ngIf="displayComplaints">

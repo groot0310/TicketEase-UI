@@ -1,14 +1,13 @@
-import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
+import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatTable, MatTableModule } from '@angular/material/table';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTable } from '@angular/material/table';
+import { CardComponent } from '../card/card.component';
+import { ListComponent } from '../list/list.component';
 import { TicketComponent } from '../ticket/ticket.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,16 +15,14 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
   styleUrl: './dashboard.component.scss',
   standalone: true,
   imports: [
-    MatGridListModule,
-    FlexLayoutModule,
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule,
     CommonModule,
-    MatTableModule,
     TicketComponent,
     MatButtonToggleModule,
+    ListComponent,
+    CardComponent,
   ],
 })
 export class DashboardComponent {
@@ -37,23 +34,6 @@ export class DashboardComponent {
   @Input() complaints: any[] = [];
 
   viewType: 'table' | 'card' = 'table';
-  engineerTableHeaders = [
-    'ID',
-    'Name',
-    'Username',
-    'Ticket Resolved',
-    'Ticket In-Progress',
-    'Ticket Assigned',
-  ];
-  employeeTableHeaders = [
-    'ID',
-    'Name',
-    'Username',
-    'Ticket Raised',
-    'Ticket In-Progress',
-    'Ticket Resolved',
-  ];
-  adminTableHeaders = ['Name', 'ID', 'Username'];
 
   displayData: boolean = false;
   displayComplaints: boolean = false;

@@ -15,19 +15,19 @@
       <div *ngFor="let complaint of getComplaintsByStatus(status)">
         <mat-card class="ticket-card" *ngIf="!selectedFilter || selectedFilter === complaint.status">
           <div class="card-header">
-            <!-- <button mat-icon-button [matMenuTriggerFor]="assign" aria-label="Toggle menu">
+            <button mat-icon-button [matMenuTriggerFor]="assign" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
-            </button> -->
+            </button>
             <mat-menu #assign="matMenu">
               <button mat-menu-item (click)="deleteComplaint(complaint.id)">Remove</button>
               <button mat-menu-item (click)="openEngineerSuggestionDialog(complaint)">Assign To</button>
             </mat-menu>
-            
+
             <mat-card-header matRipple (click)="openTicketDetails(complaint)">
               <mat-card-title>{{ complaint.title }}</mat-card-title>
               <mat-card-subtitle>Status: {{ complaint.status }}</mat-card-subtitle>
             </mat-card-header>
-            
+
           </div>
 
           <!-- <mat-card-content>

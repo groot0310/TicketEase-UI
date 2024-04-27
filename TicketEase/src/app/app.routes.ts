@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { EmployeeComponent } from './pages/employee/employee.component';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,11 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'employee',
+    component: EmployeeComponent,
     pathMatch: 'full',
   },
 ];

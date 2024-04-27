@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BottomSheetComponent } from './bottom-sheet.component';
+import { EmployeeComponent } from './employee.component';
 
-describe('BottomSheetComponent', () => {
-  let component: BottomSheetComponent;
-  let fixture: ComponentFixture<BottomSheetComponent>;
+describe('EmployeeComponent', () => {
+  let component: EmployeeComponent;
+  let fixture: ComponentFixture<EmployeeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BottomSheetComponent]
+      imports: [EmployeeComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(BottomSheetComponent);
+    fixture = TestBed.createComponent(EmployeeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

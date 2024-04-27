@@ -17,6 +17,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { ApiService } from '../../../lib/api.service';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { DefaultDashboardComponent } from '../defaultDashboard/default-dashboard.component';
 import { AssignDialogComponent } from '../dialog/assign-dialog/assign-dialog.component';
 import { DialogComponent } from '../dialog/dialog.component';
 import { TicketComponent } from '../ticket/ticket.component';
@@ -41,6 +42,7 @@ import { TicketComponent } from '../ticket/ticket.component';
     MatDialogModule,
     MatMenuModule,
     TicketComponent,
+    DefaultDashboardComponent,
   ],
 })
 export class NavigationComponent implements OnInit {
@@ -71,7 +73,7 @@ export class NavigationComponent implements OnInit {
         ' ' +
         (params['loggerLast'] || '').toUpperCase();
     });
-    this.getComplaints();
+    // this.getComplaints();
   }
 
   openDialog(formType: string, heading: string): void {

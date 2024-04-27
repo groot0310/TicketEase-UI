@@ -85,7 +85,8 @@
       </div>
     </mat-toolbar>
     <ng-container *ngIf="showTicketFirst; else dashboardTemplate">
-      <app-ticket [complaints]="complaints" showTicketFirst=false></app-ticket>
+      <app-default-dashboard></app-default-dashboard>
+
     </ng-container>
     <ng-template #dashboardTemplate>
       <app-dashboard [data]="data" [complaints]="complaints" [dataType]="dataType"></app-dashboard>

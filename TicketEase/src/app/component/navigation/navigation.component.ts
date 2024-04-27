@@ -90,12 +90,13 @@ export class NavigationComponent implements OnInit {
           verticalPosition: 'top',
           horizontalPosition: 'center',
         });
-      } else
+      } else if (result) {
         this.snackBar.open('Successfully raised Complaint' + '!', '', {
           duration: 3000,
           verticalPosition: 'top',
           horizontalPosition: 'center',
         });
+      }
     });
   }
   isHandset$: Observable<boolean> = this.breakpointObserver

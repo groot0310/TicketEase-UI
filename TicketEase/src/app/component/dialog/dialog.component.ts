@@ -76,8 +76,6 @@ export class DialogComponent implements OnInit {
   onSubmit(): void {
     if (this.Form.valid) {
       const formData = this.Form.value;
-      console.log(formData);
-
       let apiCall: Observable<any>;
       if (this.role === 'ADMIN') {
         switch (this.formType) {

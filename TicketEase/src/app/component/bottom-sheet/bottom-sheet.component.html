@@ -2,24 +2,26 @@
   <div class="grid-item-ticket">
     <h2><mat-icon>receipt</mat-icon> Ticket Details</h2>
     <ul>
-      <li><span class="label">Title:</span> {{data.title}}</li>
-      <li><span class="label">Description:</span> {{data.description}}</li>
-      <li><span class="label">Raised By:</span> {{data.raisedBy.firstName}} {{data.raisedBy.lastName}}</li>
-      <li><span class="label">Assigned to:</span> {{ data.assignedTo ? data.raisedBy.firstName+"
-        "+data.raisedBy.lastName:
+      <li><span class="label">Title:</span> {{data.complaint.title}}</li>
+      <li><span class="label">Description:</span> {{data.complaint.description}}</li>
+      <li><span class="label">Raised By:</span> {{data.complaint.raisedBy.firstName}}
+        {{data.complaint.raisedBy.lastName}}</li>
+      <li><span class="label">Assigned to:</span> {{ data.complaint.assignedTo ? data.complaint.assignedTo.firstName+"
+        "+data.complaint.assignedTo.lastName:
         'Not Assigned' }}</li>
-      <li><span class="label">Status:</span> {{data.status}}</li>
-      <li><span class="label">ID:</span> {{data.id}}</li>
-      <li><span class="label">Raised On:</span> {{data.raised_On}}</li>
-      <li><span class="label">Last updated On:</span> {{data.last_Updated_On}}</li>
+      <li><span class="label">Status:</span> {{data.complaint.status}}</li>
+      <li><span class="label">ID:</span> {{data.complaint.id}}</li>
+      <li><span class="label">Raised On:</span> {{data.complaint.raised_On}}</li>
+      <li><span class="label">Last updated On:</span> {{data.complaint.last_Updated_On}}</li>
     </ul>
   </div>
   <div class="grid-item-emp">
     <h2><mat-icon>engineering</mat-icon> Assigned Engineer Details</h2>
-    <ul *ngIf="data.assignedTo; else noAssignment">
-      <li><span class="label">ID:</span> {{ data.assignedTo.id }}</li>
-      <li><span class="label">Name:</span> {{ data.assignedTo.firstName }} {{ data.assignedTo.lastName }}</li>
-      <li><span class="label">Username:</span> {{ data.assignedTo.username }}</li>
+    <ul *ngIf="data.complaint.assignedTo; else noAssignment">
+      <li><span class="label">ID:</span> {{ data.complaint.assignedTo.id }}</li>
+      <li><span class="label">Name:</span> {{ data.complaint.assignedTo.firstName }} {{
+        data.complaint.assignedTo.lastName }}</li>
+      <li><span class="label">Username:</span> {{ data.complaint.assignedTo.username }}</li>
     </ul>
     <ng-template #noAssignment>
       <ul>
@@ -27,10 +29,10 @@
       </ul>
     </ng-template>
 
-    <div *ngIf="data.status!=='RESOLVED'" class="button-container">
-      <button (click)=" assignTo()">{{ data.assignedTo ? 'Update Assign' : 'Assign To'
+    <div *ngIf="data.complaint.status!=='RESOLVED'" class="button-container">
+      <button *ngIf="role==='ADMIN'" (click)=" assignTo()">{{ data.complaint.assignedTo ? 'Update Assign' : 'Assign To'
         }}</button>
-      <button *ngIf="data.assignedTo" (click)="deleteComplaint(data.id)">Remove Ticket</button>
+      <button *ngIf="data.complaint.assignedTo" (click)="deleteComplaint(data.complaint.id)">Remove Ticket</button>
     </div>
   </div>
 

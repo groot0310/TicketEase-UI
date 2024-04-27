@@ -83,7 +83,6 @@ export class NavigationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
       if (this.role === 'ADMIN' && result) {
         this.snackBar.open('Successfully added ' + result.username + '!', '', {
           duration: 3000,

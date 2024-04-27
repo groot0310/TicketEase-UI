@@ -46,6 +46,7 @@ import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
 export class TicketComponent {
   @Input() complaints: any[] = [];
   @Input() matchingEngineers: any[] = [];
+  @Input() role: string = '';
   selectedFilter: string = '';
   selectedStatus: string = '  ';
   statuses: string[] = ['ASSIGNED', 'RESOLVED', 'UNASSIGNED', 'UNDER_PROGRESS'];
@@ -105,7 +106,7 @@ export class TicketComponent {
 
   openTicketDetails(complaint: any) {
     this._bottomSheet.open(BottomSheetComponent, {
-      data: complaint,
+      data: { complaint, role: this.role },
     });
   }
 }

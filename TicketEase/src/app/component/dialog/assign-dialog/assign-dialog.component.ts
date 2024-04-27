@@ -104,8 +104,6 @@ export class AssignDialogComponent {
   assignComplaint(complaintId: any, engineerId: any) {
     this.api.assignComplaint(complaintId, engineerId).subscribe({
       next: (data) => {
-        console.log(data);
-
         this.snackBar.open(
           `Complaint Assigned Successfully to ${data.assignedTo.firstName} ${data.assignedTo.lastName}`,
           '',

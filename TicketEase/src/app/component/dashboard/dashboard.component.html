@@ -27,7 +27,7 @@
 </div>
 
 <div *ngIf="displayComplaints">
-  <app-ticket [complaints]="complaints" [matchingEngineers]="matchingEngineers"></app-ticket>
+  <app-ticket [complaints]="complaints" [matchingEngineers]="matchingEngineers" [role]="role"></app-ticket>
 </div>
 
 <div class="data" *ngIf="!displayData && !displayComplaints">

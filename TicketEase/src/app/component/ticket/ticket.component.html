@@ -15,7 +15,7 @@
       <div *ngFor="let complaint of getComplaintsByStatus(status)">
         <mat-card class="ticket-card" *ngIf="!selectedFilter || selectedFilter === complaint.status">
           <div class="card-header">
-            <button mat-icon-button [matMenuTriggerFor]="assign" aria-label="Toggle menu">
+            <button *ngIf="role==='ADMIN'" mat-icon-button [matMenuTriggerFor]="assign" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #assign="matMenu">

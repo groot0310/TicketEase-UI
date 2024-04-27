@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import {
   MAT_BOTTOM_SHEET_DATA,
   MatBottomSheetRef,
@@ -20,10 +20,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class BottomSheetComponent {
   matchingEngineers: any[] = [];
-
+  @Input() role: string = '';
   constructor(
     private bottomSheetRef: MatBottomSheetRef<BottomSheetComponent>,
-    @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
+    @Inject(MAT_BOTTOM_SHEET_DATA)
+    public data: { complaint: any; role: string },
     private api: ApiService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar
@@ -40,7 +41,7 @@ export class BottomSheetComponent {
     const dialogRef = this.dialog.open(AssignDialogComponent, {
       data: {
         from: 'ticket',
-        complaintId: this.data.id,
+        complaintId: this.data.complaint.id,
         engineers: this.matchingEngineers,
       },
       disableClose: true,

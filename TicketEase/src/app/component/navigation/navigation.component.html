@@ -1,61 +1,91 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <div class="menu-container">
-      <button mat-raised-button
-        aria-label="Button that displays a tooltip that hides when scrolled out of the container" class="example-button"
-        style="background-color: #265190; color: aliceblue;">
-        ADMIN SECTION
-      </button>
+    <!-- ADMIN -->
+    <div *ngIf="this.role==='ADMIN';else EmployeeTemplate">
+      <div class="menu-container">
+        <button mat-raised-button
+          aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+          class="example-button" style="background-color: #265190; color: aliceblue;">
+          ADMIN SECTION
+        </button>
+      </div>
+      <mat-accordion>
+        <mat-expansion-panel style="margin:10px">
+          <mat-expansion-panel-header>
+            <mat-panel-title> ADMIN </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a id="a" mat-list-item (click)="openDialog('admin','Add New Admin')">Add new
+              admin</a>
+            <a id="a" mat-list-item (click)="getAdmin();showDefaultDashboard = false">List of Admin</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-accordion>
+        <mat-expansion-panel style="margin:10px">
+          <mat-expansion-panel-header>
+            <mat-panel-title> EMPLOYEE </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a id="a" mat-list-item (click)="openDialog('employee','Create New Employee')">Create Employee</a>
+            <a id="a" mat-list-item (click)="getEmployees();showDefaultDashboard = false">List of Employees</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-accordion>
+        <mat-expansion-panel style="margin:10px">
+          <mat-expansion-panel-header>
+            <mat-panel-title> ENGINEER </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a id="a" mat-list-item (click)="openDialog('engineer','Create New Engineer')">Create Engineer</a>
+            <a id="a" mat-list-item (click)="getEngineer();showDefaultDashboard = false">List of Engineer</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-accordion>
+        <mat-expansion-panel style="margin:10px">
+          <mat-expansion-panel-header>
+            <mat-panel-title> TICKET </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a id="a" mat-list-item (click)="getComplaints('complaints');showDefaultDashboard = false">List of
+              Complaint</a>
+            <a id="a" mat-list-item (click)="getUnassignedComplaints()">Assign Complaints</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
-    <mat-accordion>
-      <mat-expansion-panel style="margin:10px">
-        <mat-expansion-panel-header>
-          <mat-panel-title> ADMIN </mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a id="a" mat-list-item (click)="openDialog('admin','Add New Admin')">Add new
-            admin</a>
-          <a id="a" mat-list-item (click)="getAdmin();showTicketFirst = false">List of Admin</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-accordion>
+    <!-- END -->
+    <!-- Employee -->
+    <ng-template #EmployeeTemplate>
+      <div class="menu-container">
+        <button mat-raised-button
+          aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+          class="example-button" style="background-color: #265190; color: aliceblue;">
+          EMPLOYEE SECTION
+        </button>
+      </div>
+      <mat-accordion>
+        <mat-expansion-panel style="margin:10px">
+          <mat-expansion-panel-header>
+            <mat-panel-title> ADMIN </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a id="a" mat-list-item (click)="getComplaints('complaint');showDefaultDashboard = false">List of raised
+              Complaint</a>
 
-    <mat-accordion>
-      <mat-expansion-panel style="margin:10px">
-        <mat-expansion-panel-header>
-          <mat-panel-title> EMPLOYEE </mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a id="a" mat-list-item (click)="openDialog('employee','Create New Employee')">Create Employee</a>
-          <a id="a" mat-list-item (click)="getEmployees();showTicketFirst = false">List of Employees</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-accordion>
+            <a id="a" mat-list-item (click)="raiseComplaint();showDefaultDashboard = false">Raise a complaint</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
 
-    <mat-accordion>
-      <mat-expansion-panel style="margin:10px">
-        <mat-expansion-panel-header>
-          <mat-panel-title> ENGINEER </mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a id="a" mat-list-item (click)="openDialog('engineer','Create New Engineer')">Create Engineer</a>
-          <a id="a" mat-list-item (click)="getEngineer();showTicketFirst = false">List of Engineer</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-accordion>
-
-    <mat-accordion>
-      <mat-expansion-panel style="margin:10px">
-        <mat-expansion-panel-header>
-          <mat-panel-title> TICKET </mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a id="a" mat-list-item (click)="getComplaints();showTicketFirst = false">List of Complaint</a>
-          <a id="a" mat-list-item (click)="getUnassignedComplaints()">Assign Complaints</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-accordion>
+    </ng-template>
+    <!-- END -->
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -84,12 +114,12 @@
         </mat-menu>
       </div>
     </mat-toolbar>
-    <ng-container *ngIf="showTicketFirst; else dashboardTemplate">
+    <ng-container *ngIf="showDefaultDashboard; else dashboardTemplate">
       <app-default-dashboard></app-default-dashboard>
 
     </ng-container>
     <ng-template #dashboardTemplate>
-      <app-dashboard [data]="data" [complaints]="complaints" [dataType]="dataType"></app-dashboard>
+      <app-dashboard [data]="data" [complaints]="complaints" [dataType]="dataType" [role]="role"></app-dashboard>
 
     </ng-template>
   </mat-sidenav-content>

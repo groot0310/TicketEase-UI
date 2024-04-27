@@ -8,6 +8,7 @@ import { MatTable } from '@angular/material/table';
 import { CardComponent } from '../card/card.component';
 import { ListComponent } from '../list/list.component';
 import { TicketComponent } from '../ticket/ticket.component';
+import { ApiService } from '../../../lib/api.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,12 +27,14 @@ import { TicketComponent } from '../ticket/ticket.component';
   ],
 })
 export class DashboardComponent {
+  constructor(private api: ApiService) {}
   @ViewChild(MatTable)
   table!: MatTable<any>;
-
+  matchingEngineers: any[] = [];
   @Input() data: any[] = [];
   @Input() dataType: string = '';
   @Input() complaints: any[] = [];
+  @Input() role: string = '';
 
   viewType: 'table' | 'card' = 'table';
 
@@ -54,6 +57,9 @@ export class DashboardComponent {
       changes['complaints'] &&
       changes['complaints'].currentValue.length > 0
     ) {
+      if (this.role === 'ADMIN') {
+        this.getEngineers();
+      }
       this.displayData = false;
       this.displayComplaints = true;
     } else {
@@ -98,5 +104,11 @@ export class DashboardComponent {
     });
     this.engineerTicketAssignedCounts = engineerTicketCounts;
     this.employeeTicketAssignedCounts = employeeTicketCounts;
+  }
+
+  getEngineers() {
+    this.api.getEngineerList().subscribe((engineers: any[]) => {
+      this.matchingEngineers = engineers;
+    });
   }
 }

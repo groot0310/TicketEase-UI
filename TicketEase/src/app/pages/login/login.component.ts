@@ -73,13 +73,25 @@ export class LoginComponent implements OnInit {
     } else {
       this.api.login(this.user).subscribe({
         next: (data) => {
-          this.router.navigate(['/admin'], {
-            skipLocationChange: true,
-            queryParams: {
-              loggerFirst: data.body.firstName,
-              loggerLast: data.body.lastName,
-            },
-          });
+          if (data.body.role === 'ADMIN') {
+            this.router.navigate(['/admin'], {
+              skipLocationChange: true,
+              queryParams: {
+                loggerFirst: data.body.firstName,
+                loggerLast: data.body.lastName,
+                loggerRole: data.body.role,
+              },
+            });
+          } else if (data.body.role === 'EMPLOYEE') {
+            this.router.navigate(['/employee'], {
+              skipLocationChange: true,
+              queryParams: {
+                loggerFirst: data.body.firstName,
+                loggerLast: data.body.lastName,
+                loggerRole: data.body.role,
+              },
+            });
+          }
           this.snackBar.open(`Logged in as ${data.body.username}`, '', {
             duration: 3000,
             verticalPosition: 'top',

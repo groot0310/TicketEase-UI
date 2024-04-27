@@ -47,14 +47,14 @@ import { TicketComponent } from '../ticket/ticket.component';
 })
 export class NavigationComponent implements OnInit {
   loggerName: string = '';
-  loggerData: string = '';
+  role: string = '';
   hasLoggedIn: boolean = true;
   data: any[] = [];
   dataType: string = '';
   complaints: any[] = [];
   dialogComplaints: any[] = [];
 
-  showTicketFirst: boolean = true;
+  showDefaultDashboard: boolean = true;
   matchingEngineers: any[] = [];
 
   constructor(
@@ -72,8 +72,8 @@ export class NavigationComponent implements OnInit {
         (params['loggerFirst'] || '').toUpperCase() +
         ' ' +
         (params['loggerLast'] || '').toUpperCase();
+      this.role = params['loggerRole'] || '';
     });
-    // this.getComplaints();
   }
 
   openDialog(formType: string, heading: string): void {
@@ -145,10 +145,12 @@ export class NavigationComponent implements OnInit {
     });
   }
 
-  getComplaints(): void {
-    this.api.getComplaintsList().subscribe((complaint: any) => {
-      this.complaints = complaint;
-    });
+  getComplaints(complaint: string): void {
+    this.api
+      .getComplaintsList(this.role.toLowerCase(), complaint)
+      .subscribe((complaint: any) => {
+        this.complaints = complaint;
+      });
   }
 
   getUnassignedComplaints(): void {
@@ -179,4 +181,6 @@ export class NavigationComponent implements OnInit {
       disableClose: true,
     });
   }
+
+  raiseComplaint() {}
 }

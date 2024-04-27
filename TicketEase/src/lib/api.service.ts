@@ -20,6 +20,7 @@ export class ApiService {
     return this.http.get<any>(`${this.baseUrl}/authenticate/logout`);
   }
 
+  // ADMIN+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   createAdmin(data: any): Observable<HttpResponse<any>> {
     return this.http.post(`${this.baseUrl}/admin/create-admin`, data, {
       observe: 'response',
@@ -65,8 +66,8 @@ export class ApiService {
     });
   }
 
-  getComplaintsList(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/admin/complaints`, {
+  getComplaintsList(role: string, complaint: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/${role}/${complaint}`, {
       withCredentials: true,
     });
   }
@@ -89,4 +90,6 @@ export class ApiService {
       { withCredentials: true }
     );
   }
+
+  // EMPLOYEE+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 }

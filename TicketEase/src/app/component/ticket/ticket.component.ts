@@ -45,8 +45,7 @@ import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
 })
 export class TicketComponent {
   @Input() complaints: any[] = [];
-
-  matchingEngineers: any[] = [];
+  @Input() matchingEngineers: any[] = [];
   selectedFilter: string = '';
   selectedStatus: string = '  ';
   statuses: string[] = ['ASSIGNED', 'RESOLVED', 'UNASSIGNED', 'UNDER_PROGRESS'];
@@ -68,18 +67,10 @@ export class TicketComponent {
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private _bottomSheet: MatBottomSheet
-  ) {
-    this.getEngineers();
-  }
+  ) {}
 
   getComplaintsByStatus(status: string): any[] {
     return this.complaints.filter((complaint) => complaint.status === status);
-  }
-
-  getEngineers() {
-    this.api.getEngineerList().subscribe((engineers: any[]) => {
-      this.matchingEngineers = engineers;
-    });
   }
 
   openEngineerSuggestionDialog(complaint: any): void {

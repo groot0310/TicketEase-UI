@@ -211,8 +211,8 @@ export class NavigationComponent implements OnInit {
       error: (error) => {
         this.snackBar.open(error.error.message, '', {
           duration: 3000,
-          verticalPosition: 'top',
-          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
+          horizontalPosition: 'center',
         });
       },
     });

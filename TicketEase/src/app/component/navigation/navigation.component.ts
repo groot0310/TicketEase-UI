@@ -1,6 +1,13 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -21,6 +28,8 @@ import { DefaultDashboardComponent } from '../defaultDashboard/default-dashboard
 import { AssignDialogComponent } from '../dialog/assign-dialog/assign-dialog.component';
 import { DialogComponent } from '../dialog/dialog.component';
 import { TicketComponent } from '../ticket/ticket.component';
+import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-navigation',
@@ -43,6 +52,7 @@ import { TicketComponent } from '../ticket/ticket.component';
     MatMenuModule,
     TicketComponent,
     DefaultDashboardComponent,
+    FormsModule,
   ],
 })
 export class NavigationComponent implements OnInit {
@@ -56,15 +66,17 @@ export class NavigationComponent implements OnInit {
 
   showDefaultDashboard: boolean = true;
   matchingEngineers: any[] = [];
-
+  complaintId: string = '';
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute,
     private api: ApiService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private _bottomSheet: MatBottomSheet
   ) {}
   private breakpointObserver = inject(BreakpointObserver);
+  @ViewChild('dialogTemplate') dialogTemplate!: TemplateRef<any>;
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -185,6 +197,24 @@ export class NavigationComponent implements OnInit {
       disableClose: true,
     });
   }
+  openComplaintSearchBar() {
+    this.dialog.open(this.dialogTemplate);
+  }
 
-  raiseComplaint() {}
+  searchComplaint() {
+    this.api.searchComplaintById(this.complaintId).subscribe({
+      next: (complaint) => {
+        this._bottomSheet.open(BottomSheetComponent, {
+          data: { complaint, role: this.role },
+        });
+      },
+      error: (error) => {
+        this.snackBar.open(error.error.message, '', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+        });
+      },
+    });
+  }
 }

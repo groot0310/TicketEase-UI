@@ -78,8 +78,9 @@
           <mat-nav-list>
             <a id="a" mat-list-item (click)="getComplaints('complaint');showDefaultDashboard = false">List of raised
               Complaint</a>
-            <a id="a" mat-list-item
-              (click)="openDialog('employee','Raise New Ticket');showDefaultDashboard = false">Raise a complaint</a>
+            <a id="a" mat-list-item (click)="openDialog('employee','Raise New Ticket');">Raise a complaint</a>
+            <a id="a" mat-list-item (click)="openComplaintSearchBar();">Search complaint</a>
+
           </mat-nav-list>
         </mat-expansion-panel>
       </mat-accordion>
@@ -124,3 +125,10 @@
     </ng-template>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<ng-template #dialogTemplate>
+  <div class="search-container">
+    <input type="text" [(ngModel)]="complaintId" placeholder="Search...">
+    <button id="search-button" (click)="searchComplaint()">Search</button>
+  </div>
+</ng-template>

@@ -98,4 +98,13 @@ export class ApiService {
       withCredentials: true,
     });
   }
+
+  searchComplaintById(complaintID: string) {
+    return this.http.get<any[]>(
+      `${this.baseUrl}/employee/complaint/${complaintID}`,
+      {
+        withCredentials: true,
+      }
+    );
+  }
 }

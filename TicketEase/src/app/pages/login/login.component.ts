@@ -75,7 +75,6 @@ export class LoginComponent implements OnInit {
         next: (data) => {
           if (data.body.role === 'ADMIN') {
             this.router.navigate(['/admin'], {
-              skipLocationChange: true,
               queryParams: {
                 loggerFirst: data.body.firstName,
                 loggerLast: data.body.lastName,
@@ -84,7 +83,6 @@ export class LoginComponent implements OnInit {
             });
           } else if (data.body.role === 'EMPLOYEE') {
             this.router.navigate(['/employee'], {
-              skipLocationChange: true,
               queryParams: {
                 loggerFirst: data.body.firstName,
                 loggerLast: data.body.lastName,

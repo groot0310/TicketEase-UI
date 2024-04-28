@@ -1,9 +1,10 @@
 .mat-drawer-content {
-  background: #E9EDF3;
+  background: rgb(255,255,255);
+background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(239,212,169,1) 100%);
 }
 
 .toolbar {
-  background-color: #265190;
+  background-color: black;
   width: 100%;
 }
 .mat-expansion-panel{
@@ -22,7 +23,7 @@
   margin-top: 6%;
   margin-bottom: 2%;
   border-radius: 10px;
-  background-color: #f0f0f0; /* Gradient from light to dark blue */
+  background-color: #fcf8f0; /* Gradient from light to dark blue */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 

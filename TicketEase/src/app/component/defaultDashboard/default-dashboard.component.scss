@@ -1,5 +1,12 @@
 $transition-time: 2.3s;
 
+.def-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: 3%;
+  }
+
 .card{
 	position: relative;
 	height: 300px;
@@ -65,13 +72,16 @@ $transition-time: 2.3s;
 			background: rgba(0,0,0,.4);
 		}
 		&.item-a{
-			background-image: url('https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb?auto=format&fit=crop&w=600&q=80');
+			background-image: url(..//..//../assets/admin_bg.avif);
 		}
 		&.item-b{
-			background-image: url('https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=600&q=80');
+			background-image: url(..//..//../assets/emp_bg.avif);
 		}
 		&.item-c{
-			background-image: url('https://images.unsplash.com/photo-1525945518069-b924046d1385?auto=format&fit=crop&w=600&q=80');
+			background-image: url(..//..//../assets/eng_bg.avif);
+		}
+		&.item-d{
+			background-image: url(..//..//../assets/ticket_bg.avif);
 		}
 		h1{
 			font-weight: 600;
@@ -82,7 +92,7 @@ $transition-time: 2.3s;
 			transform-style: preserve-3d;
   		transition: ease all $transition-time;
 			z-index:3;
-			font-size: 3em;
+			font-size: 2em;
 			transform: translateZ(0px);
 		}
 		.price{

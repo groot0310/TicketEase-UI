@@ -1,0 +1,31 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-content>
+    <mat-toolbar class="toolbar" color="primary">
+      <div fxLayout="row" fxLayoutAlign="center center" style="cursor: pointer" class="flex-item">
+        <img src="../../../assets/logo.jpg" alt="App Image" class="logo" />
+        <span class="logo_name">TicketEase</span>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center" style="cursor: pointer" class="flex-item">
+        <img src="../../../assets/image.png" alt="Profile Image" class="image" />
+        <span class="name">{{this.loggerName}}</span>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logout()">
+            <mat-icon aria-hidden="false" aria-label="logout icon" fontIcon="logout" [ariaSetSize]="50"
+              color="warn"></mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+    <ng-container *ngIf="showDefaultDashboard; else ticketsTemplate">
+      <app-default-dashboard></app-default-dashboard>
+    </ng-container>
+    <ng-template #ticketsTemplate>
+      <app-ticket [complaints]="complaints" showDefaultDashboard="false"></app-ticket>
+    </ng-template>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<router-outlet></router-outlet>

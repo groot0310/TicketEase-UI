@@ -89,6 +89,14 @@ export class LoginComponent implements OnInit {
                 loggerRole: data.body.role,
               },
             });
+          } else {
+            this.router.navigate(['/engineer'], {
+              queryParams: {
+                loggerFirst: data.body.firstName,
+                loggerLast: data.body.lastName,
+                loggerRole: data.body.role,
+              },
+            });
           }
           this.snackBar.open(`Logged in as ${data.body.username}`, '', {
             duration: 3000,

@@ -92,7 +92,8 @@
   <mat-sidenav-content>
     <mat-toolbar class="toolbar" color="primary">
       @if (isHandset$ | async) {
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+      <button *ngIf="this.role!=='ENGINEER'" type="button" aria-label="Toggle sidenav" mat-icon-button
+        (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       }
@@ -115,13 +116,12 @@
         </mat-menu>
       </div>
     </mat-toolbar>
-    <ng-container *ngIf="showDefaultDashboard; else dashboardTemplate">
+    <ng-container *ngIf="showDefaultDashboard && this.role!=='ENGINEER'; else dashboardTemplate">
       <app-default-dashboard></app-default-dashboard>
 
     </ng-container>
     <ng-template #dashboardTemplate>
       <app-dashboard [data]="data" [complaints]="complaints" [dataType]="dataType" [role]="role"></app-dashboard>
-
     </ng-template>
   </mat-sidenav-content>
 </mat-sidenav-container>

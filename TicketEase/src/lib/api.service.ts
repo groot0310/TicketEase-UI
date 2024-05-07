@@ -107,4 +107,26 @@ export class ApiService {
       }
     );
   }
+
+  // Engineer+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  getEngineerComplaintsList(): Observable<any[]> {
+    return this.http.get<any[]>(
+      `${this.baseUrl}/engineer/complaints/assigned`,
+      {
+        withCredentials: true,
+      }
+    );
+  }
+
+  updateComplaintStatus(
+    complaintId: string,
+    newStatus: string
+  ): Observable<any> {
+    const url = `${this.baseUrl}/engineer/complaint/update`;
+    const params = new HttpParams()
+      .set('complaintId', complaintId)
+      .set('remarks', newStatus)
+      .set('status', newStatus);
+    return this.http.put(url, {}, { params, withCredentials: true });
+  }
 }

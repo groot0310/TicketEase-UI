@@ -30,7 +30,16 @@
     </ng-template>
 
     <div *ngIf="data.complaint.status!=='RESOLVED'" class="button-container">
-      <button *ngIf="role==='ADMIN'" (click)=" assignTo()">{{ data.complaint.assignedTo ? 'Update Assign' : 'Assign To'
+
+      <button *ngIf="role==='ENGINEER'" mat-button [matMenuTriggerFor]="menu">Update Status</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngFor="let status of statusOptions" [disabled]="status === data.complaint.status"
+          (click)="updateStatus(data.complaint.id, status)">
+          {{ status }}
+        </button>
+      </mat-menu>
+      <button *ngIf="role==='ADMIN'" (click)=" assignTo()">{{ data.complaint.assignedTo ? 'Update Assign' :
+        'Assign To'
         }}</button>
       <button *ngIf="data.complaint.assignedTo" (click)="deleteComplaint(data.complaint.id)">Remove Ticket</button>
     </div>

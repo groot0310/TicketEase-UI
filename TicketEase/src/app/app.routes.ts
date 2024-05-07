@@ -4,6 +4,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { DefaultDashboardComponent } from './component/defaultDashboard/default-dashboard.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
+import { EngineerComponent } from './pages/engineer/engineer.component';
 
 export const routes: Routes = [
   {
@@ -24,6 +25,11 @@ export const routes: Routes = [
   {
     path: 'employee',
     component: EmployeeComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'engineer',
+    component: EngineerComponent,
     pathMatch: 'full',
   },
 ];

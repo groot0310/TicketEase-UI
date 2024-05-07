@@ -20,12 +20,9 @@
         </mat-menu>
       </div>
     </mat-toolbar>
-    <ng-container *ngIf="showDefaultDashboard; else ticketsTemplate">
-      <app-default-dashboard></app-default-dashboard>
+    <ng-container>
+      <app-ticket [complaints]="complaints" [role]="this.role"></app-ticket>
     </ng-container>
-    <ng-template #ticketsTemplate>
-      <app-ticket [complaints]="complaints" showDefaultDashboard="false"></app-ticket>
-    </ng-template>
   </mat-sidenav-content>
 </mat-sidenav-container>
 <router-outlet></router-outlet>

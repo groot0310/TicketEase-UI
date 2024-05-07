@@ -36,7 +36,7 @@ import { DefaultDashboardComponent } from '../../component/defaultDashboard/defa
 export class EngineerComponent implements OnInit {
   loggerName: string = '';
   role: string = '';
-  showDefaultDashboard: boolean = true;
+  showDefaultDashboard: boolean = false;
   complaints: any[] = [];
   constructor(
     private api: ApiService,

@@ -2,8 +2,9 @@
   <div class="heading">
     <h1 class="mat-display-2">{{heading}}</h1>
   </div>
-  <form [formGroup]="Form" (ngSubmit)="onSubmit()">
-    <div *ngIf="role==='ADMIN';else employeeTemplate">
+  <div *ngIf="role==='ADMIN';else employeeTemplate">
+
+    <form [formGroup]="Form" (ngSubmit)="onSubmit()">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>First Name</mat-label>
         <input matInput formControlName="firstName" placeholder="Enter First Name" />
@@ -47,8 +48,18 @@
             aria-hidden="false"></mat-icon>
         </mat-button>
       </mat-form-field>
-    </div>
-    <ng-template #employeeTemplate>
+      <div style=" text-align: center;">
+        <button mat-raised-button color="primary" type="submit" [disabled]="Form.invalid">
+          Submit
+        </button>
+        <button mat-raised-button color="primary" (click)="onCancel($event)">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+  <ng-template #employeeTemplate>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Title</mat-label>
         <input matInput formControlName="title" placeholder="Enter Complaint Title" />
@@ -63,15 +74,16 @@
           Description is required
         </mat-error>
       </mat-form-field>
-    </ng-template>
+      <div style=" text-align: center;">
+        <button mat-raised-button color="primary" type="submit" [disabled]="employeeForm.invalid">
+          Submit
+        </button>
+        <button mat-raised-button color="primary" (click)="onCancel($event)">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </ng-template>
 
-    <div style=" text-align: center;">
-      <button mat-raised-button color="primary" type="submit" [disabled]="Form.invalid">
-        Submit
-      </button>
-      <button mat-raised-button color="primary" (click)="onCancel($event)">
-        Cancel
-      </button>
-    </div>
-  </form>
+
 </div>

@@ -95,11 +95,15 @@ export class DialogComponent implements OnInit {
             return;
         }
       } else {
-        apiCall = this.api.raisedComplaint(formData);
+        apiCall = this.api.raisedComplaint(employeeformData);
       }
       apiCall.subscribe({
         next: (data) => {
-          this.dialogRef.close(formData);
+          if (this.Form.valid) {
+            this.dialogRef.close(formData);
+          } else if (this.employeeForm.valid) {
+            this.dialogRef.close(employeeformData);
+          }
         },
         error: (error) => {
           let errorMessage = 'Something went wrong';

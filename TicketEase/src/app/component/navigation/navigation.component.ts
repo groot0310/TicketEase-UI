@@ -187,6 +187,7 @@ export class NavigationComponent implements OnInit {
       },
     });
   }
+
   openEngineerSuggestionDialog(complaint: any): void {
     this.dialog.open(AssignDialogComponent, {
       data: {
@@ -197,6 +198,7 @@ export class NavigationComponent implements OnInit {
       disableClose: true,
     });
   }
+
   openComplaintSearchBar() {
     this.dialog.open(this.dialogTemplate);
   }

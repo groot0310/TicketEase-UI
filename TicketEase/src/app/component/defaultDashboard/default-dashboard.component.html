@@ -1,48 +1,98 @@
-<section>
-  <div class="def-row">
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <div class="card">
-        <div class="cover item-a">
-          <h1>ADMIN</h1>
-          <div class="card-back">
-            <a href="#">View detail</a>
-            <a href="#">ADD</a>
+<div *ngIf="this.role==='ADMIN';else employeeTemplate">
+  <section>
+    <div class="def-row">
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="card">
+          <div class="cover item-a">
+            <h1>ADMIN</h1>
+            <div class="card-back">
+              <a (click)="getAdmin();"> List of Admin </a>
+              <a (click)="openDialog('admin','Add New Admin')">Add new admin</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="card">
+          <div class="cover item-b">
+            <h1>EMPLOYEE</h1>
+            <div class="card-back">
+              <a (click)="openDialog('employee','Create New Employee')">Create Employee</a>
+              <a (click)="getEmployees()">List of Employees</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=" col-md-3 col-sm-6 col-xs-12">
+        <div class="card">
+          <div class="cover item-c">
+            <h1>ENGINEER</h1>
+            <div class="card-back">
+              <a (click)="openDialog('engineer','Create New Engineer')">Create Engineer</a>
+              <a (click)="getEngineer()">List of Engineer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="card">
+          <div class="cover item-d">
+            <h1>TICKET</h1>
+            <div class="card-back">
+              <a (click)="getComplaints('complaints')">List of Complaint</a>
+              <a (click)="getUnassignedComplaints()">Assign Complaints</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <div class="card">
-        <div class="cover item-b">
-          <h1>EMPLOYEE</h1>
-          <div class="card-back">
-            <a href="#">View detail</a>
-            <a href="#">ADD</a>
+  </section>
+</div>
+<ng-template #employeeTemplate>
+  <div>
+    <section>
+      <div class="def-row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="card">
+            <div class="cover item-a">
+              <h1>COMPLAINTS</h1>
+              <div class="card-back">
+                <a (click)="getComplaints('complaint');showDefaultDashboard = false">List of raised
+                  Complaint</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="card">
+            <div class="cover item-b">
+              <h1>RAISE COMPLAINT</h1>
+              <div class="card-back">
+                <a (click)="openDialog('employee','Raise New Ticket');">Raise a complaint</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=" col-md-3 col-sm-6 col-xs-12">
+          <div class="card">
+            <div class="cover item-c">
+              <h1>SEARCH COMPLAINT</h1>
+              <div class="card-back">
+                <a (click)="openComplaintSearchBar();">Search complaint</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <div class="card">
-        <div class="cover item-c">
-          <h1>ENGINEER</h1>
-          <div class="card-back">
-            <a href="#">View detail</a>
-            <a href="#">ADD</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <div class="card">
-        <div class="cover item-d">
-          <h1>TICKET</h1>
-          <div class="card-back">
-            <a href="#">View detail</a>
-            <a href="#">ADD</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
-</section>
+</ng-template>
+<ng-template #dialogTemplate>
+  <div class="search-container">
+    <input type="text" [(ngModel)]="complaintId" placeholder="Enter complaint ID..">
+    <button id="search-button" (click)="searchComplaint()">Search</button>
+  </div>
+</ng-template>
+<ng-container>
+  <app-dashboard [data]="data" [complaints]="complaints" [dataType]="dataType" [role]="role"></app-dashboard>
+</ng-container>

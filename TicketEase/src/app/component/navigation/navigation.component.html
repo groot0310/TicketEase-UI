@@ -119,7 +119,7 @@
       </div>
     </mat-toolbar>
     <ng-container *ngIf="showDefaultDashboard && this.role!=='ENGINEER'; else dashboardTemplate">
-      <app-default-dashboard></app-default-dashboard>
+      <app-default-dashboard [role]="this.role"></app-default-dashboard>
 
     </ng-container>
     <ng-template #dashboardTemplate>

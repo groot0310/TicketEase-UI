@@ -12,6 +12,7 @@ import { ApiService } from '../../../lib/api.service';
 import { NavigationComponent } from '../../component/navigation/navigation.component';
 import { TicketComponent } from '../../component/ticket/ticket.component';
 import { DefaultDashboardComponent } from '../../component/defaultDashboard/default-dashboard.component';
+import { TestComponent } from '../../component/test/test.component';
 
 @Component({
   selector: 'app-engineer',
@@ -19,6 +20,7 @@ import { DefaultDashboardComponent } from '../../component/defaultDashboard/defa
   templateUrl: './engineer.component.html',
   styleUrl: './engineer.component.scss',
   imports: [
+    TestComponent,
     NavigationComponent,
     RouterOutlet,
     CommonModule,

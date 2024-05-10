@@ -1,54 +1,208 @@
 <div class="listTable" *ngIf="data.length > 0">
   <div class="great-container">
     <ng-container *ngIf="dataType === 'engineer'; else employeeListTemplate">
-      <div class="employees-list">
-        <table class="employees-table">
-          <thead>
-            <tr>
-              <th class="employee-photo"></th>
-              <th *ngFor="let header of engineerTableHeaders">{{ header }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let engineer of data">
-              <td class="employee-photo"><img [src]="engineer.photo" alt="engineer "></td>
-              <td>{{ engineer.firstName }} {{ engineer.lastName }}</td>
-              <td>{{engineer.id}} </td>
-              <td>{{ engineer.username }}</td>
-              <td>{{ engineerTicketAssignedCounts[engineer.id]['RESOLVED'] }}</td>
-              <td>{{ engineerTicketAssignedCounts[engineer.id]['UNDER_PROGRESS'] }}</td>
-              <td>{{ engineerTicketAssignedCounts[engineer.id]['ASSIGNED'] }}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-margin">
+              <div class="card-body">
+                <div class="row search-body">
+                  <div class="col-lg-12">
+                    <div class="search-result">
+                      <div class="result-body">
+                        <div class="table-responsive">
+                          <table class="table widget-26">
+                            <tr>
+                              <td>
+                                <div class="widget-26-job-emp-img">
+                                  <img src=img alt="Company" />
+                                </div>
+                              </td>
+                              <td>
+                                <div class="widget-26-job-title">
+                                  <a>FULL NAME</a>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="widget-26-job-info">
+                                  <p class="type m-0">Ticket Assign</p>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="widget-26-job-info">
+                                  <p class="type m-0">Ticket In-Progress</p>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="widget-26-job-info">
+                                  <p class="type m-0">Ticket Resolved</p>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="widget-26-job-category bg-soft-base">
+                                  <i class="indicator bg-base"></i>
+                                  <span>ID</span>
+                                </div>
+                              </td>
+                            </tr>
+                            <tbody>
+                              <tr *ngFor="let engineer of data">
+                                <td>
+                                  <div class="widget-26-job-emp-img">
+                                    <img src=img alt="Company" />
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="widget-26-job-title">
+                                    <a>{{ engineer.firstName }} {{ engineer.lastName }}</a>
+                                    <p class="m-0"><a href="#" class="employer-name">username: {{ engineer.username
+                                        }}</a>
+                                    </p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="widget-26-job-info">
+                                    <p class="type m-0">{{ engineerTicketAssignedCounts[engineer.id]['ASSIGNED'] }}
+                                    </p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="widget-26-job-info">
+                                    <p class="type m-0">{{ engineerTicketAssignedCounts[engineer.id]['UNDER_PROGRESS']
+                                      }}</p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="widget-26-job-info">
+                                    <p class="type m-0">{{ engineerTicketAssignedCounts[engineer.id]['RESOLVED'] }}
+                                    </p>
+                                  </div>
+                                </td>
+
+                                <td>
+                                  <div class="widget-26-job-category bg-soft-base">
+                                    <i class="indicator bg-base"></i>
+                                    <span>{{engineer.id}}</span>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </ng-container>
     <ng-template #employeeListTemplate>
       <div class="employees-list" *ngIf="dataType === 'employee';else adminListTemplate">
-        <table class=" employees-table">
-          <thead>
-            <tr>
-              <th class="employee-photo"></th>
-              <th *ngFor="let header of employeeTableHeaders">{{ header }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let employee of data">
-              <td class="employee-photo"><img [src]="employee.photo" alt="Employee "></td>
-              <td>{{employee.id}} </td>
-              <td>{{ employee.firstName }} {{ employee.lastName }}</td>
-              <td>{{ employee.username }}</td>
-              <td>{{ employeeTicketAssignedCounts[employee.id]['RAISED'] }}</td>
-              <td>{{ employeeTicketAssignedCounts[employee.id]['UNDER_PROGRESS'] }}</td>
-              <td>{{ employeeTicketAssignedCounts[employee.id]['RESOLVED'] }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="card card-margin">
+                <div class="card-body">
+                  <div class="row search-body">
+                    <div class="col-lg-12">
+                      <div class="search-result">
+                        <div class="result-body">
+                          <div class="table-responsive">
+                            <table class="table widget-26">
+                              <tr>
+                                <td>
+                                  <div class="widget-26-job-emp-img">
+                                    <img src=img alt="Company" />
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="widget-26-job-title">
+                                    <a>FULL NAME</a>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="widget-26-job-info">
+                                    <p class="type m-0">Ticket Raised</p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="widget-26-job-info">
+                                    <p class="type m-0">Ticket In-Progress</p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="widget-26-job-info">
+                                    <p class="type m-0">Ticket Resolved</p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="widget-26-job-category bg-soft-base">
+                                    <i class="indicator bg-base"></i>
+                                    <span>ID</span>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tbody>
+                                <tr *ngFor="let employee of data">
+                                  <td>
+                                    <div class="widget-26-job-emp-img">
+                                      <img src=img alt="Company" />
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="widget-26-job-title">
+                                      <a>{{ employee.firstName }} {{ employee.lastName }}</a>
+                                      <p class="m-0"><a href="#" class="employer-name">username: {{ employee.username
+                                          }}</a>
+                                      </p>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="widget-26-job-info">
+                                      <p class="type m-0">{{ employeeTicketAssignedCounts[employee.id]['RAISED'] }}
+                                      </p>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="widget-26-job-info">
+                                      <p class="type m-0">{{ employeeTicketAssignedCounts[employee.id]['UNDER_PROGRESS']
+                                        }}</p>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="widget-26-job-info">
+                                      <p class="type m-0">{{ employeeTicketAssignedCounts[employee.id]['RESOLVED'] }}
+                                      </p>
+                                    </div>
+                                  </td>
+
+                                  <td>
+                                    <div class="widget-26-job-category bg-soft-base">
+                                      <i class="indicator bg-base"></i>
+                                      <span>{{employee.id}}</span>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </ng-template>
     <ng-template #adminListTemplate>
       <div class="employees-list">
-        <table class=" employees-table">
+        <!-- <table class=" employees-table">
           <thead>
             <tr>
               <th class="employee-photo"></th>
@@ -63,7 +217,87 @@
               <td>{{ admin.username }}</td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="card card-margin">
+                <div class="card-body">
+                  <div class="row search-body">
+                    <div class="col-lg-12">
+                      <div class="search-result">
+                        <div class="result-body">
+                          <div class="table-responsive">
+                            <table class="table widget-26">
+                              <tr>
+                                <td>
+                                  <div class="widget-26-job-emp-img">
+                                    <img src=img alt="Company" />
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="widget-26-job-title">
+                                    <a>FIRST NAME</a>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="widget-26-job-title">
+                                    <a>LAST NAME</a>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="widget-26-job-info">
+                                    <p class="type m-0">Username</p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="widget-26-job-category bg-soft-base">
+                                    <i class="indicator bg-base"></i>
+                                    <span>ID</span>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tbody>
+                                <tr *ngFor="let admin of data">
+                                  <td>
+                                    <div class="widget-26-job-emp-img">
+                                      <img src=img alt="Company" />
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="widget-26-job-title">
+                                      <a>{{admin.firstName}}</a>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="widget-26-job-title">
+                                      <a>{{admin.lastName}}</a>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="widget-26-job-info">
+                                      <p class="type m-0">{{admin.username}}</p>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="widget-26-job-category bg-soft-base">
+                                      <i class="indicator bg-base"></i>
+                                      <span>{{admin.id}}</span>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </ng-template>
   </div>

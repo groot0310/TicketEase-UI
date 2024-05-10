@@ -1,211 +1,255 @@
-.listTable {
-  margin: 0 25px 20px 25px;
+body{
+  background:#dcdcdc;
+  margin-top:20px;}
+
+.widget-26 {
+color: #3c4142;
+font-weight: 400;
 }
 
-.great-container {
-  width: 100%;
-  margin: auto;
-  background-color: #ebeaeb;
-  border-radius: 25px;
+.widget-26 tr:first-child td {
+border: 0;
 }
 
-.employees-list {
-  margin-top: 20px;
+.widget-26 .widget-26-job-emp-img img {
+width: 35px;
+height: 35px;
+border-radius: 50%;
 }
 
-.employee-photo {
-  width: 100px;
+.widget-26 .widget-26-job-title {
+min-width: 200px;
 }
 
-.employees-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #D6EAF8;
-  /* Very light blue table background */
+.widget-26 .widget-26-job-title a {
+font-weight: 400;
+font-size: 0.875rem;
+color: #3c4142;
+line-height: 1.5;
 }
 
-.employees-table th,
-.employees-table td {
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #CCCCCC;
-  /* Light gray border */
-  color: #333333;
-  /* Dark gray text color */
-  border-radius: 5px;
+.widget-26 .widget-26-job-title a:hover {
+color: #68CBD7;
+text-decoration: none;
 }
 
-.employees-table th {
-  background-color: #f0f0f0;
-  border-radius: 10px;
-  /* Slightly darker blue header background */
+.widget-26 .widget-26-job-title .employer-name {
+margin: 0;
+line-height: 1.5;
+font-weight: 400;
+color: #3c4142;
+font-size: 0.8125rem;
+color: #3c4142;
 }
 
-.employees-table tr:nth-child(even) {
-  background-color: #f7f5f9;
-  /* Alternate row background color same as table background */
+.widget-26 .widget-26-job-title .employer-name:hover {
+color: #68CBD7;
+text-decoration: none;
 }
 
-
-.employee-photo img {
-  border-radius: 50%;
-  max-width: 100%;
-  height: auto;
+.widget-26 .widget-26-job-title .time {
+font-size: 12px;
+font-weight: 400;
 }
 
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+.widget-26 .widget-26-job-info {
+min-width: 100px;
+font-weight: 400;
 }
 
-.cf:after {
-  content: ".";
-  visibility: hidden;
-  display: block;
-  height: 0;
-  clear: both;
+.widget-26 .widget-26-job-info p {
+line-height: 1.5;
+color: #3c4142;
+font-size: 0.8125rem;
 }
 
-.page {
-  margin: 50px auto;
-  width: 70%;
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 50px;
+.widget-26 .widget-26-job-info .location {
+color: #3c4142;
 }
 
-.page-header {
-  margin-bottom: 20px;
+.widget-26 .widget-26-job-salary {
+min-width: 70px;
+font-weight: 400;
+color: #3c4142;
+font-size: 0.8125rem;
 }
 
-.page-header h2 {
-  float: left;
-  font-size: 22px;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #555;
+.widget-26 .widget-26-job-category {
+padding: .5rem;
+display: inline-flex;
+white-space: nowrap;
+border-radius: 15px;
 }
 
-.page-header .student-search {
-  float: right;
+.widget-26 .widget-26-job-category .indicator {
+width: 13px;
+height: 13px;
+margin-right: .5rem;
+float: left;
+border-radius: 50%;
 }
 
-.page-header .student-search input {
-  border-radius: 5px;
-  border: 1px solid #eaeaea;
-  padding: 8px 15px;
-  font-size: 14px;
+.widget-26 .widget-26-job-category span {
+font-size: 0.8125rem;
+color: #3c4142;
+font-weight: 600;
 }
 
-.page-header .student-search button {
-  border-radius: 5px;
-  border: 1px solid #eaeaea;
-  padding: 8px 15px;
-  font-size: 14px;
-  background-color: #4ba6c3;
-  color: #fff
+.widget-26 .widget-26-job-starred svg {
+width: 20px;
+height: 20px;
+color: #fd8b2c;
 }
 
-
-.student-item {
-  margin: 0 0 20px 0;
-  padding: 0 0 20px 0;
-  border-bottom: 1px solid #eaeaea;
+.widget-26 .widget-26-job-starred svg.starred {
+fill: #fd8b2c;
 }
-
-.student-details {
-  width: 50%;
-  float: left;
+.bg-soft-base {
+background-color: #e1f5f7;
 }
-
-.student-details .avatar {
-  width: 40px;
-  height: auto;
-  border-radius: 20px;
-  float: left;
-  margin-right: 14px
+.bg-soft-warning {
+  background-color: #fff4e1;
 }
-
-.student-details h3 {
-  margin: 4px 0 2px 0;
-  font-weight: bold;
-  color: #4ba6c3;
+.bg-soft-success {
+  background-color: #d1f6f2;
+}
+.bg-soft-danger {
+  background-color: #fedce0;
+}
+.bg-soft-info {
+  background-color: #d7efff;
 }
 
 
-
-
-.joined-details {
-  width: 50%;
-  float: left;
-  text-align: right;
+.search-form {
+width: 80%;
+margin: 0 auto;
+margin-top: 1rem;
 }
 
-.joined-details .date {
-  margin-top: 15px;
-  display: block;
-  font-size: 14px;
-  color: #999;
+.search-form input {
+height: 100%;
+background: transparent;
+border: 0;
+display: block;
+width: 100%;
+padding: 1rem;
+height: 100%;
+font-size: 1rem;
 }
 
-.student-item:last-child {
-  margin: 0;
-  padding: 0;
-  border-bottom: none;
+.search-form select {
+background: transparent;
+border: 0;
+padding: 1rem;
+height: 100%;
+font-size: 1rem;
 }
 
-.pagination {
-  margin: 40px 0 0 0;
-  text-align: center;
+.search-form select:focus {
+border: 0;
 }
 
-.pagination li {
-  display: inline;
+.search-form button {
+height: 100%;
+width: 100%;
+font-size: 1rem;
 }
 
-.pagination li a {
-  border: 1px solid #eaeaea;
-  border-radius: 5px;
-  padding: 3px 8px;
-  text-decoration: none;
-  color: #4ba6c3;
+.search-form button svg {
+width: 24px;
+height: 24px;
 }
 
-.pagination li a.active,
-.pagination li a:hover {
-  background-color: #4ba6c3;
-  color: #fff;
+.search-body {
+margin-bottom: 1.5rem;
 }
 
-
-/* Style for the table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.search-body .search-filters .filter-list {
+margin-bottom: 1.3rem;
 }
 
-/* Style for table header cells */
-th {
-  background-color: #f2f2f2;
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: center;
-  /* Center align text */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.search-body .search-filters .filter-list .title {
+color: #3c4142;
+margin-bottom: 1rem;
 }
 
-/* Style for table data cells */
-td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: center;
-  /* Center align text */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.search-body .search-filters .filter-list .filter-text {
+color: #727686;
 }
 
-/* Style for alternating row colors */
-tr:nth-child(even) {
-  background-color: #f7f7f7;
+.search-body .search-result .result-header {
+margin-bottom: 2rem;
 }
+
+.search-body .search-result .result-header .records {
+color: #3c4142;
+}
+
+.search-body .search-result .result-header .result-actions {
+text-align: right;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.search-body .search-result .result-header .result-actions .result-sorting {
+display: flex;
+align-items: center;
+}
+
+.search-body .search-result .result-header .result-actions .result-sorting span {
+flex-shrink: 0;
+font-size: 0.8125rem;
+}
+
+.search-body .search-result .result-header .result-actions .result-sorting select {
+color: #68CBD7;
+}
+
+.search-body .search-result .result-header .result-actions .result-sorting select option {
+color: #3c4142;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+.search-body .search-filters {
+  display: flex;
+}
+.search-body .search-filters .filter-list {
+  margin-right: 1rem;
+}
+}
+
+.card-margin {
+  margin-bottom: 1.875rem;
+}
+
+@media (min-width: 992px){
+.col-lg-2 {
+  flex: 0 0 16.66667%;
+  max-width: 16.66667%;
+}
+}
+
+.card-margin {
+  margin-bottom: 1.875rem;
+}
+.card {
+  border: 0;
+  box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #ffffff;
+  background-clip: border-box;
+  border: 1px solid #e6e4e9;
+  border-radius: 8px;
+}
+

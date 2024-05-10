@@ -85,6 +85,7 @@ export class NavigationComponent implements OnInit {
         ' ' +
         (params['loggerLast'] || '').toUpperCase();
       this.role = params['loggerRole'] || '';
+      this.getComplaints('complaints');
     });
   }
 

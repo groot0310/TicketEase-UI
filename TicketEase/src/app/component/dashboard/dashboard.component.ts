@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTable } from '@angular/material/table';
 import { CardComponent } from '../card/card.component';
-import { ListComponent } from '../list/list.component';
 import { TicketComponent } from '../ticket/ticket.component';
 import { ApiService } from '../../../lib/api.service';
 import { TableComponent } from '../table/table.component';
@@ -29,7 +28,6 @@ import { TableComponent } from '../table/table.component';
     CommonModule,
     TicketComponent,
     MatButtonToggleModule,
-    ListComponent,
     CardComponent,
     TableComponent,
   ],

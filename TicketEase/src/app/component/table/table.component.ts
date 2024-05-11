@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   Input,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { MatTableModule, MatTable } from '@angular/material/table';
@@ -18,7 +19,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [MatTableModule, MatPaginatorModule, MatSortModule, CommonModule],
 })
-export class TableComponent implements AfterViewInit {
+export class TableComponent {
   @Input() data: any[] = [];
   @Input() dataType: string = '';
   @Input() employeeTicketAssignedCounts: {
@@ -33,28 +34,26 @@ export class TableComponent implements AfterViewInit {
   @ViewChild(MatTable) table!: MatTable<TableItem>;
   dataSource = new TableDataSource();
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'abc'];
   constructor(private cdr: ChangeDetectorRef) {}
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['data'] && changes['data'].currentValue.length > 0) {
       this.dataSource.data = this.data;
       this.cdr.detectChanges();
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.table.dataSource = this.dataSource;
-    }, 0);
+    }
   }
 
-  adminTableHeaders = ['Name', 'ID', 'Username'];
+  adminTableHeaders = ['ID', 'First Name', 'Last Name', 'Username'];
 
   employeeTableHeaders = [
     'ID',
     'Name',
     'Username',
     'Ticket Raised',
-    'Ticket In-Progress',
+    'Ticket InProgress',
     'Ticket Resolved',
   ];
   engineerTableHeaders = [

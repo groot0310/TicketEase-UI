@@ -1,20 +1,20 @@
-/* Reset styling */
-h2 {
-  text-align: center;
-}
-
-.toggle-group {
+.emp-list-container {
+  background-color: #000;
+  // background-image: url(..//..//..//assets/title_bg.webp);
+  margin: 10px 30% 20px 30%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  border-radius: 10px;
 }
 
-/* Toggle button styles */
-mat-button-toggle {
-  background-color: #f0f0f0;
-  color: #333;
-  border: none;
-  border-radius: 4px;
-  transition: background-color 0.3s, color 0.3s;
+.title-toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.title-toggle-container .emptitle {
+  padding: 15px 25px 10px 10px;
+  color: #fff;
 }
 
 mat-button-toggle:hover {

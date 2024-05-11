@@ -1,12 +1,16 @@
-<div class="filter-select-container">
-  <mat-form-field appearance="outline">
-    <mat-label>Filter</mat-label>
-    <mat-select [(ngModel)]="selectedFilter">
-      <mat-option value="">All</mat-option>
-      <mat-option *ngFor="let option of filterOptions" [value]="option">{{ option }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+<div class="title-filter-container">
+  <h2 style="text-align: center; padding-top: 20px; font-weight: 550;">LIST OF TICKETS</h2>
+  <div class="filter-select-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Filter</mat-label>
+      <mat-select [(ngModel)]="selectedFilter">
+        <mat-option value="">All</mat-option>
+        <mat-option *ngFor="let option of filterOptions" [value]="option">{{ option }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 </div>
+
 
 <div fxLayout="row" fxLayout.xs="column" class="bg-container">
   <ng-container *ngFor="let status of ticketStatuses">

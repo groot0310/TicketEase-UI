@@ -1,15 +1,19 @@
 <div *ngIf="displayData">
+
   <div class="emp-list-container">
-    <h2 class="emptitle">LIST OF {{viewType === 'table' ? dataType.toUpperCase() : 'CARDS'}}</h2>
-    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="toggle-group">
-      <mat-button-toggle (click)="viewType = 'table'; " value="bold">
-        <mat-icon>format_list_bulleted</mat-icon>
-      </mat-button-toggle>
-      <mat-button-toggle (click)="viewType = 'card'" value="underline">
-        <mat-icon>view_module</mat-icon>
-      </mat-button-toggle>
-    </mat-button-toggle-group>
+    <div class="title-toggle-container">
+        <h2 class="emptitle">LIST OF {{viewType === 'table' ? dataType.toUpperCase() : 'CARDS'}}</h2>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="toggle-group">
+            <mat-button-toggle (click)="viewType = 'table'; " value="bold">
+                <mat-icon>format_list_bulleted</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="viewType = 'card'" value="underline">
+                <mat-icon>view_module</mat-icon>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
   </div>
+
 
   <!-- LIST TABLE VIEW -->
   <div *ngIf="viewType === 'table'" class="listTable">

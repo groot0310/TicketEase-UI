@@ -1,19 +1,25 @@
 $transition-time: 2.3s;
 
+.def-card {
+	background-color: #fffcf5;
+	border-radius: 12px;
+	width: 100%;
+}
+
 .def-row {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	margin: 3%;
+	margin: 1%;
   }
 
 .card{
 	position: relative;
-	height: 300px;
+	height: 200px;
 	width: 100%;
-	margin: 10px 0;
-  background: transparent;
-  border: transparent;
+	margin: 10px 0 10px 0;
+    background: transparent;
+    border: transparent;
 	transition: ease all $transition-time;
 	perspective: 1200px;
 	&:hover{
@@ -39,7 +45,7 @@ $transition-time: 2.3s;
 
 	.cover{
 		position: absolute;
-		height: 300px;
+		height: 180px;
 		width: 100%;
 		transform-style: preserve-3d;
   	transition: ease all $transition-time;
@@ -114,7 +120,7 @@ $transition-time: 2.3s;
 		width: 100%;
 		background: #0b0f08;
 		transform-style: preserve-3d;
-  	transition: ease all $transition-time;
+  	    transition: ease all $transition-time;
 		transform: translateZ(-1px);
 		display: flex;
 		align-items: center;
@@ -125,10 +131,10 @@ $transition-time: 2.3s;
 			transform: translateZ(-1px) rotatey(-180deg);
 			background: transparent;
 			border: 1px solid white;
-			font-weight: 200;
-			font-size: 1.3em;
+			font-weight: 500;
+			font-size: 13px;
 			color: white;
-			padding: 14px 32px;
+			padding: 12px 26px;
 			outline: none;
 			text-decoration: none;
 			&:hover{

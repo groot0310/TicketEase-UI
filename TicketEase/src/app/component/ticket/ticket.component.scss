@@ -1,3 +1,13 @@
+.title-filter-container {
+  background-color: #FBFBF9;
+  // background-image: url(..//..//..//assets/title_bg.webp);
+  margin: 10px 22% 20px 22%;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 15px;
+  border: #383838 2px solid;
+}
+
 .status-column {
   margin: 0 10px 15px 10px; /* Adjust margin as needed */
   text-align: center;
@@ -32,6 +42,7 @@ mat-card-header:hover {
 
 
 .filter-select-container {
+  padding-top: 15px;
   padding-right: 80px;
   padding-bottom: 0px;
   display: flex;

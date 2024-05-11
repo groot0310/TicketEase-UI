@@ -1,0 +1,9 @@
+.full-width-table {
+  width: 100%;
+  text-align: center  ;
+}
+
+.mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell {
+  background: inherit;
+  text-align: center;
+}

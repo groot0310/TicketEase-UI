@@ -1,16 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatPaginatorModule, MatTableModule],
   templateUrl: './list.component.html',
-  styleUrl: './list.component.scss',
+  styleUrls: ['./list.component.scss'],
 })
 export class ListComponent {
+  // Properties
   @Input() data: any[] = [];
   @Input() dataType: string = '';
+  dataSource: MatTableDataSource<any> = new MatTableDataSource<any>(this.data);
 
   @Input() employeeTicketAssignedCounts: {
     [userId: string]: { [status: string]: number };
@@ -19,6 +23,8 @@ export class ListComponent {
   @Input() engineerTicketAssignedCounts: {
     [userId: string]: { [status: string]: number };
   } = {};
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   adminTableHeaders = ['Name', 'ID', 'Username'];
 

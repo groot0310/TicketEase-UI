@@ -15,6 +15,7 @@ import { CardComponent } from '../card/card.component';
 import { ListComponent } from '../list/list.component';
 import { TicketComponent } from '../ticket/ticket.component';
 import { ApiService } from '../../../lib/api.service';
+import { TableComponent } from '../table/table.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,6 +31,7 @@ import { ApiService } from '../../../lib/api.service';
     MatButtonToggleModule,
     ListComponent,
     CardComponent,
+    TableComponent,
   ],
 })
 export class DashboardComponent {

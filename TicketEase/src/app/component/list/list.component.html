@@ -111,59 +111,27 @@
                       <div class="search-result">
                         <div class="result-body">
                           <div class="table-responsive">
-                            <table class="table widget-26">
-                              <tr>
-                                <td>
-                                  <div class="widget-26-job-emp-img">
-                                    <img src=img alt="Company" />
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="widget-26-job-title">
-                                    <a>FULL NAME</a>
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="widget-26-job-info">
-                                    <p class="type m-0">Ticket Raised</p>
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="widget-26-job-info">
-                                    <p class="type m-0">Ticket In-Progress</p>
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="widget-26-job-info">
-                                    <p class="type m-0">Ticket Resolved</p>
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="widget-26-job-category bg-soft-base">
-                                    <i class="indicator bg-base"></i>
-                                    <span>ID</span>
-                                  </div>
-                                </td>
-                              </tr>
+                            <table class="table widget-26" mat-table [dataSource]="dataSource">
+
                               <tbody>
-                                <tr *ngFor="let employee of data">
+                                <tr *ngFor="let employee of dataSource.data">
+                                  <!-- Define cells for each row -->
                                   <td>
                                     <div class="widget-26-job-emp-img">
-                                      <img src=img alt="Company" />
+                                      <img src="img" alt="Company" />
                                     </div>
                                   </td>
                                   <td>
                                     <div class="widget-26-job-title">
                                       <a>{{ employee.firstName }} {{ employee.lastName }}</a>
-                                      <p class="m-0"><a href="#" class="employer-name">username: {{ employee.username
-                                          }}</a>
+                                      <p class="m-0">
+                                        <a href="#" class="employer-name">username: {{ employee.username }}</a>
                                       </p>
                                     </div>
                                   </td>
                                   <td>
                                     <div class="widget-26-job-info">
-                                      <p class="type m-0">{{ employeeTicketAssignedCounts[employee.id]['RAISED'] }}
-                                      </p>
+                                      <p class="type m-0">{{ employeeTicketAssignedCounts[employee.id]['RAISED'] }}</p>
                                     </div>
                                   </td>
                                   <td>
@@ -178,7 +146,6 @@
                                       </p>
                                     </div>
                                   </td>
-
                                   <td>
                                     <div class="widget-26-job-category bg-soft-base">
                                       <i class="indicator bg-base"></i>
@@ -189,6 +156,9 @@
                               </tbody>
                             </table>
                           </div>
+                          <mat-paginator [length]="dataSource.data.length" [pageSize]="10"
+                            [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+                          </mat-paginator>
                         </div>
                       </div>
                     </div>
@@ -198,26 +168,11 @@
             </div>
           </div>
         </div>
+
       </div>
     </ng-template>
     <ng-template #adminListTemplate>
       <div class="employees-list">
-        <!-- <table class=" employees-table">
-          <thead>
-            <tr>
-              <th class="employee-photo"></th>
-              <th *ngFor="let header of adminTableHeaders">{{ header }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let admin of data">
-              <td class="employee-photo"><img [src]="admin.photo" alt="admin "></td>
-              <td>{{ admin.firstName }} {{ admin.lastName }}</td>
-              <td>{{admin.id}} </td>
-              <td>{{ admin.username }}</td>
-            </tr>
-          </tbody>
-        </table> -->
         <div class="container">
           <div class="row">
             <div class="col-12">
@@ -289,6 +244,7 @@
                               </tbody>
                             </table>
                           </div>
+
                         </div>
                       </div>
                     </div>

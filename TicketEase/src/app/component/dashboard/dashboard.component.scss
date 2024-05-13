@@ -1,10 +1,14 @@
+.list-bg {
+  background-color: #e4eef8;
+  border-radius: 5px;
+}
+
 .emp-list-container {
-  background-color: #000;
-  // background-image: url(..//..//..//assets/title_bg.webp);
-  margin: 10px 30% 20px 30%;
+  background-color: #fbfbf9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 15px 30% 20px 30%;
   display: flex;
   justify-content: space-around;
-  border-radius: 10px;
 }
 
 .title-toggle-container {
@@ -14,7 +18,7 @@
 
 .title-toggle-container .emptitle {
   padding: 15px 25px 10px 10px;
-  color: #fff;
+  color: #000;
 }
 
 mat-button-toggle:hover {

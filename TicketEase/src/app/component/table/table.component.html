@@ -1,7 +1,9 @@
 <div class="listTable" *ngIf="data.length > 0">
   <div class="container">
+
     <div class="row">
       <div class="col-12">
+
         <div class="card card-margin">
           <div class="card-body">
             <div class="row search-body">
@@ -12,44 +14,62 @@
                       <div class="mat-elevation-z8">
                         <ng-container *ngIf="dataType === 'engineer'; else employeeListTemplate">
                           <div>
+                            <div class="filter-select-container">
+                              <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="toggle-group">
+                                <mat-button-toggle (click)="ascending = true" value="bold">
+                                  <span class="material-icons md-18">arrow_upward</span>
+                                </mat-button-toggle>
+                                <mat-button-toggle (click)="ascending = false" value="bold">
+                                  <span class="material-icons md-18">arrow_downward</span>
+                                </mat-button-toggle>
+                              </mat-button-toggle-group>
+                              <mat-form-field appearance="outline">
+                                <mat-label>Sort By</mat-label>
+                                <mat-select [(ngModel)]="selectedFilter" (selectionChange)="sortData(selectedFilter)">
+                                  <mat-option value="">Select</mat-option>
+                                  <mat-option *ngFor="let option of engineerTableHeaders" [value]="option">
+                                    {{ option }}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
                             <table mat-table class="full-width-table" matSort aria-label="Elements">
                               <!-- ID Column -->
                               <ng-container matColumnDef="ID">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+                                <th mat-header-cell *matHeaderCellDef>ID</th>
                                 <td mat-cell *matCellDef="let row">{{ row.id }}</td>
                               </ng-container>
 
                               <!-- Name Column -->
                               <ng-container matColumnDef="Name">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                                <th mat-header-cell *matHeaderCellDef>Name</th>
                                 <td mat-cell *matCellDef="let row">{{ row.firstName }}</td>
                               </ng-container>
 
                               <!-- Username Column -->
                               <ng-container matColumnDef="Username">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
+                                <th mat-header-cell *matHeaderCellDef>Username</th>
                                 <td mat-cell *matCellDef="let row">{{ row.username }}</td>
                               </ng-container>
 
                               <!-- Ticket Resolved Column -->
-                              <ng-container matColumnDef="Ticket Resolved">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Ticket Resolved</th>
+                              <ng-container matColumnDef="Resolved">
+                                <th mat-header-cell *matHeaderCellDef>Ticket Resolved</th>
                                 <td mat-cell *matCellDef="let row">{{ engineerTicketAssignedCounts[row.id]['RESOLVED']
                                   }}
                                 </td>
                               </ng-container>
 
                               <!-- Ticket In-Progress Column -->
-                              <ng-container matColumnDef="Ticket InProgress">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Ticket In-Progress</th>
+                              <ng-container matColumnDef="InProgress">
+                                <th mat-header-cell *matHeaderCellDef>Ticket InProgress</th>
                                 <td mat-cell *matCellDef="let row">{{
                                   engineerTicketAssignedCounts[row.id]['UNDER_PROGRESS']
                                   }}</td>
                               </ng-container>
 
                               <!-- Ticket Assigned Column -->
-                              <ng-container matColumnDef="Ticket Assigned">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Ticket Assigned</th>
+                              <ng-container matColumnDef="Assigned">
+                                <th mat-header-cell *matHeaderCellDef>Ticket Assigned</th>
                                 <td mat-cell *matCellDef="let row">{{ engineerTicketAssignedCounts[row.id]['ASSIGNED']
                                   }}
                                 </td>
@@ -77,19 +97,19 @@
 
                               <!-- Name Column -->
                               <ng-container matColumnDef="Name">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                                <th mat-header-cell *matHeaderCellDef>Name</th>
                                 <td mat-cell *matCellDef="let row">{{ row.firstName }}</td>
                               </ng-container>
 
                               <!-- Username Column -->
                               <ng-container matColumnDef="Username">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
+                                <th mat-header-cell *matHeaderCellDef>Username</th>
                                 <td mat-cell *matCellDef="let row">{{ row.username }}</td>
                               </ng-container>
 
                               <!-- Ticket Resolved Column -->
                               <ng-container matColumnDef="Ticket Raised">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Ticket Resolved</th>
+                                <th mat-header-cell *matHeaderCellDef>Ticket Resolved</th>
                                 <td mat-cell *matCellDef="let row">{{ employeeTicketAssignedCounts[row.id]['RAISED']
                                   }}
                                 </td>
@@ -97,7 +117,7 @@
 
                               <!-- Ticket In-Progress Column -->
                               <ng-container matColumnDef="Ticket InProgress">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Ticket In-Progress</th>
+                                <th mat-header-cell *matHeaderCellDef>Ticket In-Progress</th>
                                 <td mat-cell *matCellDef="let row">{{
                                   employeeTicketAssignedCounts[row.id]['UNDER_PROGRESS']
                                   }}</td>
@@ -105,7 +125,7 @@
 
                               <!-- Ticket Assigned Column -->
                               <ng-container matColumnDef="Ticket Resolved">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Ticket Resolved</th>
+                                <th mat-header-cell *matHeaderCellDef>Ticket Resolved</th>
                                 <td mat-cell *matCellDef="let row">{{ employeeTicketAssignedCounts[row.id]['RESOLVED']
                                   }}
                                 </td>
@@ -132,18 +152,18 @@
 
                             <!-- Name Column -->
                             <ng-container matColumnDef="First Name">
-                              <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+                              <th mat-header-cell *matHeaderCellDef>First Name</th>
                               <td mat-cell *matCellDef="let row">{{ row.firstName }}</td>
                             </ng-container>
 
                             <ng-container matColumnDef="Last Name">
-                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+                              <th mat-header-cell *matHeaderCellDef>Last Name</th>
                               <td mat-cell *matCellDef="let row">{{ row.lastName }}</td>
                             </ng-container>
 
                             <!-- Username Column -->
                             <ng-container matColumnDef="Username">
-                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
+                              <th mat-header-cell *matHeaderCellDef>Username</th>
                               <td mat-cell *matCellDef="let row">{{ row.username }}</td>
                             </ng-container>
 

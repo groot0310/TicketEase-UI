@@ -11,13 +11,26 @@ import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { MatSortModule, MatSort } from '@angular/material/sort';
 import { TableDataSource, TableItem } from './table-datasource';
 import { CommonModule } from '@angular/common';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, CommonModule],
+  imports: [
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    CommonModule,
+    MatIconModule,
+    MatButtonToggleModule,
+    FormsModule,
+    MatSelectModule,
+  ],
 })
 export class TableComponent {
   @Input() data: any[] = [];
@@ -33,6 +46,8 @@ export class TableComponent {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<TableItem>;
   dataSource = new TableDataSource();
+  selectedFilter: string = '';
+  ascending: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -60,8 +75,28 @@ export class TableComponent {
     'ID',
     'Name',
     'Username',
-    'Ticket Resolved',
-    'Ticket InProgress',
-    'Ticket Assigned',
+    'Resolved',
+    'InProgress',
+    'Assigned',
   ];
+
+  toggleSortingDirection(asc: boolean) {
+    this.ascending = asc;
+  }
+
+  sortData(column: string) {
+    if (this.sort) {
+      if (this.ascending) {
+        this.sort.active = column;
+        this.sort.direction = 'desc';
+      } else {
+        this.sort.active = column;
+        this.sort.direction = 'asc';
+      }
+      this.sort.sortChange.emit({
+        active: column,
+        direction: this.sort.direction,
+      });
+    }
+  }
 }

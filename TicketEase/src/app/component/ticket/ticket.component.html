@@ -1,35 +1,40 @@
-<div class="filter-select-container">
-  <mat-form-field appearance="outline">
-    <mat-label>Filter</mat-label>
-    <mat-select [(ngModel)]="selectedFilter">
-      <mat-option value="">All</mat-option>
-      <mat-option *ngFor="let option of filterOptions" [value]="option">{{ option }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-
-<div fxLayout="row" fxLayout.xs="column" class="bg-container">
-  <ng-container *ngFor="let status of ticketStatuses">
-    <div fxFlex="60%" class="status-column">
-      <h3>{{ status }}</h3>
-      <div *ngFor="let complaint of getComplaintsByStatus(status)">
-        <mat-card class="ticket-card" *ngIf="!selectedFilter || selectedFilter === complaint.status">
-          <div class="card-header">
-            <button *ngIf="role==='ADMIN'" mat-icon-button [matMenuTriggerFor]="assign" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #assign="matMenu">
-              <button mat-menu-item (click)="deleteComplaint(complaint.id)">Remove</button>
-              <button mat-menu-item (click)="openEngineerSuggestionDialog(complaint)">Assign To</button>
-            </mat-menu>
-
-            <mat-card-header matRipple (click)="openTicketDetails(complaint)">
-              <mat-card-title>{{ complaint.title }}</mat-card-title>
-              <mat-card-subtitle>Status: {{ complaint.status }}</mat-card-subtitle>
-            </mat-card-header>
-          </div>
-        </mat-card>
-      </div>
+<section class="ticket-page">
+  <div class="title-filter-container">
+    <h2 style="text-align: center; padding-top: 5px; font-weight: 550;">LIST OF TICKETS</h2>
+    <div class="filter-select-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Filter</mat-label>
+        <mat-select [(ngModel)]="selectedFilter">
+          <mat-option value="">All</mat-option>
+          <mat-option *ngFor="let option of filterOptions" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-  </ng-container>
-</div>
+  </div>
+<br>
+  <div fxLayout="row" fxLayout.xs="column" class="bg-container">
+    <ng-container *ngFor="let status of ticketStatuses">
+      <div fxFlex="60%" class="status-column">
+        <h3 class="status-title">{{ status }}</h3>
+        <div *ngFor="let complaint of getComplaintsByStatus(status)">
+          <mat-card class="ticket-card" *ngIf="!selectedFilter || selectedFilter === complaint.status">
+            <div class="card-header">
+              <button *ngIf="role==='ADMIN'" mat-icon-button [matMenuTriggerFor]="assign" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #assign="matMenu">
+                <button mat-menu-item (click)="deleteComplaint(complaint.id)">Remove</button>
+                <button mat-menu-item (click)="openEngineerSuggestionDialog(complaint)">Assign To</button>
+              </mat-menu>
+
+              <mat-card-header matRipple (click)="openTicketDetails(complaint)">
+                <mat-card-title>{{ complaint.title }}</mat-card-title>
+                <mat-card-subtitle>Status: {{ complaint.status }}</mat-card-subtitle>
+              </mat-card-header>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>

@@ -1,14 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTable } from '@angular/material/table';
 import { CardComponent } from '../card/card.component';
-import { ListComponent } from '../list/list.component';
 import { TicketComponent } from '../ticket/ticket.component';
 import { ApiService } from '../../../lib/api.service';
+import { TableComponent } from '../table/table.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,12 +28,13 @@ import { ApiService } from '../../../lib/api.service';
     CommonModule,
     TicketComponent,
     MatButtonToggleModule,
-    ListComponent,
     CardComponent,
+    TableComponent,
   ],
 })
 export class DashboardComponent {
   constructor(private api: ApiService) {}
+
   @ViewChild(MatTable)
   table!: MatTable<any>;
   matchingEngineers: any[] = [];

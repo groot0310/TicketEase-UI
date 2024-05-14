@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -17,7 +23,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './default-dashboard.component.scss',
   imports: [CommonModule, MatDialogModule, DashboardComponent, FormsModule],
 })
-export class DefaultDashboardComponent {
+export class DefaultDashboardComponent implements OnInit {
   @Input() role: string = '';
   dataType: string = '';
   dialogComplaints: any[] = [];
@@ -25,13 +31,16 @@ export class DefaultDashboardComponent {
   matchingEngineers: any[] = [];
   complaintId: string = '';
   data: any[] = [];
-  complaints: any[] = [];
+  @Input() complaints: any[] = [];
   constructor(
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private api: ApiService,
     private _bottomSheet: MatBottomSheet
   ) {}
+  ngOnInit(): void {
+    // this.getComplaints('complaints');
+  }
   @ViewChild('dialogTemplate') dialogTemplate!: TemplateRef<any>;
 
   openDialog(formType: string, heading: string): void {

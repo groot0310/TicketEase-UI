@@ -1,0 +1,43 @@
+.listTable {
+  margin: 10px;
+  background-color: #e4eef8;
+  border-radius: 5px;
+}
+
+.card-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+}
+
+.full-width-table {
+  width: 100%;
+  text-align: center;
+}
+
+.mat-form-field {
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.toggle-group {
+  margin-left: auto;
+}
+.filter-select-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.mat-mdc-table tbody,
+.mat-mdc-table tfoot,
+.mat-mdc-table thead,
+.mat-mdc-cell,
+.mat-mdc-footer-cell,
+.mat-mdc-header-row,
+.mat-mdc-row,
+.mat-mdc-footer-row,
+.mat-mdc-table .mat-mdc-header-cell {
+  background: inherit;
+  text-align: center;
+}

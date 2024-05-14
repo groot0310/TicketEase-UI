@@ -1,20 +1,24 @@
-/* Reset styling */
-h2 {
-  text-align: center;
+.list-bg {
+  background-color: #e4eef8;
+  border-radius: 5px;
 }
 
-.toggle-group {
+.emp-list-container {
+  background-color: #fbfbf9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 15px 30% 20px 30%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
-/* Toggle button styles */
-mat-button-toggle {
-  background-color: #f0f0f0;
-  color: #333;
-  border: none;
-  border-radius: 4px;
-  transition: background-color 0.3s, color 0.3s;
+.title-toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.title-toggle-container .emptitle {
+  padding: 15px 25px 10px 10px;
+  color: #000;
 }
 
 mat-button-toggle:hover {

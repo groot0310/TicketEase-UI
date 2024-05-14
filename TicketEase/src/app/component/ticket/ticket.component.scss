@@ -1,12 +1,43 @@
+.ticket-page {
+  padding-top: 5px;
+  background-color: #e4eef8;
+  border-radius: 5px;
+}
+
+.status-title {
+  padding: 8px 0 4px 0;
+  background-color: #f3f8fc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0px;
+}
+
+.title-filter-container {
+  width: 60%;
+  height: 80px;
+  /* Adjust the height as desired */
+  background-color: #fbfbf9;
+  color: black;
+  margin: 10px auto;
+  /* Center the container horizontally */
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* Vertically center the content */
+  border-radius: 0px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .status-column {
-  margin: 0 10px 15px 10px; /* Adjust margin as needed */
+  margin: 0 10px 15px 10px;
+  /* Adjust margin as needed */
   text-align: center;
-  background-color: #f7f5f9;
+  background-color: #f6f5f8;
   border-radius: 10px;
 }
 
 .bg-container {
-  margin: 0 2% ;
+  margin: 0 2%;
 }
 
 /* Style for card content */
@@ -22,18 +53,25 @@ mat-card-header {
   text-align: left;
   background-color: #ffff;
   border-radius: 10px;
-  cursor: pointer; /* Change cursor to pointer */
-  transition: background-color 0.3s; /* Adding transition for smooth hover effect */
+  cursor: pointer;
+  /* Change cursor to pointer */
+  transition: background-color 0.3s;
+  /* Adding transition for smooth hover effect */
 }
 
 mat-card-header:hover {
-  background-color: #e2e9ee89; /* Change background color on hover */
+  background-color: #e2e9ee89;
+  /* Change background color on hover */
 }
 
-
 .filter-select-container {
+  padding-top: 18px;
+  /* Reduce top padding */
   padding-right: 80px;
-  padding-bottom: 0px;
+  padding-bottom: 2px;
+  /* Reduce bottom padding */
+  padding-left: 0;
+  /* Remove left padding if not needed */
   display: flex;
   justify-content: flex-end;
   font-family: 'Charlie', sans-serif;
@@ -41,69 +79,84 @@ mat-card-header:hover {
   font-style: normal;
 }
 
-
 /* Container Styles */
 .ticket-container {
-  margin-bottom: 16px; /* Spacing between tickets */
+  margin-bottom: 16px;
+  /* Spacing between tickets */
 }
 
 /* Card Styles */
 .ticket-card {
   margin: 5px;
-  background-color: #fefeff; /* White background */
-  margin-bottom: 12px; /* Adjust margin as needed */
-  }
+  background-color: #fefeff;
+  /* White background */
+  margin-bottom: 12px;
+  /* Adjust margin as needed */
+}
 
 /* Header Styles */
 .header-section {
-  background-color: #f2f2f2; /* Light gray background for header */
-  padding: 8px; /* Padding for separation */
-  border-bottom: 1px solid #d4d4d4; /* Light border at the bottom */
-  display: flex; /* Flexbox for layout */
-  align-items: center; /* Center elements vertically */
-  justify-content: space-between; /* Space between elements */
+  background-color: #f2f2f2;
+  /* Light gray background for header */
+  padding: 8px;
+  /* Padding for separation */
+  border-bottom: 1px solid #d4d4d4;
+  /* Light border at the bottom */
+  display: flex;
+  /* Flexbox for layout */
+  align-items: center;
+  /* Center elements vertically */
+  justify-content: space-between;
+  /* Space between elements */
 }
 
 /* Title and Subtitle Styles */
 .card-title {
-  font-weight: bold; /* Bold font weight for emphasis */
-  margin-right: 16px; /* Space between title and subtitle */
+  font-weight: bold;
+  /* Bold font weight for emphasis */
+  margin-right: 16px;
+  /* Space between title and subtitle */
 }
 
 .action-button {
-  margin-left: auto; /* Align button to the right */
-  background-color: transparent; /* Transparent background */
-  border-radius: 4px; /* Rounded corners */
-  padding: 8px; /* Padding around the button */
-  color: #666666; /* Dark gray color */
+  margin-left: auto;
+  /* Align button to the right */
+  background-color: transparent;
+  /* Transparent background */
+  border-radius: 4px;
+  /* Rounded corners */
+  padding: 8px;
+  /* Padding around the button */
+  color: #666666;
+  /* Dark gray color */
 }
 
 .action-button:hover {
-  background-color: #e0e0e0; /* Light gray background on hover */
-  transition: transform .2s; /* Animation */
-  transform: scale(1.05); /* Slight zoom effect on hover */
+  background-color: #e0e0e0;
+  /* Light gray background on hover */
+  transition: transform .2s;
+  /* Animation */
+  transform: scale(1.05);
+  /* Slight zoom effect on hover */
 }
 
 /* Content Section Styles */
 .content-section {
-  margin-bottom: 8px; /* Spacing between sections */
+  margin-bottom: 8px;
+  /* Spacing between sections */
 }
 
 /////////
-
-// .card-header{
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-// }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  background-color: #f0f0f0; /* Pale gray background */
-  border-radius: 8px 8px 0 0; /* Rounded corners */
+  background-color: #f0f0f0;
+  /* Pale gray background */
+  border-radius: 8px 8px 0 0;
+  /* Rounded corners */
 }
 
 .card-header button {
@@ -114,72 +167,33 @@ mat-card-header:hover {
 }
 
 .card-header button:hover {
-  background-color: #e0e0e0; /* Light gray background on hover */
-  border-radius: 50%; /* Rounded button */
+  background-color: #e0e0e0;
+  /* Light gray background on hover */
+  border-radius: 50%;
+  /* Rounded button */
 }
 
 .mat-card-header {
-  margin-left: 16px; /* Spacing between button and card header content */
+  margin-left: 16px;
+  /* Spacing between button and card header content */
 }
 
 .mat-card-title {
-  font-family: 'Charlie Sans', sans-serif; /* Use Charlie Sans font */
+  font-family: 'Charlie Sans', sans-serif;
+  /* Use Charlie Sans font */
   font-size: 18px;
   font-weight: bold;
-  color: #333; /* Dark gray text color */
+  color: #333;
+  /* Dark gray text color */
 }
 
 .mat-card-subtitle {
-  font-family: 'Charlie Sans', sans-serif; /* Use Charlie Sans font */
+  font-family: 'Charlie Sans', sans-serif;
+  /* Use Charlie Sans font */
   font-size: 14px;
-  color: #666; /* Medium gray text color */
+  color: #666;
+  /* Medium gray text color */
 }
 
 
 ///////////
-
-// .complaint-container {
-//   padding: 20px;
-//   border-radius: 20px;
-//   border: 1px solid #ccc;
-//   background-color: #a8c8e9;
-// }
-
-// .ticket-card {
-//   margin-bottom: 20px;
-//   border-radius: 10px;
-//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-// }
-
-// .card-header {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   padding: 10px;
-//   border-bottom: 1px solid #eee;
-// }
-
-// .card-header button {
-//   background-color: transparent;
-//   border: none;
-//   cursor: pointer;
-// }
-
-// .mat-card-title {
-//   font-size: 16px;
-//   font-weight: bold;
-// }
-
-// .mat-card-subtitle {
-//   font-size: 14px;
-//   color: #666;
-// }
-
-// .mat-card-content {
-//   padding: 10px;
-// }
-
-// .mat-card-content p {
-//   margin: 5px 0;
-// }
-

@@ -6,8 +6,7 @@
       <div class="menu-container">
         <button mat-raised-button
           aria-label="Button that displays a tooltip that hides when scrolled out of the container"
-          class="example-button"
-          style="background-color: rgba(239,212,169,1); color: black; font-weight: 550; border: 2px solid;">
+          class="example-button">
           ADMIN SECTION
         </button>
       </div>
@@ -67,8 +66,7 @@
       <div class="menu-container">
         <button mat-raised-button
           aria-label="Button that displays a tooltip that hides when scrolled out of the container"
-          class="example-button"
-          style="background-color: rgba(239,212,169,1); color: black; font-weight: 550; border: 2px solid">
+          class="example-button">
           EMPLOYEE SECTION
         </button>
       </div>
@@ -119,7 +117,7 @@
       </div>
     </mat-toolbar>
     <ng-container *ngIf="showDefaultDashboard && this.role!=='ENGINEER'; else dashboardTemplate">
-      <app-default-dashboard [role]="this.role"></app-default-dashboard>
+      <app-default-dashboard [role]="this.role" [complaints]="complaints"></app-default-dashboard>
 
     </ng-container>
     <ng-template #dashboardTemplate>

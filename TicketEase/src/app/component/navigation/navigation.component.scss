@@ -1,14 +1,22 @@
 .mat-drawer-content {
-  background: rgb(255,255,255);
-background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(239,212,169,1) 100%);
+  background: #000;
+  // background: linear-gradient(0deg, rgba(239,212,169,1) 0%, rgba(255,252,245,1) 60%);
 }
 
 .toolbar {
   background-color: black;
   width: 100%;
+  border: #ffffff 2px solid;
 }
 .mat-expansion-panel{
   margin:10px
+}
+
+.example-button {
+  background-color: #fbfbf9;
+  color: black;
+  font-weight: 550;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .sidenav-container {
@@ -22,8 +30,7 @@ background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(239,212,169,1) 
   margin-top: 6%;
   margin-bottom: 2%;
   border-radius: 10px;
-  background-color: #fcf8f0; /* Gradient from light to dark blue */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f3f8fc; /* Gradient from light to dark blue */
 }
 
 .sidenav .mat-toolbar {

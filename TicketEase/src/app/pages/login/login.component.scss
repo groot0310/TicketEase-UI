@@ -29,11 +29,19 @@ section::before {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url("../../../assets/bg_new.avif");
+  // background-image: url("../../../assets/bg55.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .full-width {
